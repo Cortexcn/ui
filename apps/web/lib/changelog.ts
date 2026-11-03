@@ -45,6 +45,17 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 export const CHANGELOG: ChangelogRelease[] = [
   {
     date: "2026-11-03",
+    kind: "blocks",
+    title: "Muster, a people dashboard for startup teams",
+    summary:
+      "Muster is a Pro dashboard that shows a startup team's day: who checked in and when, who is away or out, new hires' onboarding checklists, a stopwatch for project time, the employee spotlight, notes, and the current project. Notes, tracked time, comments, and time off requests can be created, edited, and deleted, and an optional `api` prop sends each change to your own backend; Cortexcn Studio can also wire it up for you. It uses Hugeicons and Inter, works in light and dark mode, and moves from one column on phones to two on tablets and three with a sidebar on desktops.",
+    items: [
+      { label: "Muster", href: "/blocks/dashboards/dashboard-muster-01" },
+      { label: "Dashboards", href: "/blocks?category=dashboards" },
+    ],
+  },
+  {
+    date: "2026-11-03",
     kind: "site",
     title: "The docs website, components, and blocks are open source",
     summary:

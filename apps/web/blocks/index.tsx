@@ -24,6 +24,7 @@ import { ChartGroupSupportBlock } from "./chart-group-support-01";
 import { ChartGroupTrafficBlock } from "./chart-group-traffic-01";
 import { DashboardHarborBlock } from "./dashboard-harbor-01";
 import { DashboardLedgerBlock } from "./dashboard-ledger-01";
+import { DashboardMusterBlock } from "./dashboard-muster-01";
 import { DashboardPatronBlock } from "./dashboard-patron-01";
 import { DashboardTreasuryBlock } from "./dashboard-treasury-01";
 import { FeatureBentoGridBlock } from "./feature-bento-grid-01";
@@ -83,6 +84,7 @@ const BLOCK_VIEWERS: Record<BlockSlug, ComponentType<BlockDisplayProps>> = {
   "dashboard-ledger-01": DashboardLedgerBlock,
   "dashboard-treasury-01": DashboardTreasuryBlock,
   "dashboard-patron-01": DashboardPatronBlock,
+  "dashboard-muster-01": DashboardMusterBlock,
   "bento-grid-insights-01": BentoGridInsightsBlock,
   "loader-dot-matrix-01": LoaderDotMatrixBlock,
   "loader-glitch-text-01": LoaderGlitchTextBlock,

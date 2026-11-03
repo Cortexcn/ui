@@ -21,6 +21,7 @@ import { ChartGroupSupportPreview } from "./chart-group-support-01/preview";
 import { ChartGroupTrafficPreview } from "./chart-group-traffic-01/preview";
 import { DashboardHarborPreview } from "./dashboard-harbor-01/preview";
 import { DashboardLedgerPreview } from "./dashboard-ledger-01/preview";
+import { DashboardMusterPreview } from "./dashboard-muster-01/preview";
 import { DashboardPatronPreview } from "./dashboard-patron-01/preview";
 import { DashboardTreasuryPreview } from "./dashboard-treasury-01/preview";
 import { FeatureBentoGridPreview } from "./feature-bento-grid-01/preview";
@@ -80,6 +81,7 @@ export const BLOCK_PREVIEWS: Record<BlockSlug, ComponentType> = {
   "dashboard-ledger-01": DashboardLedgerPreview,
   "dashboard-treasury-01": DashboardTreasuryPreview,
   "dashboard-patron-01": DashboardPatronPreview,
+  "dashboard-muster-01": DashboardMusterPreview,
   "bento-grid-insights-01": BentoGridInsightsPreview,
   "loader-dot-matrix-01": LoaderDotMatrixPreview,
   "loader-glitch-text-01": LoaderGlitchTextPreview,

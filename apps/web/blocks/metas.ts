@@ -20,6 +20,7 @@ import { chartGroupSupport01Meta } from "./chart-group-support-01/meta";
 import { chartGroupTraffic01Meta } from "./chart-group-traffic-01/meta";
 import { dashboardHarbor01Meta } from "./dashboard-harbor-01/meta";
 import { dashboardLedger01Meta } from "./dashboard-ledger-01/meta";
+import { dashboardMuster01Meta } from "./dashboard-muster-01/meta";
 import { dashboardPatron01Meta } from "./dashboard-patron-01/meta";
 import { dashboardTreasury01Meta } from "./dashboard-treasury-01/meta";
 import { featureBentoGrid01Meta } from "./feature-bento-grid-01/meta";
@@ -82,6 +83,7 @@ export const BLOCK_METAS: Record<
   "dashboard-ledger-01": dashboardLedger01Meta,
   "dashboard-treasury-01": dashboardTreasury01Meta,
   "dashboard-patron-01": dashboardPatron01Meta,
+  "dashboard-muster-01": dashboardMuster01Meta,
   "bento-grid-insights-01": bentoGridInsights01Meta,
   "loader-dot-matrix-01": loaderDotMatrix01Meta,
   "loader-glitch-text-01": loaderGlitchText01Meta,

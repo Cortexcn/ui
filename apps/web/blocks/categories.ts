@@ -107,6 +107,7 @@ export const BLOCK_CATEGORIES: BlockCategory[] = [
       "dashboard-harbor-01",
       "dashboard-treasury-01",
       "dashboard-patron-01",
+      "dashboard-muster-01",
     ],
   },
   {

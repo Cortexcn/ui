@@ -36,9 +36,10 @@ function resolveRelativeImport(fromFilePath, spec) {
     ...RESOLVE_EXTENSIONS.map((ext) => path.posix.join(base, `index${ext}`)),
   ];
 
+  // Files only: an import of a folder resolves to the folder's index file.
   for (const candidate of candidates) {
     const fullPath = path.join(uiRoot, candidate);
-    if (fs.existsSync(fullPath)) {
+    if (fs.existsSync(fullPath) && fs.statSync(fullPath).isFile()) {
       return candidate;
     }
   }
