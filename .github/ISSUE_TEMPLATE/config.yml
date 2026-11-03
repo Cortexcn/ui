@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://ui.cortexcn.dev/docs
+    about: Docs, live previews, and install steps for every component and block.
+  - name: Security problem
+    url: https://github.com/Cortexcn/ui/blob/main/SECURITY.md
+    about: Please report security problems privately, as SECURITY.md describes.

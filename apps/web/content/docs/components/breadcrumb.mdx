@@ -1,0 +1,41 @@
+---
+title: Breadcrumb
+description: Displays the path to the current resource using a hierarchy of links.
+---
+
+import { BreadcrumbBasic, BreadcrumbWithDropdown, BreadcrumbWithLink } from "@cortexcn/ui/examples/breadcrumb";
+import { code } from "@cortexcn/ui/examples/breadcrumb.code";
+
+<ComponentPreview>
+  <BreadcrumbBasic />
+</ComponentPreview>
+
+## Installation
+
+<InstallationTabs name="breadcrumb" />
+
+## Usage
+
+```tsx
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from "@/components/breadcrumb";
+```
+
+## Examples
+
+### Basic
+
+<ComponentShowcase code={code.BreadcrumbBasic}>
+  <BreadcrumbBasic />
+</ComponentShowcase>
+
+### With dropdown
+
+<ComponentShowcase code={code.BreadcrumbWithDropdown}>
+  <BreadcrumbWithDropdown />
+</ComponentShowcase>
+
+### With link
+
+<ComponentShowcase code={code.BreadcrumbWithLink}>
+  <BreadcrumbWithLink />
+</ComponentShowcase>

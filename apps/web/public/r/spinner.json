@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Spinner",
+  "description": "An indicator that shows a loading state.",
+  "dependencies": [
+    "lucide-react@1"
+  ],
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/spinner.tsx",
+      "content": "import { Loader2Icon } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\n// Cortexcn item \"spinner\", revision 1c36293d60e0, MIT license.\n// https://ui.cortexcn.dev/r/v/spinner/1c36293d60e0.json\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <Loader2Icon\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      data-slot=\"spinner\"\n      role=\"status\"\n      {...props}\n    />\n  );\n}\n\nexport { Spinner };\n",
+      "type": "registry:component",
+      "target": "components/spinner.tsx"
+    }
+  ],
+  "categories": [
+    "components"
+  ],
+  "type": "registry:component",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "1c36293d60e0"
+  }
+}

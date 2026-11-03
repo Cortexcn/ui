@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "title": "Textarea",
+  "description": "Displays a form textarea or a component that looks like a textarea.",
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/utils.json",
+    "https://ui.cortexcn.dev/r/design-system-recipes.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/textarea.tsx",
+      "content": "import type * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\n// Cortexcn item \"textarea\", revision f39fdb6206c3, MIT license.\n// https://ui.cortexcn.dev/r/v/textarea/f39fdb6206c3.json\n\nfunction Textarea({ className, ...props }: React.ComponentProps<\"textarea\">) {\n  return (\n    <textarea\n      className={cn(\n        \"field-sizing-content flex min-h-16 w-full rounded-input border border-input bg-input-fill px-input-x py-2 text-base shadow-input outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input-fill-dark dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40\",\n        className,\n      )}\n      data-slot=\"textarea\"\n      {...props}\n    />\n  );\n}\n\nexport { Textarea };\n",
+      "type": "registry:component",
+      "target": "components/textarea.tsx"
+    }
+  ],
+  "categories": [
+    "components"
+  ],
+  "type": "registry:component",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "f39fdb6206c3"
+  }
+}

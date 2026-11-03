@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "title": "Skeleton",
+  "description": "Shows a placeholder while content is loading.",
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/skeleton.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\n// Cortexcn item \"skeleton\", revision 55b741fe50df, MIT license.\n// https://ui.cortexcn.dev/r/v/skeleton/55b741fe50df.json\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-muted\", className)}\n      data-slot=\"skeleton\"\n      {...props}\n    />\n  );\n}\n\nexport { Skeleton };\n",
+      "type": "registry:component",
+      "target": "components/skeleton.tsx"
+    }
+  ],
+  "categories": [
+    "components"
+  ],
+  "type": "registry:component",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "55b741fe50df"
+  }
+}

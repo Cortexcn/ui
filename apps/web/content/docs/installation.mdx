@@ -1,0 +1,64 @@
+---
+title: Installation
+description: How to install and configure Cortexcn in your project.
+---
+
+Cortexcn components are distributed through a shadcn registry. You add them with the shadcn CLI, and the component source is copied into your project.
+
+## Prerequisites
+
+Before installing Cortexcn components, make sure you have shadcn/ui set up in your project. If you haven't already, run:
+
+```bash
+npx shadcn@latest init
+```
+
+## Add the registry
+
+Add the `@cortexcn` namespace to the `registries` field in your `components.json`:
+
+```json
+{
+  "registries": {
+    "@cortexcn": "https://ui.cortexcn.dev/r/{name}.json"
+  }
+}
+```
+
+You only need to do this once per project.
+
+## Install components
+
+Install any Cortexcn component using the CLI:
+
+<PackageManagerTabs name="area-chart" />
+
+This will:
+
+- Download the component source code into your project
+- Install any npm packages the component needs
+- Install any other Cortexcn components it depends on
+
+For example, `@cortexcn/line-chart`, `@cortexcn/area-chart`, and `@cortexcn/heatmap-chart` pull in `@cortexcn/shimmering-text` for their loading labels.
+
+## Check before you install
+
+Add `--dry-run` to any `add` command to see every file and package it would add, without writing anything:
+
+```bash
+npx shadcn@latest add @cortexcn/lanyard-3d --dry-run
+```
+
+Each item records its license and a revision. Cortexcn items are MIT licensed. A few are adapted from Apache-2.0 projects, and name the project. Every script file the CLI writes carries a comment below its imports with the item, its revision, and its license.
+
+Every revision stays at a fixed URL, so you can install exactly the one you reviewed:
+
+```bash
+npx shadcn@latest add https://ui.cortexcn.dev/r/v/lanyard-3d/39d534c092c8.json
+```
+
+The [MCP Server](/docs/integration/mcp#what-your-assistant-sees-before-it-installs) page has the details.
+
+## Next Steps
+
+You're all set. Browse the [Components](/docs/components) section to start adding components to your project.

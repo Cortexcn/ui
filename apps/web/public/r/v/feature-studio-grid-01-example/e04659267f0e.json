@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-studio-grid-01-example",
+  "title": "Feature Studio Grid Example",
+  "description": "Heading and one action over two compact cards and a large feature tile, for posts, case studies, or launches — demo for Open in v0",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/feature-studio-grid-01.json"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/feature-studio-grid-01.tsx",
+      "content": "\"use client\";\n\nimport { FeatureStudioGrid } from \"@/components/feature-studio-grid\";\n\n// Cortexcn item \"feature-studio-grid-01-example\", revision e04659267f0e, MIT license.\n// https://ui.cortexcn.dev/r/v/feature-studio-grid-01-example/e04659267f0e.json\n\nexport default function Component() {\n  return (\n    <main className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-6xl\">\n        <FeatureStudioGrid />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:page",
+      "target": "app/page.tsx"
+    }
+  ],
+  "type": "registry:example",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "e04659267f0e"
+  }
+}

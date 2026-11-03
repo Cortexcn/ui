@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "title": "Progress",
+  "description": "Displays an indicator showing the completion progress of a task.",
+  "dependencies": [
+    "radix-ui@1"
+  ],
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/progress.tsx",
+      "content": "\"use client\";\n\nimport { Progress as ProgressPrimitive } from \"radix-ui\";\nimport type * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\n// Cortexcn item \"progress\", revision 6bd662cce8d4, MIT license.\n// https://ui.cortexcn.dev/r/v/progress/6bd662cce8d4.json\n\nfunction Progress({\n  className,\n  value,\n  ...props\n}: React.ComponentProps<typeof ProgressPrimitive.Root>) {\n  return (\n    <ProgressPrimitive.Root\n      className={cn(\n        \"relative flex h-1.5 w-full items-center overflow-x-hidden rounded-full bg-muted\",\n        className,\n      )}\n      data-slot=\"progress\"\n      {...props}\n    >\n      <ProgressPrimitive.Indicator\n        className=\"size-full flex-1 bg-primary transition-all\"\n        data-slot=\"progress-indicator\"\n        style={{ transform: `translateX(-${100 - (value || 0)}%)` }}\n      />\n    </ProgressPrimitive.Root>\n  );\n}\n\nexport { Progress };\n",
+      "type": "registry:component",
+      "target": "components/progress.tsx"
+    }
+  ],
+  "categories": [
+    "components"
+  ],
+  "type": "registry:component",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "6bd662cce8d4"
+  }
+}

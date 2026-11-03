@@ -1,0 +1,569 @@
+import type { StaticImageData } from "next/image";
+import travelCardDark from "@/assets/templates/ai-travel-app/card-dark.webp";
+import travelCardLight from "@/assets/templates/ai-travel-app/card-light.webp";
+import travelDesktopDark from "@/assets/templates/ai-travel-app/desktop-dark.webp";
+import travelDesktopLight from "@/assets/templates/ai-travel-app/desktop-light.webp";
+import travelMobileDark from "@/assets/templates/ai-travel-app/mobile-dark.webp";
+import travelMobileLight from "@/assets/templates/ai-travel-app/mobile-light.webp";
+import checksCardDark from "@/assets/templates/data-checks/card-dark.webp";
+import checksCardLight from "@/assets/templates/data-checks/card-light.webp";
+import checksDesktopDark from "@/assets/templates/data-checks/desktop-dark.webp";
+import checksDesktopLight from "@/assets/templates/data-checks/desktop-light.webp";
+import checksMobileDark from "@/assets/templates/data-checks/mobile-dark.webp";
+import checksMobileLight from "@/assets/templates/data-checks/mobile-light.webp";
+import growthCardDark from "@/assets/templates/growth-agency/card-dark.webp";
+import growthCardLight from "@/assets/templates/growth-agency/card-light.webp";
+import growthDesktopDark from "@/assets/templates/growth-agency/desktop-dark.webp";
+import growthDesktopLight from "@/assets/templates/growth-agency/desktop-light.webp";
+import growthMobileDark from "@/assets/templates/growth-agency/mobile-dark.webp";
+import growthMobileLight from "@/assets/templates/growth-agency/mobile-light.webp";
+import portfolioCardDark from "@/assets/templates/portfolio/card-dark.webp";
+import portfolioCardLight from "@/assets/templates/portfolio/card-light.webp";
+import portfolioDesktopDark from "@/assets/templates/portfolio/desktop-dark.webp";
+import portfolioDesktopLight from "@/assets/templates/portfolio/desktop-light.webp";
+import portfolioMobileDark from "@/assets/templates/portfolio/mobile-dark.webp";
+import portfolioMobileLight from "@/assets/templates/portfolio/mobile-light.webp";
+import kitCardDark from "@/assets/templates/project-dashboard-kit/card-dark.webp";
+import kitCardLight from "@/assets/templates/project-dashboard-kit/card-light.webp";
+import kitDesktopDark from "@/assets/templates/project-dashboard-kit/desktop-dark.webp";
+import kitDesktopLight from "@/assets/templates/project-dashboard-kit/desktop-light.webp";
+import kitMobileDark from "@/assets/templates/project-dashboard-kit/mobile-dark.webp";
+import kitMobileLight from "@/assets/templates/project-dashboard-kit/mobile-light.webp";
+import kitBoardDark from "@/assets/templates/project-dashboard-kit/page-board-dark.webp";
+import kitBoardLight from "@/assets/templates/project-dashboard-kit/page-board-light.webp";
+import kitProjectsDark from "@/assets/templates/project-dashboard-kit/page-projects-dark.webp";
+import kitProjectsLight from "@/assets/templates/project-dashboard-kit/page-projects-light.webp";
+import kitReportsDark from "@/assets/templates/project-dashboard-kit/page-reports-dark.webp";
+import kitReportsLight from "@/assets/templates/project-dashboard-kit/page-reports-light.webp";
+import kitTeamDark from "@/assets/templates/project-dashboard-kit/page-team-dark.webp";
+import kitTeamLight from "@/assets/templates/project-dashboard-kit/page-team-light.webp";
+import kitTimelineDark from "@/assets/templates/project-dashboard-kit/page-timeline-dark.webp";
+import kitTimelineLight from "@/assets/templates/project-dashboard-kit/page-timeline-light.webp";
+import saasCardDark from "@/assets/templates/simplistic-saas/card-dark.webp";
+import saasCardLight from "@/assets/templates/simplistic-saas/card-light.webp";
+import saasDesktopDark from "@/assets/templates/simplistic-saas/desktop-dark.webp";
+import saasDesktopLight from "@/assets/templates/simplistic-saas/desktop-light.webp";
+import saasMobileDark from "@/assets/templates/simplistic-saas/mobile-dark.webp";
+import saasMobileLight from "@/assets/templates/simplistic-saas/mobile-light.webp";
+import workspaceCardDark from "@/assets/templates/team-workspace/card-dark.webp";
+import workspaceCardLight from "@/assets/templates/team-workspace/card-light.webp";
+import workspaceDesktopDark from "@/assets/templates/team-workspace/desktop-dark.webp";
+import workspaceDesktopLight from "@/assets/templates/team-workspace/desktop-light.webp";
+import workspaceMobileDark from "@/assets/templates/team-workspace/mobile-dark.webp";
+import workspaceMobileLight from "@/assets/templates/team-workspace/mobile-light.webp";
+import trekCardDark from "@/assets/templates/trek-agency/card-dark.webp";
+import trekCardLight from "@/assets/templates/trek-agency/card-light.webp";
+import trekDesktopDark from "@/assets/templates/trek-agency/desktop-dark.webp";
+import trekDesktopLight from "@/assets/templates/trek-agency/desktop-light.webp";
+import trekMobileDark from "@/assets/templates/trek-agency/mobile-dark.webp";
+import trekMobileLight from "@/assets/templates/trek-agency/mobile-light.webp";
+import { contactHref } from "@/lib/contact/prefill";
+import { formatUsd } from "@/lib/service-pricing";
+
+export interface ThemedImage {
+  light: StaticImageData;
+  dark: StaticImageData;
+}
+
+/**
+ * Full-website templates listed on /templates. Each one is a standalone
+ * Next.js project: free ones in templates/<slug> in this repo, paid ones in
+ * the private cortexcn-templates repo next to it. Free templates are
+ * zipped at build time by the download route next to their page; paid ones
+ * are sold through `checkoutUrl` and never served from this site.
+ */
+/** The filters on /templates. "free" is not listed: it follows the price. */
+export type TemplateCategory =
+  | "dashboards"
+  | "saas"
+  | "ai"
+  | "agency"
+  | "travel"
+  | "small-business"
+  | "portfolio";
+
+export interface TemplateFilter {
+  slug: TemplateCategory | "free";
+  name: string;
+  /** Shown as coming soon, with no templates yet. */
+  soon?: boolean;
+}
+
+export const TEMPLATE_FILTERS: TemplateFilter[] = [
+  { slug: "saas", name: "SaaS" },
+  { slug: "ai", name: "AI" },
+  { slug: "agency", name: "Agency" },
+  { slug: "travel", name: "Travel" },
+  { slug: "small-business", name: "Small business" },
+  { slug: "portfolio", name: "Portfolio" },
+  { slug: "free", name: "Free" },
+  { slug: "dashboards", name: "Dashboards" },
+];
+
+export interface SiteTemplate {
+  slug: string;
+  name: string;
+  /**
+   * A one-page landing site (the default), or a multi-page dashboard kit,
+   * whose `sections` are its pages.
+   */
+  kind?: "landing" | "dashboard";
+  /** One line for the listing and the page hero. */
+  summary: string;
+  /** In US dollars, paid once. 0 makes it a free MIT download. */
+  price: number;
+  categories: TemplateCategory[];
+  /** ISO dates, YYYY-MM-DD: the first release and the latest change. */
+  released: string;
+  updated: string;
+  stack: string[];
+  sections: string[];
+  features: string[];
+  /** Where to put your own content, for the "Make it yours" step. */
+  customize: string;
+  /** Captured from the template's production build. */
+  screenshots: {
+    /** The first screen on a desktop. */
+    card: ThemedImage;
+    /** The whole page on a desktop. */
+    desktop: ThemedImage;
+    /** The whole page on a phone. */
+    mobile: ThemedImage;
+  };
+  /**
+   * The first screen of other pages, for multi-page templates. The listing
+   * shows these instead of crops of the full-page capture.
+   */
+  pageShots?: { name: string; image: ThemedImage }[];
+  /**
+   * A live copy of the template. Templates built with
+   * scripts/build-template-preview.mjs live at /previews/<slug>.
+   */
+  previewUrl?: string;
+  /** The public source repository, once there is one. */
+  repoUrl?: string;
+  /**
+   * The hosted checkout for a paid template (Lemon Squeezy, Gumroad, Polar,
+   * or a Stripe Payment Link) that hands buyers the zip. Until it is set, Buy
+   * opens the contact form with the order written out.
+   */
+  checkoutUrl?: string;
+}
+
+export const SITE_TEMPLATES: SiteTemplate[] = [
+  {
+    slug: "project-dashboard-kit",
+    name: "Project Dashboard Kit",
+    kind: "dashboard",
+    summary:
+      "A project management dashboard with deadline forecasts, a kanban board, a timeline, team workload, and reports, built from Cortexcn components and charts",
+    price: 129,
+    categories: ["dashboards", "saas"],
+    released: "2026-11-02",
+    updated: "2026-11-02",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "TypeScript",
+    ],
+    sections: [
+      "Overview",
+      "Projects",
+      "Board",
+      "Timeline",
+      "Team",
+      "Reports",
+      "Settings",
+      "Dashboard Kit",
+    ],
+    features: [
+      "Each project's pace forecasts its finish date, so a project shows as at risk weeks before it is late, with one sentence on why.",
+      "A board with drag and drop and a keyboard menu on every card, quick filters for overdue, blocked, quiet, and unowned work, and column limits that warn when work piles up.",
+      "A timeline with progress, milestones, a hatched tail where the forecast runs past the due date, and the weeks where one team owes two deadlines.",
+      "Workload against capacity for each person, a suggested teammate for anyone booked past their week, and a warning when an owner is away on a deadline.",
+      "Quick capture adds tasks to the board from any page, team tabs narrow every page, and search opens with Ctrl K.",
+      "Built from Cortexcn components and Pro charts with Hugeicons, with demo data for 13 people and 10 projects and 32 Vitest checks. Light and dark mode throughout.",
+    ],
+    customize:
+      "Swap the demo data in lib/data, set today's date in lib/dates.ts, rename the product and pages in config/site.ts, and change the colors in app/globals.css.",
+    screenshots: {
+      card: { light: kitCardLight, dark: kitCardDark },
+      desktop: { light: kitDesktopLight, dark: kitDesktopDark },
+      mobile: { light: kitMobileLight, dark: kitMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Projects",
+        image: { light: kitProjectsLight, dark: kitProjectsDark },
+      },
+      { name: "Board", image: { light: kitBoardLight, dark: kitBoardDark } },
+      {
+        name: "Timeline",
+        image: { light: kitTimelineLight, dark: kitTimelineDark },
+      },
+      { name: "Team", image: { light: kitTeamLight, dark: kitTeamDark } },
+      {
+        name: "Reports",
+        image: { light: kitReportsLight, dark: kitReportsDark },
+      },
+    ],
+    previewUrl: "/previews/project-dashboard-kit",
+  },
+  {
+    slug: "data-checks",
+    name: "Data Checks",
+    summary:
+      "A launch site for a data pipeline checks product, with dark data health dashboards on halftone art, a ruled grid frame, and square mono buttons",
+    price: 180,
+    categories: ["saas"],
+    released: "2026-10-10",
+    updated: "2026-11-01",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Hero",
+      "Logo grid",
+      "Feature cards",
+      "Features",
+      "Benefits",
+      "Comparison",
+      "How it works",
+      "Customer impact",
+      "Testimonials",
+      "Pricing",
+      "FAQ",
+      "Call to action",
+      "Footer",
+    ],
+    features: [
+      "Every word, link, plan, and quote comes from one file, config/site.ts.",
+      "Dark data health dashboards set on halftone landscapes drawn in SVG, so there are no images to license.",
+      "Feature cards that stack as you scroll, and feature tabs that advance on their own and pause on hover or focus.",
+      "A comparison table, twelve testimonials in staggered columns, and pricing with a monthly and yearly toggle.",
+      "Light and dark mode, a mobile menu, a layout tuned for phones and tablets, and reduced motion respected everywhere.",
+      "Builds as a Next.js app or a static site for any host, with a share image, sitemap, and robots file.",
+    ],
+    customize:
+      "Replace the placeholder product name, copy, plans, and quotes in config/site.ts, swap the mark in components/logo.tsx, and change the colors in app/globals.css.",
+    screenshots: {
+      card: { light: checksCardLight, dark: checksCardDark },
+      desktop: { light: checksDesktopLight, dark: checksDesktopDark },
+      mobile: { light: checksMobileLight, dark: checksMobileDark },
+    },
+    previewUrl: "/previews/data-checks",
+  },
+  {
+    slug: "team-workspace",
+    name: "Team Workspace",
+    summary:
+      "A sample launch site for a shared team workspace, with project mockups, watercolor panels painted in code, and a calm off-white and charcoal palette. All content is placeholder",
+    price: 99,
+    categories: ["saas"],
+    released: "2026-10-10",
+    updated: "2026-11-01",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Hero",
+      "Logo strip",
+      "Stats",
+      "Platform",
+      "How it works",
+      "Integrations",
+      "Who it's for",
+      "Testimonials",
+      "Customer stories",
+      "Pricing",
+      "Security",
+      "FAQ",
+      "Call to action",
+      "Footer",
+    ],
+    features: [
+      "Every word, link, plan, and quote comes from one file, config/site.ts.",
+      "A notes card where each numbered action item lights up its line in the meeting notes, above a hero project dashboard.",
+      "Watercolor landscapes painted in SVG from seeded scenes, and product mockups built in HTML and CSS: a team board, an automation rule, and a search of past plans.",
+      "A floating pill header, a sticky how-it-works list, tabs for operations, product, and small teams, customer stories that stack as you scroll, and pricing with a monthly and annual toggle.",
+      "Light and dark mode, a mobile menu, corners set by one radius token, and reduced motion respected everywhere.",
+      "Builds as a Next.js app or a static site for any host, with a share image, sitemap, and robots file.",
+    ],
+    customize:
+      "Replace the placeholder product name, copy, plans, and quotes in config/site.ts, swap the mark in components/logo.tsx, and change the colors and radius in app/globals.css.",
+    screenshots: {
+      card: { light: workspaceCardLight, dark: workspaceCardDark },
+      desktop: { light: workspaceDesktopLight, dark: workspaceDesktopDark },
+      mobile: { light: workspaceMobileLight, dark: workspaceMobileDark },
+    },
+    previewUrl: "/previews/team-workspace",
+  },
+  {
+    slug: "simplistic-saas",
+    name: "Simplistic SaaS",
+    summary:
+      "A SaaS landing page for AI and agentic startups, with bento grids, isometric illustrations, and microinteractions",
+    price: 130,
+    categories: ["saas", "ai"],
+    released: "2026-10-02",
+    updated: "2026-10-02",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Announcement bar",
+      "Hero",
+      "Logo wall",
+      "Problem",
+      "How it works",
+      "Features bento",
+      "Testimonials",
+      "Pricing",
+      "FAQ",
+      "Call to action",
+      "Footer",
+    ],
+    features: [
+      "Every word, link, plan, and quote comes from one file, config/site.ts.",
+      "Isometric SVG illustrations that move on their own and react to hover: a work pipeline, a stacking how-it-works, six bento cards, and a tile floor.",
+      "A how-it-works section that pins while you scroll through the steps, and two testimonial marquees.",
+      "Microinteractions throughout: rolling button text, corner brackets that grow into frames, decoding section labels, and prices that roll when billing changes.",
+      "Light and dark mode, a mobile menu, keyboard support, and reduced motion respected everywhere.",
+      "Builds as a Next.js app or a static site for any host, with a share image, sitemap, and robots file.",
+    ],
+    customize:
+      "Replace the placeholder product name, copy, plans, and quotes in config/site.ts, swap the brand mark in components/logo.tsx, and change the accent color in app/globals.css.",
+    screenshots: {
+      card: { light: saasCardLight, dark: saasCardDark },
+      desktop: { light: saasDesktopLight, dark: saasDesktopDark },
+      mobile: { light: saasMobileLight, dark: saasMobileDark },
+    },
+    previewUrl: "/previews/simplistic-saas",
+  },
+  {
+    slug: "ai-travel-app",
+    name: "AI Travel App",
+    summary:
+      "A launch site for an AI trip planner app, with a typing prompt bar, glassy itinerary mockups, and painted landscapes",
+    price: 99,
+    categories: ["ai", "travel"],
+    released: "2026-10-10",
+    updated: "2026-10-10",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Hero",
+      "Feature carousel",
+      "Intro",
+      "Desktop app",
+      "Testimonials",
+      "Integrations",
+      "Stays",
+      "Partners",
+      "Value banner",
+      "Pricing",
+      "Journal",
+      "FAQ",
+      "Call to action",
+      "Footer",
+    ],
+    features: [
+      "Every word, link, plan, and quote comes from one file, config/site.ts.",
+      "A hero prompt bar that types out example trips, with itinerary chips and a live re-route card above it.",
+      "Landscapes painted in SVG from seeded scenes in place of photos, so there are no images to license.",
+      "A swipeable feature carousel of app mockups, and a desktop app window whose route draws itself as you scroll.",
+      "Pricing with a monthly and yearly toggle, a newsletter form, and an FAQ accordion.",
+      "Light and dark mode, a mobile menu, corners set by one radius token, and reduced motion respected everywhere.",
+    ],
+    customize:
+      "Put your app name, copy, plans, and quotes in config/site.ts, swap the mark in components/logo.tsx, and change the colors and radius in app/globals.css.",
+    screenshots: {
+      card: { light: travelCardLight, dark: travelCardDark },
+      desktop: { light: travelDesktopLight, dark: travelDesktopDark },
+      mobile: { light: travelMobileLight, dark: travelMobileDark },
+    },
+    previewUrl: "/previews/ai-travel-app",
+  },
+  {
+    slug: "trek-agency",
+    name: "Trek Agency",
+    summary:
+      "A website for a guided hiking company, with editorial serif type, trek cards, and painted mountain scenes",
+    price: 99,
+    categories: ["travel", "small-business"],
+    released: "2026-10-10",
+    updated: "2026-10-10",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Hero",
+      "About",
+      "Treks",
+      "What's included",
+      "Gallery",
+      "Guides",
+      "How it works",
+      "Reviews",
+      "Journal",
+      "FAQ",
+      "Call to action",
+      "Footer",
+    ],
+    features: [
+      "Every word, link, trek, guide, and quote comes from one file, config/site.ts.",
+      "Terrain buttons in the hero that switch the landscape behind the headline.",
+      "Landscapes painted in SVG from seeded scenes in place of photos, so there are no images to license.",
+      "Trek cards with terrain filters, a gallery, guide cards, and stats that count up.",
+      "An enquiry form in the closing section, and an FAQ accordion.",
+      "Light and dark mode, a mobile menu, corners set by one radius token, and reduced motion respected everywhere.",
+    ],
+    customize:
+      "Put your company name, treks, guides, and quotes in config/site.ts, swap the mark in components/logo.tsx, and change the colors and radius in app/globals.css.",
+    screenshots: {
+      card: { light: trekCardLight, dark: trekCardDark },
+      desktop: { light: trekDesktopLight, dark: trekDesktopDark },
+      mobile: { light: trekMobileLight, dark: trekMobileDark },
+    },
+    previewUrl: "/previews/trek-agency",
+  },
+  {
+    slug: "growth-agency",
+    name: "Growth Agency",
+    summary:
+      "A website for a growth marketing agency, with giant condensed type, generative art, and case studies that stack as you scroll",
+    price: 99,
+    categories: ["agency"],
+    released: "2026-10-10",
+    updated: "2026-10-10",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Hero",
+      "Clients",
+      "Process",
+      "Principles",
+      "Services",
+      "Selected work",
+      "Numbers",
+      "Testimonials",
+      "Pricing",
+      "FAQ",
+      "Journal",
+      "Call to action",
+      "Footer",
+    ],
+    features: [
+      "Every word, link, plan, and quote comes from one file, config/site.ts.",
+      "A hero word that fills the page width at every screen size, with letters that rise in and a slowly drifting gradient.",
+      "Seeded generative art in place of photos: color fields with grain, light streaks, poster shapes, and ripples, so there are no images to license.",
+      "Process cards that widen on hover or focus, and four case studies that stack on top of each other as you scroll.",
+      "Counters, floating testimonials, a monthly and yearly pricing toggle, and an FAQ with keyboard-friendly topic tabs.",
+      "Light and dark mode, a mobile menu, corners set by one radius token, and reduced motion respected everywhere.",
+    ],
+    customize:
+      "Put your studio name, copy, clients, plans, and quotes in config/site.ts, swap the mark in components/logo.tsx, and change the accent, highlight, and art colors in app/globals.css.",
+    screenshots: {
+      card: { light: growthCardLight, dark: growthCardDark },
+      desktop: { light: growthDesktopLight, dark: growthDesktopDark },
+      mobile: { light: growthMobileLight, dark: growthMobileDark },
+    },
+    previewUrl: "/previews/growth-agency",
+  },
+  {
+    slug: "portfolio",
+    name: "Portfolio",
+    summary: "A one-page portfolio for developers and designers",
+    price: 0,
+    categories: ["portfolio"],
+    released: "2026-09-27",
+    updated: "2026-09-27",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Hero",
+      "About",
+      "Services",
+      "Projects",
+      "Testimonials",
+      "Writing",
+      "Contact",
+    ],
+    features: [
+      "Every name, link, project, and quote comes from one file, config/site.ts.",
+      "Hero stickers visitors can drag around, and a statement that lights up as you scroll.",
+      "A contact form that posts to any form service, or opens the visitor's email app.",
+      "Light and dark mode, a mobile menu, and support for reduced motion.",
+      "Share image, sitemap, and robots file generated from your details.",
+      "Set up for the shadcn CLI, so any Cortexcn component installs in one command.",
+    ],
+    customize:
+      "Put your name, links, projects, and quotes in config/site.ts, then swap the covers in public/projects and public/posts.",
+    screenshots: {
+      card: { light: portfolioCardLight, dark: portfolioCardDark },
+      desktop: { light: portfolioDesktopLight, dark: portfolioDesktopDark },
+      mobile: { light: portfolioMobileLight, dark: portfolioMobileDark },
+    },
+    previewUrl: "/previews/portfolio",
+  },
+];
+
+export function getSiteTemplate(slug: string) {
+  return SITE_TEMPLATES.find((template) => template.slug === slug);
+}
+
+export function isDashboardKit(template: SiteTemplate) {
+  return template.kind === "dashboard";
+}
+
+/** "8 pages" for a dashboard kit, "13 sections" for a landing page. */
+export function templatePartsLabel(template: SiteTemplate, count?: number) {
+  const total = count ?? template.sections.length;
+  const unit = isDashboardKit(template) ? "page" : "section";
+  return `${total} ${unit}${total === 1 ? "" : "s"}`;
+}
+
+export function isFreeTemplate(template: SiteTemplate) {
+  return template.price === 0;
+}
+
+/** "Free" or "$130". */
+export function templatePriceLabel(template: SiteTemplate) {
+  return isFreeTemplate(template) ? "Free" : formatUsd(template.price);
+}
+
+export function templateLicenseLabel(template: SiteTemplate) {
+  return isFreeTemplate(template)
+    ? "MIT licensed"
+    : "Cortexcn template license";
+}
+
+/** Folder name inside the zip, and the zip's file name. */
+export function templateArchiveName(template: SiteTemplate) {
+  return `cortexcn-${template.slug}`;
+}
+
+export function templateDownloadPath(template: SiteTemplate) {
+  return `/templates/${template.slug}/download`;
+}
+
+/** Where Buy goes: the hosted checkout, or a prefilled order email for now. */
+export function templateBuyHref(template: SiteTemplate) {
+  return (
+    template.checkoutUrl ??
+    contactHref(
+      "question",
+      `Hi, I would like to buy the ${template.name} template (${templatePriceLabel(template)}). Please send me a payment link.`,
+    )
+  );
+}
+
+const RELEASE_DATE = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+/** "Oct 10, 2026" */
+export function formatTemplateDate(iso: string) {
+  return RELEASE_DATE.format(new Date(`${iso}T00:00:00Z`));
+}
+
+/** The /templates filters a template matches: its categories, plus "free". */
+export function templateFilters(template: SiteTemplate): string[] {
+  return isFreeTemplate(template)
+    ? [...template.categories, "free"]
+    : template.categories;
+}

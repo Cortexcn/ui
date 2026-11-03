@@ -1,0 +1,22 @@
+name: Component or block request
+description: Suggest a new component or block, or a change to an existing one.
+labels: ["request"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you would like
+      description: What it does, and where you would use it.
+    validations:
+      required: true
+  - type: textarea
+    id: api
+    attributes:
+      label: Props and behavior
+      description: The props you expect, and how it should behave on keyboard, touch, and with reduced motion.
+  - type: checkboxes
+    id: build
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to build it and open a pull request.

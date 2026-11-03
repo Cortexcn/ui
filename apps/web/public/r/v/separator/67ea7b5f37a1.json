@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "title": "Separator",
+  "description": "Visually or semantically separates content.",
+  "dependencies": [
+    "radix-ui@1"
+  ],
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/separator.tsx",
+      "content": "\"use client\";\n\nimport { Separator as SeparatorPrimitive } from \"radix-ui\";\nimport type * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\n// Cortexcn item \"separator\", revision 67ea7b5f37a1, MIT license.\n// https://ui.cortexcn.dev/r/v/separator/67ea7b5f37a1.json\n\nfunction Separator({\n  className,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {\n  return (\n    <SeparatorPrimitive.Root\n      className={cn(\n        \"shrink-0 bg-border data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch\",\n        className,\n      )}\n      data-slot=\"separator\"\n      decorative={decorative}\n      orientation={orientation}\n      {...props}\n    />\n  );\n}\n\nexport { Separator };\n",
+      "type": "registry:component",
+      "target": "components/separator.tsx"
+    }
+  ],
+  "categories": [
+    "components"
+  ],
+  "type": "registry:component",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "67ea7b5f37a1"
+  }
+}

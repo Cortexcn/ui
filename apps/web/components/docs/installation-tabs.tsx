@@ -1,0 +1,317 @@
+"use client";
+
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { useEffect, useState } from "react";
+import { TabsContent } from "@/components/ui/tabs";
+import { codeThemes } from "@/lib/code-theme";
+import { isProItem } from "@/lib/pro";
+import { cn } from "@/lib/utils";
+import { CodeTabs, type InstallTab } from "./code-tabs";
+import { McpInstallPanel } from "./mcp-install-panel";
+import { PackageManagerTabs } from "./package-manager-tabs";
+import { ProInstallPanel } from "./pro-install-panel";
+
+export interface RegistryFile {
+  path: string;
+  content: string;
+  type: string;
+  target: string;
+}
+
+interface CssBlock {
+  [key: string]: string | CssBlock;
+}
+
+export interface RegistryData {
+  name: string;
+  dependencies?: string[];
+  registryDependencies?: string[];
+  files: RegistryFile[];
+  css?: CssBlock;
+  cssVars?: Partial<Record<"theme" | "light" | "dark", Record<string, string>>>;
+}
+
+function cssBlockToString(block: CssBlock, depth = 0): string {
+  const indent = "  ".repeat(depth);
+  return Object.entries(block)
+    .map(([key, value]) =>
+      typeof value === "string"
+        ? `${indent}${key}: ${value};`
+        : `${indent}${key} {\n${cssBlockToString(value, depth + 1)}\n${indent}}`,
+    )
+    .join(depth === 0 ? "\n\n" : "\n");
+}
+
+const CSS_VAR_SCOPES = {
+  theme: "@theme inline",
+  light: ":root",
+  dark: ".dark",
+} as const;
+
+/** The CSS `shadcn add` would write to globals.css, for manual installs. */
+export function registryGlobalCss({ css, cssVars }: RegistryData): string {
+  const blocks: CssBlock = {};
+  for (const [scope, selector] of Object.entries(CSS_VAR_SCOPES)) {
+    const vars = cssVars?.[scope as keyof typeof CSS_VAR_SCOPES];
+    if (vars) {
+      blocks[selector] = Object.fromEntries(
+        Object.entries(vars).map(([name, value]) => [`--${name}`, value]),
+      );
+    }
+  }
+  return cssBlockToString({ ...blocks, ...css });
+}
+
+interface InstallationTabsProps {
+  name: string;
+  dependencies?: string[];
+}
+
+export function CodeFileBlock({
+  file,
+  defaultOpen = false,
+}: {
+  file: RegistryFile;
+  defaultOpen?: boolean;
+}) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+  const isCss = file.target.endsWith(".css");
+
+  // A plain toggle rather than a Collapsible: a collapsed panel is hidden
+  // entirely, and this block shows the first lines as a preview instead.
+  return (
+    <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      {/* Header with filename */}
+      <div className="relative z-10 flex items-center justify-between border-border border-b bg-muted/20 px-4 py-2">
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-foreground/70 text-xs">
+            {isCss ? "CSS" : "TS"}
+          </span>
+          <span className="font-mono text-foreground text-sm">
+            {file.target}
+          </span>
+        </div>
+        <button
+          aria-expanded={isOpen}
+          className="font-medium text-foreground/70 text-xs hover:text-foreground"
+          onClick={() => setIsOpen((open) => !open)}
+          type="button"
+        >
+          {isOpen ? "Collapse" : "Expand"}
+        </button>
+      </div>
+
+      {/* Code content: the first lines while collapsed, all of it when expanded */}
+      <div
+        className={cn(
+          "relative overflow-hidden",
+          !isOpen && "max-h-[180px]",
+          "[&_figure]:!my-0 [&_figure]:!rounded-none [&_figure]:!border-0",
+          "[&_pre]:!my-0 [&_pre]:!rounded-none [&_pre]:!border-0",
+          "[&_[data-rehype-pretty-code-figure]]:!mt-0",
+        )}
+      >
+        <DynamicCodeBlock
+          code={file.content}
+          lang={isCss ? "css" : "tsx"}
+          options={{ themes: codeThemes }}
+        />
+        {isOpen ? null : (
+          <button
+            aria-label={`Expand ${file.target}`}
+            className="absolute inset-x-0 bottom-0 h-16 cursor-pointer bg-gradient-to-t from-card via-card/80 to-transparent"
+            onClick={() => setIsOpen(true)}
+            type="button"
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function CodeFilesContent({
+  files,
+  loading,
+  name,
+}: {
+  files: RegistryFile[];
+  loading: boolean;
+  name: string;
+}) {
+  if (loading) {
+    return (
+      <div className="flex h-24 items-center justify-center rounded-lg border border-fd-border bg-fd-muted/30">
+        <span className="text-muted-foreground text-sm">
+          Loading component source...
+        </span>
+      </div>
+    );
+  }
+
+  if (files.length > 0) {
+    return (
+      <>
+        {files.map((file) => (
+          <CodeFileBlock defaultOpen={false} file={file} key={file.path} />
+        ))}
+      </>
+    );
+  }
+
+  return (
+    <p className="text-muted-foreground text-sm">
+      Visit the{" "}
+      <a
+        className="font-medium underline underline-offset-4"
+        href={`https://ui.cortexcn.dev/r/${name}.json`}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        registry file
+      </a>{" "}
+      to view the component source code.
+    </p>
+  );
+}
+
+export function InstallationTabs(props: InstallationTabsProps) {
+  // Pro items are kept out of the public registry, so there is nothing to install here.
+  if (isProItem(props.name)) {
+    return <ProInstallPanel name={props.name} />;
+  }
+  return <PublicInstallationTabs {...props} />;
+}
+
+function PublicInstallationTabs({ name, dependencies }: InstallationTabsProps) {
+  const [registryData, setRegistryData] = useState<RegistryData | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [installTab, setInstallTab] = useState<InstallTab>("cli");
+
+  useEffect(() => {
+    if (installTab !== "manual") {
+      return;
+    }
+
+    let cancelled = false;
+    setLoading(true);
+
+    async function fetchRegistry() {
+      try {
+        const res = await fetch(`/r/${name}.json`);
+        if (res.ok) {
+          const data = await res.json();
+          if (!cancelled) {
+            setRegistryData(data);
+          }
+        }
+      } catch {
+        // Silently fail - we'll use the provided dependencies prop as fallback
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchRegistry();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [installTab, name]);
+
+  // Use registry dependencies if available, otherwise fall back to prop
+  const deps = registryData?.dependencies || dependencies || [];
+  const files = registryData?.files || [];
+  const globalCss = registryData ? registryGlobalCss(registryData) : "";
+  // Un-namespaced registry dependencies are shadcn/ui components (e.g. "collapsible").
+  const shadcnComponents = (registryData?.registryDependencies ?? []).filter(
+    (dep) => !(dep.startsWith("@") || dep.includes("/")),
+  );
+
+  return (
+    <CodeTabs onTabChange={setInstallTab}>
+      <TabsContent value="cli">
+        <PackageManagerTabs name={name} />
+      </TabsContent>
+      <TabsContent value="mcp">
+        <McpInstallPanel name={name} />
+      </TabsContent>
+      <TabsContent value="manual">
+        <div className="mt-4">
+          <Steps>
+            <Step>
+              <h4 className="font-medium">
+                Install the following dependencies:
+              </h4>
+              {deps.length > 0 ? (
+                <PackageManagerTabs name={`__deps:${deps.join(" ")}`} />
+              ) : (
+                <p className="mt-2 text-muted-foreground text-sm">
+                  No additional dependencies required.
+                </p>
+              )}
+            </Step>
+
+            {shadcnComponents.length > 0 ? (
+              <Step>
+                <h4 className="font-medium">
+                  Install the required shadcn/ui components:
+                </h4>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+                  {shadcnComponents.map((component) => (
+                    <li key={component}>
+                      <a
+                        className="font-medium underline underline-offset-4"
+                        href={`https://ui.shadcn.com/docs/components/${component}`}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        {component}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <PackageManagerTabs name={shadcnComponents.join(" ")} raw />
+              </Step>
+            ) : null}
+
+            <Step>
+              <h4 className="font-medium">
+                Copy and paste the following code into your project.
+              </h4>
+              <div className="mt-3 space-y-3">
+                <CodeFilesContent files={files} loading={loading} name={name} />
+              </div>
+            </Step>
+
+            {globalCss ? (
+              <Step>
+                <h4 className="font-medium">
+                  Add the following CSS to your globals.css.
+                </h4>
+                <div className="mt-3">
+                  <CodeFileBlock
+                    file={{
+                      path: "globals.css",
+                      content: globalCss,
+                      type: "registry:style",
+                      target: "app/globals.css",
+                    }}
+                  />
+                </div>
+              </Step>
+            ) : null}
+
+            <Step>
+              <h4 className="font-medium">
+                Update the import paths to match your project setup.
+              </h4>
+            </Step>
+          </Steps>
+        </div>
+      </TabsContent>
+    </CodeTabs>
+  );
+}

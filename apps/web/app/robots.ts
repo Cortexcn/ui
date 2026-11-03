@@ -1,0 +1,18 @@
+import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site-url";
+
+/*
+ * Served on all three hosts, each naming the one sitemap that lists them
+ * all. Everything stays crawlable: pages that should not be indexed
+ * (template previews, live block previews) say so with a noindex tag, which
+ * crawlers can only read if they are allowed to fetch the page.
+ */
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+    },
+    sitemap: `${SITE_URL}/sitemap.xml`,
+  };
+}

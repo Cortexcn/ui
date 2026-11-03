@@ -1,0 +1,13 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "---Integration---",
+    "...integration",
+    "...components",
+    "...cortex",
+    "...backgrounds",
+    "...charts",
+    "---Chart Utilities---",
+    "...utility"
+  ]
+}

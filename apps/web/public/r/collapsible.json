@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "title": "Collapsible",
+  "description": "An interactive component which expands and collapses a panel.",
+  "dependencies": [
+    "radix-ui@1"
+  ],
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/collapsible.tsx",
+      "content": "\"use client\";\n\nimport { Collapsible as CollapsiblePrimitive } from \"radix-ui\";\n\n// Cortexcn item \"collapsible\", revision ad65cb52c66f, MIT license.\n// https://ui.cortexcn.dev/r/v/collapsible/ad65cb52c66f.json\n\nfunction Collapsible({\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {\n  return <CollapsiblePrimitive.Root data-slot=\"collapsible\" {...props} />;\n}\n\nfunction CollapsibleTrigger({\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger>) {\n  return (\n    <CollapsiblePrimitive.CollapsibleTrigger\n      data-slot=\"collapsible-trigger\"\n      {...props}\n    />\n  );\n}\n\nfunction CollapsibleContent({\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>) {\n  return (\n    <CollapsiblePrimitive.CollapsibleContent\n      data-slot=\"collapsible-content\"\n      {...props}\n    />\n  );\n}\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent };\n",
+      "type": "registry:component",
+      "target": "components/collapsible.tsx"
+    }
+  ],
+  "categories": [
+    "components"
+  ],
+  "type": "registry:component",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "ad65cb52c66f"
+  }
+}

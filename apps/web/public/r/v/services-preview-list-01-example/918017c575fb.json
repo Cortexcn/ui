@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "services-preview-list-01-example",
+  "title": "Services Preview List Example",
+  "description": "A large numbered list of services beside a panel that stays in view and wipes in the image and description of the one you point at — demo for Open in v0",
+  "dependencies": [
+    "motion@13"
+  ],
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/services-preview-list-01.json"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/services-preview-list-01.tsx",
+      "content": "\"use client\";\n\nimport { ServicesPreviewList } from \"@/components/services-preview-list\";\n\n// Cortexcn item \"services-preview-list-01-example\", revision 918017c575fb, MIT license.\n// https://ui.cortexcn.dev/r/v/services-preview-list-01-example/918017c575fb.json\n\nexport default function Component() {\n  return (\n    <main className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-6xl\">\n        <ServicesPreviewList />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:page",
+      "target": "app/page.tsx"
+    }
+  ],
+  "type": "registry:example",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "918017c575fb"
+  }
+}
