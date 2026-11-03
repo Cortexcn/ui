@@ -17,6 +17,22 @@ import growthDesktopDark from "@/assets/templates/growth-agency/desktop-dark.web
 import growthDesktopLight from "@/assets/templates/growth-agency/desktop-light.webp";
 import growthMobileDark from "@/assets/templates/growth-agency/mobile-dark.webp";
 import growthMobileLight from "@/assets/templates/growth-agency/mobile-light.webp";
+import peopleKitCardDark from "@/assets/templates/people-dashboard-kit/card-dark.webp";
+import peopleKitCardLight from "@/assets/templates/people-dashboard-kit/card-light.webp";
+import peopleKitDesktopDark from "@/assets/templates/people-dashboard-kit/desktop-dark.webp";
+import peopleKitDesktopLight from "@/assets/templates/people-dashboard-kit/desktop-light.webp";
+import peopleKitMobileDark from "@/assets/templates/people-dashboard-kit/mobile-dark.webp";
+import peopleKitMobileLight from "@/assets/templates/people-dashboard-kit/mobile-light.webp";
+import peopleKitAttendanceDark from "@/assets/templates/people-dashboard-kit/page-attendance-dark.webp";
+import peopleKitAttendanceLight from "@/assets/templates/people-dashboard-kit/page-attendance-light.webp";
+import peopleKitPeopleDark from "@/assets/templates/people-dashboard-kit/page-people-dark.webp";
+import peopleKitPeopleLight from "@/assets/templates/people-dashboard-kit/page-people-light.webp";
+import peopleKitProjectsDark from "@/assets/templates/people-dashboard-kit/page-projects-dark.webp";
+import peopleKitProjectsLight from "@/assets/templates/people-dashboard-kit/page-projects-light.webp";
+import peopleKitTimeOffDark from "@/assets/templates/people-dashboard-kit/page-time-off-dark.webp";
+import peopleKitTimeOffLight from "@/assets/templates/people-dashboard-kit/page-time-off-light.webp";
+import peopleKitTimesheetsDark from "@/assets/templates/people-dashboard-kit/page-timesheets-dark.webp";
+import peopleKitTimesheetsLight from "@/assets/templates/people-dashboard-kit/page-timesheets-light.webp";
 import portfolioCardDark from "@/assets/templates/portfolio/card-dark.webp";
 import portfolioCardLight from "@/assets/templates/portfolio/card-light.webp";
 import portfolioDesktopDark from "@/assets/templates/portfolio/desktop-dark.webp";
@@ -51,6 +67,22 @@ import workspaceDesktopDark from "@/assets/templates/team-workspace/desktop-dark
 import workspaceDesktopLight from "@/assets/templates/team-workspace/desktop-light.webp";
 import workspaceMobileDark from "@/assets/templates/team-workspace/mobile-dark.webp";
 import workspaceMobileLight from "@/assets/templates/team-workspace/mobile-light.webp";
+import tradingKitCardDark from "@/assets/templates/trading-dashboard-kit/card-dark.webp";
+import tradingKitCardLight from "@/assets/templates/trading-dashboard-kit/card-light.webp";
+import tradingKitDesktopDark from "@/assets/templates/trading-dashboard-kit/desktop-dark.webp";
+import tradingKitDesktopLight from "@/assets/templates/trading-dashboard-kit/desktop-light.webp";
+import tradingKitMobileDark from "@/assets/templates/trading-dashboard-kit/mobile-dark.webp";
+import tradingKitMobileLight from "@/assets/templates/trading-dashboard-kit/mobile-light.webp";
+import tradingKitHeatmapDark from "@/assets/templates/trading-dashboard-kit/page-heatmap-dark.webp";
+import tradingKitHeatmapLight from "@/assets/templates/trading-dashboard-kit/page-heatmap-light.webp";
+import tradingKitMarketsDark from "@/assets/templates/trading-dashboard-kit/page-markets-dark.webp";
+import tradingKitMarketsLight from "@/assets/templates/trading-dashboard-kit/page-markets-light.webp";
+import tradingKitPortfolioDark from "@/assets/templates/trading-dashboard-kit/page-portfolio-dark.webp";
+import tradingKitPortfolioLight from "@/assets/templates/trading-dashboard-kit/page-portfolio-light.webp";
+import tradingKitScreenerDark from "@/assets/templates/trading-dashboard-kit/page-screener-dark.webp";
+import tradingKitScreenerLight from "@/assets/templates/trading-dashboard-kit/page-screener-light.webp";
+import tradingKitTradeDark from "@/assets/templates/trading-dashboard-kit/page-trade-dark.webp";
+import tradingKitTradeLight from "@/assets/templates/trading-dashboard-kit/page-trade-light.webp";
 import trekCardDark from "@/assets/templates/trek-agency/card-dark.webp";
 import trekCardLight from "@/assets/templates/trek-agency/card-light.webp";
 import trekDesktopDark from "@/assets/templates/trek-agency/desktop-dark.webp";
@@ -210,6 +242,153 @@ export const SITE_TEMPLATES: SiteTemplate[] = [
       },
     ],
     previewUrl: "/previews/project-dashboard-kit",
+  },
+  {
+    slug: "trading-dashboard-kit",
+    name: "Trading Dashboard Kit",
+    kind: "dashboard",
+    summary:
+      "Bourse, a trading dashboard with live candlesticks, an order book and depth chart, portfolio P&L, a market heatmap, and a screener, on a simulated feed you swap for your own WebSocket in one file",
+    price: 149,
+    categories: ["dashboards", "saas"],
+    released: "2026-11-03",
+    updated: "2026-11-03",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "TypeScript",
+    ],
+    sections: [
+      "Overview",
+      "Trade",
+      "Markets",
+      "Heatmap",
+      "Screener",
+      "Watchlists",
+      "Portfolio",
+      "Orders",
+      "Alerts",
+      "Activity",
+      "Settings",
+      "Dashboard Kit",
+    ],
+    features: [
+      "A trade screen with candlesticks and volume on five timeframes, a live order book you click to set a price, a depth chart, the trades tape, and an order ticket with a review step.",
+      "A simulated real-time feed for 47 fictional instruments, with stocks on a market clock and crypto around the clock. Point lib/feed/source.ts at your WebSocket and edit one parse function to show your own data.",
+      "Portfolio P&L against a benchmark, allocation by sector, a live market heatmap, a screener with saved screens and sparklines, watchlists, price alerts, orders, and an activity ledger with CSV export.",
+      "A Ctrl K command bar for symbols, pages, and actions, three switchable accounts, and a live ticker strip.",
+      "Ready for coding agents: DESIGN.md and four Claude Code skills (add a screen, add a panel, connect a live feed, connect your backend), so an agent extends it in the kit's style.",
+      "Built from Cortexcn components and Pro charts with Hugeicons, Geist, and Geist Mono, with 123 Vitest checks. Dark first with a full light mode, and layouts for phones and tablets. Every price in the demo is simulated.",
+    ],
+    customize:
+      "Swap the instruments and demo accounts in lib/data, point lib/feed/source.ts at your feed, rename the product and pages in config/site.ts, change the colors in app/globals.css, and turn the actions in components/account/account-provider.tsx into API calls.",
+    screenshots: {
+      card: { light: tradingKitCardLight, dark: tradingKitCardDark },
+      desktop: { light: tradingKitDesktopLight, dark: tradingKitDesktopDark },
+      mobile: { light: tradingKitMobileLight, dark: tradingKitMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Trade",
+        image: { light: tradingKitTradeLight, dark: tradingKitTradeDark },
+      },
+      {
+        name: "Markets",
+        image: { light: tradingKitMarketsLight, dark: tradingKitMarketsDark },
+      },
+      {
+        name: "Heatmap",
+        image: { light: tradingKitHeatmapLight, dark: tradingKitHeatmapDark },
+      },
+      {
+        name: "Screener",
+        image: { light: tradingKitScreenerLight, dark: tradingKitScreenerDark },
+      },
+      {
+        name: "Portfolio",
+        image: {
+          light: tradingKitPortfolioLight,
+          dark: tradingKitPortfolioDark,
+        },
+      },
+    ],
+    previewUrl: "/previews/trading-dashboard-kit",
+  },
+  {
+    slug: "people-dashboard-kit",
+    name: "People Dashboard Kit",
+    kind: "dashboard",
+    summary:
+      "Muster, a people dashboard for startup teams: who checked in and when, time off, onboarding, timesheets, and projects, built from Cortexcn components and charts",
+    price: 129,
+    categories: ["dashboards", "saas"],
+    released: "2026-11-03",
+    updated: "2026-11-03",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "TypeScript",
+    ],
+    sections: [
+      "Overview",
+      "Attendance",
+      "Time Off",
+      "People",
+      "Onboarding",
+      "Projects",
+      "Timesheets",
+      "Integrations",
+      "Settings",
+      "Dashboard Kit",
+    ],
+    features: [
+      "Attendance from check-ins: the on-time rate against your workday start, late arrivals, four weeks of who worked where, and a check-in and check-out button.",
+      "Time off with an approvals queue, a month calendar of who is out, balances per person, and a request form that counts workdays and skips weekends and holidays.",
+      "Onboarding checklists for new hires, grouped by before day one, first week, and first month, with owners, due dates, and overdue flags.",
+      "Timesheets with a stopwatch, a weekly grid by project, hours against each project's budget, and CSV export.",
+      "Every create, edit, and delete goes through one provider, with Undo on deletes, so you turn its actions into API calls and nothing else moves.",
+      "Built from Cortexcn components and Pro charts with Hugeicons and Inter, with demo data for a 16-person startup and 108 Vitest checks. Light and dark mode, and layouts for phones and tablets.",
+    ],
+    customize:
+      "Swap the demo data in lib/data, set today's date in lib/dates.ts, rename the product and pages in config/site.ts, change the colors in app/globals.css, and turn the actions in components/workspace/workspace-provider.tsx into API calls.",
+    screenshots: {
+      card: { light: peopleKitCardLight, dark: peopleKitCardDark },
+      desktop: { light: peopleKitDesktopLight, dark: peopleKitDesktopDark },
+      mobile: { light: peopleKitMobileLight, dark: peopleKitMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Attendance",
+        image: {
+          light: peopleKitAttendanceLight,
+          dark: peopleKitAttendanceDark,
+        },
+      },
+      {
+        name: "Time Off",
+        image: { light: peopleKitTimeOffLight, dark: peopleKitTimeOffDark },
+      },
+      {
+        name: "People",
+        image: { light: peopleKitPeopleLight, dark: peopleKitPeopleDark },
+      },
+      {
+        name: "Timesheets",
+        image: {
+          light: peopleKitTimesheetsLight,
+          dark: peopleKitTimesheetsDark,
+        },
+      },
+      {
+        name: "Projects",
+        image: { light: peopleKitProjectsLight, dark: peopleKitProjectsDark },
+      },
+    ],
+    previewUrl: "/previews/people-dashboard-kit",
   },
   {
     slug: "data-checks",

@@ -45,6 +45,35 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 export const CHANGELOG: ChangelogRelease[] = [
   {
     date: "2026-11-03",
+    kind: "site",
+    title: "Trading Dashboard Kit, Bourse",
+    summary:
+      "A paid Next.js trading dashboard with 12 pages: candlesticks with volume, a live order book and depth chart, an order ticket, portfolio P&L, a market heatmap, a screener, watchlists, alerts, orders, and an activity ledger. It runs on a simulated feed for 47 fictional instruments that you swap for your own WebSocket in one file, and ships with a Ctrl K command bar, DESIGN.md and Claude Code skills for coding agents, 123 Vitest checks, and a live preview.",
+    items: [
+      {
+        label: "Trading Dashboard Kit",
+        href: "/templates/trading-dashboard-kit",
+      },
+      { label: "Dashboard Kits", href: "/dashboard-kits" },
+    ],
+  },
+  {
+    date: "2026-11-03",
+    kind: "site",
+    title: "People Dashboard Kit, the full Muster product",
+    summary:
+      "The Muster block grows into a paid Next.js dashboard for startup people teams with ten pages: an overview, attendance, time off with approvals and a calendar, people, onboarding checklists, projects, timesheets, integrations, settings, and the kit catalog. Every create, edit, and delete runs through one provider you point at your API, and it ships with demo data, 108 Vitest checks, and a live preview.",
+    items: [
+      {
+        label: "People Dashboard Kit",
+        href: "/templates/people-dashboard-kit",
+      },
+      { label: "Muster block", href: "/blocks/dashboards/dashboard-muster-01" },
+      { label: "Dashboard Kits", href: "/dashboard-kits" },
+    ],
+  },
+  {
+    date: "2026-11-03",
     kind: "blocks",
     title: "Muster, a people dashboard for startup teams",
     summary:
