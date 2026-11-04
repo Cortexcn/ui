@@ -46,6 +46,20 @@ export const CHANGELOG: ChangelogRelease[] = [
   {
     date: "2026-11-04",
     kind: "site",
+    title: "Cortexcn joins the shadcn registry directory",
+    summary:
+      "Cortexcn is listed in the shadcn registry directory, so npx shadcn@latest add @cortexcn/<name> works in any shadcn project with no registry setup. The installation docs, the home page, and the agent files now show free items you can install today.",
+    items: [
+      { label: "Installation", href: "/docs/installation" },
+      {
+        label: "shadcn registry directory",
+        href: "https://ui.shadcn.com/docs/directory",
+      },
+    ],
+  },
+  {
+    date: "2026-11-04",
+    kind: "site",
     title: "Mirador, an AWS monitoring dashboard with Corvo",
     summary:
       "A paid dashboard for teams that run more than one AWS account: EC2, ECS, S3, RDS, Lambda, alarms, logs, and costs on one screen, with a switch between all accounts, one account, or two side by side. Corvo, its agent, answers questions from your own data. Mirador reads AWS through a read-only role and never changes anything.",
