@@ -189,7 +189,7 @@ codex mcp add cortexcn --url https://ui.cortexcn.dev/mcp
 
 ### Ask for it
 
-Ask in plain words, for example: "Add the Lanyard 3D component to the about page." Your agent calls \`search_items\`, \`get_item\`, and \`get_install_command\`, then runs \`npx shadcn@latest add https://ui.cortexcn.dev/r/lanyard-3d.json\` in your project. The other tools are \`list_items\`, \`list_categories\`, \`get_item_source\`, \`get_setup_guide\`, and \`get_design_guide\`.
+Ask in plain words, for example: "Add a cover hero to the landing page." Your agent calls \`search_items\`, \`get_item\`, and \`get_install_command\`, then runs \`npx shadcn@latest add @cortexcn/hero-cover-01\` in your project. The other tools are \`list_items\`, \`list_categories\`, \`get_item_source\`, \`get_setup_guide\`, and \`get_design_guide\`.
 
 ## Pricing
 

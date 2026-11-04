@@ -33,11 +33,10 @@ const QUESTIONS: Question[] = [
     question: "How do I install a component?",
     answer: (
       <>
-        Add the <Code>@cortexcn</Code> registry to your{" "}
-        <Code>components.json</Code> once, then run{" "}
-        <Code>npx shadcn@latest add @cortexcn/area-chart</Code> with the name
-        you want. The CLI copies the source into your project and installs the
-        packages it needs.
+        Run <Code>npx shadcn@latest add @cortexcn/button</Code> with the name
+        you want. Cortexcn is listed in the shadcn registry directory, so there
+        is nothing to set up first. The CLI copies the source into your project
+        and installs the packages it needs.
       </>
     ),
   },

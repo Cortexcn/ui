@@ -30,7 +30,7 @@ const SHADCN: Record<PackageManager, string> = {
   bun: "bunx --bun shadcn@latest add",
 };
 
-/** "lanyard-3d@39d534c092c8": an item name with a kept revision. */
+/** "hero-cover-01@912eb1a56a04": an item name with a kept revision. */
 const PINNED_NAME_RE = /^(.+)@([0-9a-f]{12})$/;
 
 const INSTRUCTIONS = `Cortexcn is a registry of React and Tailwind CSS components, page blocks, and charts, installed with the shadcn CLI. The code is copied into the user's project, so there is no runtime package. This server is read-only: it never writes files or installs anything.
@@ -388,7 +388,7 @@ export function createServer(): McpServer {
         name: z
           .string()
           .min(1)
-          .describe("The item's name, like lanyard-3d or hero-studio-01."),
+          .describe("The item's name, like button or hero-studio-01."),
         include_docs: z
           .boolean()
           .optional()
@@ -460,7 +460,7 @@ export function createServer(): McpServer {
           .min(1)
           .max(20)
           .describe(
-            "Item names, like ['lanyard-3d', 'hero-studio-01']. Add @<revision> to install a kept revision, like 'lanyard-3d@39d534c092c8'.",
+            "Item names, like ['button', 'hero-studio-01']. Add @<revision> to install a kept revision, like 'hero-cover-01@912eb1a56a04'.",
           ),
         package_manager: z
           .enum(PACKAGE_MANAGERS)
@@ -530,13 +530,13 @@ export function createServer(): McpServer {
         "",
         "Items install with the shadcn CLI, so the project needs shadcn first (`npx shadcn@latest init`).",
         "",
-        "Any item installs from its URL with no further setup. Items name the Cortexcn items they depend on by URL too, so the CLI fetches those directly. Add `--dry-run` to preview what a command would write:",
+        "Cortexcn is listed in the shadcn registry directory, so any item installs by name with no further setup: `npx shadcn@latest add @cortexcn/hero-cover-01`. Items name the Cortexcn items they depend on by URL, so the CLI fetches those directly. Any item also installs from its URL. Add `--dry-run` to preview what a command would write:",
         "",
         "```bash",
-        installCommand([itemUrl("lanyard-3d")], "npm"),
+        installCommand([itemUrl("hero-cover-01")], "npm"),
         "```",
         "",
-        "To install by name (`npx shadcn@latest add @cortexcn/lanyard-3d`), add the registry to components.json once:",
+        "Optional: to keep the registry address in the project, add it to components.json:",
         "",
         "```json",
         JSON.stringify(

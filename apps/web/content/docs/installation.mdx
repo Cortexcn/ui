@@ -1,9 +1,11 @@
 ---
 title: Installation
-description: How to install and configure Cortexcn in your project.
+description: How to install Cortexcn components in your project with the shadcn CLI.
 ---
 
 Cortexcn components are distributed through a shadcn registry. You add them with the shadcn CLI, and the component source is copied into your project.
+
+Cortexcn is listed in the [shadcn registry directory](https://ui.shadcn.com/docs/directory), so the CLI already knows the `@cortexcn` namespace. There is nothing to configure before your first install.
 
 ## Prerequisites
 
@@ -13,9 +15,23 @@ Before installing Cortexcn components, make sure you have shadcn/ui set up in yo
 npx shadcn@latest init
 ```
 
-## Add the registry
+## Install components
 
-Add the `@cortexcn` namespace to the `registries` field in your `components.json`:
+Install any Cortexcn component using the CLI:
+
+<PackageManagerTabs name="button" />
+
+This will:
+
+- Download the component source code into your project
+- Install any npm packages the component needs
+- Install any other Cortexcn components it depends on
+
+For example, `@cortexcn/dialog` pulls in `@cortexcn/button`, and `@cortexcn/command` pulls in `@cortexcn/dialog` and `@cortexcn/input-group`.
+
+## Pin the registry URL (optional)
+
+The directory maps `@cortexcn` to `https://ui.cortexcn.dev/r/{name}.json` for you. If you would rather keep that address in your project, add it to the `registries` field in your `components.json`:
 
 ```json
 {
@@ -25,28 +41,14 @@ Add the `@cortexcn` namespace to the `registries` field in your `components.json
 }
 ```
 
-You only need to do this once per project.
-
-## Install components
-
-Install any Cortexcn component using the CLI:
-
-<PackageManagerTabs name="area-chart" />
-
-This will:
-
-- Download the component source code into your project
-- Install any npm packages the component needs
-- Install any other Cortexcn components it depends on
-
-For example, `@cortexcn/line-chart`, `@cortexcn/area-chart`, and `@cortexcn/heatmap-chart` pull in `@cortexcn/shimmering-text` for their loading labels.
+Installs work the same either way.
 
 ## Check before you install
 
 Add `--dry-run` to any `add` command to see every file and package it would add, without writing anything:
 
 ```bash
-npx shadcn@latest add @cortexcn/lanyard-3d --dry-run
+npx shadcn@latest add @cortexcn/hero-cover-01 --dry-run
 ```
 
 Each item records its license and a revision. Cortexcn items are MIT licensed. A few are adapted from Apache-2.0 projects, and name the project. Every script file the CLI writes carries a comment below its imports with the item, its revision, and its license.
@@ -54,7 +56,7 @@ Each item records its license and a revision. Cortexcn items are MIT licensed. A
 Every revision stays at a fixed URL, so you can install exactly the one you reviewed:
 
 ```bash
-npx shadcn@latest add https://ui.cortexcn.dev/r/v/lanyard-3d/39d534c092c8.json
+npx shadcn@latest add https://ui.cortexcn.dev/r/v/hero-cover-01/912eb1a56a04.json
 ```
 
 The [MCP Server](/docs/integration/mcp#what-your-assistant-sees-before-it-installs) page has the details.

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { usePlayback } from "./features-section-playback";
 
 const DIRECTORY = "~/acme-app";
-const COMMAND = "npx shadcn@latest add @cortexcn/marquee";
+const COMMAND = "npx shadcn@latest add @cortexcn/hero-cover-01";
 
 interface OutputLine {
   text: string;
@@ -17,20 +17,24 @@ interface OutputLine {
 }
 
 /**
- * What the shadcn CLI prints for this item, in order, minus its note on the
- * project's existing `lib/utils.ts`. There is no npm step: a shadcn project
- * already has the only packages it needs (clsx and tailwind-merge), and the
- * CSS update adds the marquee animations.
+ * What the shadcn CLI prints for this item, in order, with no registry set up
+ * in components.json (Cortexcn is in the shadcn registry directory), minus
+ * its note on the project's existing `lib/utils.ts`. The block brings its
+ * button and call-to-action along, and installs motion.
  */
 const OUTPUT: OutputLine[] = [
   { text: "Checking registry.", duration: 650, spins: true },
+  { text: "Installing dependencies.", duration: 900, spins: true },
   {
-    text: "Created 1 file:",
+    text: "Created 3 files:",
     duration: 420,
     spins: false,
-    files: ["components/marquee.tsx"],
+    files: [
+      "components/ui/button.tsx",
+      "components/hero-cover.tsx",
+      "components/hero-cta.tsx",
+    ],
   },
-  { text: "Updating app/globals.css", duration: 800, spins: true },
 ];
 
 const START_DELAY = 600;

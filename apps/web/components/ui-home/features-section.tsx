@@ -31,7 +31,7 @@ const FEATURES: Feature[] = [
     description:
       "Run the shadcn CLI and the source lands in your project, with every dependency it needs.",
     label:
-      "A terminal running npx shadcn@latest add @cortexcn/marquee. The CLI checks the registry, creates components/marquee.tsx, and updates app/globals.css.",
+      "A terminal running npx shadcn@latest add @cortexcn/hero-cover-01. The CLI checks the registry, installs the dependencies, and creates the hero, its call to action, and a button.",
     art: "blue-cream-florals",
     window: "Terminal",
     tile: <FeatureTerminal />,
@@ -51,7 +51,7 @@ const FEATURES: Feature[] = [
     description:
       "Give Claude Code, Cursor, or Codex the shadcn MCP server and ask for a component by name.",
     label:
-      "An agent chat. Asked to add a revenue chart to the dashboard, the agent searches the registry through the shadcn MCP server, runs npx shadcn@latest add @cortexcn/area-chart, and adds the chart.",
+      "An agent chat. Asked to add a hero section to the landing page, the agent searches the registry through the shadcn MCP server, runs npx shadcn@latest add @cortexcn/hero-cover-01, and adds the hero.",
     art: "blue-white-flowers",
     window: "Agent",
     tile: <FeatureAgent />,
