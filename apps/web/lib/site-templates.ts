@@ -491,6 +491,7 @@ export const SITE_TEMPLATES: SiteTemplate[] = [
         image: { light: miradorCorvoLight, dark: miradorCorvoDark },
       },
     ],
+    previewUrl: "https://mirador-demo.vercel.app",
   },
   {
     slug: "ai-infra",
