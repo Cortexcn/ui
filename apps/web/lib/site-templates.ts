@@ -25,6 +25,22 @@ import growthDesktopDark from "@/assets/templates/growth-agency/desktop-dark.web
 import growthDesktopLight from "@/assets/templates/growth-agency/desktop-light.webp";
 import growthMobileDark from "@/assets/templates/growth-agency/mobile-dark.webp";
 import growthMobileLight from "@/assets/templates/growth-agency/mobile-light.webp";
+import miradorCardDark from "@/assets/templates/mirador/card-dark.webp";
+import miradorCardLight from "@/assets/templates/mirador/card-light.webp";
+import miradorDesktopDark from "@/assets/templates/mirador/desktop-dark.webp";
+import miradorDesktopLight from "@/assets/templates/mirador/desktop-light.webp";
+import miradorMobileDark from "@/assets/templates/mirador/mobile-dark.webp";
+import miradorMobileLight from "@/assets/templates/mirador/mobile-light.webp";
+import miradorAlarmsDark from "@/assets/templates/mirador/page-alarms-dark.webp";
+import miradorAlarmsLight from "@/assets/templates/mirador/page-alarms-light.webp";
+import miradorCorvoDark from "@/assets/templates/mirador/page-assistant-dark.webp";
+import miradorCorvoLight from "@/assets/templates/mirador/page-assistant-light.webp";
+import miradorComputeDark from "@/assets/templates/mirador/page-compute-dark.webp";
+import miradorComputeLight from "@/assets/templates/mirador/page-compute-light.webp";
+import miradorCostsDark from "@/assets/templates/mirador/page-costs-dark.webp";
+import miradorCostsLight from "@/assets/templates/mirador/page-costs-light.webp";
+import miradorLogsDark from "@/assets/templates/mirador/page-logs-dark.webp";
+import miradorLogsLight from "@/assets/templates/mirador/page-logs-light.webp";
 import peopleKitCardDark from "@/assets/templates/people-dashboard-kit/card-dark.webp";
 import peopleKitCardLight from "@/assets/templates/people-dashboard-kit/card-light.webp";
 import peopleKitDesktopDark from "@/assets/templates/people-dashboard-kit/desktop-dark.webp";
@@ -397,6 +413,84 @@ export const SITE_TEMPLATES: SiteTemplate[] = [
       },
     ],
     previewUrl: "/previews/people-dashboard-kit",
+  },
+  {
+    slug: "mirador",
+    name: "Mirador",
+    kind: "dashboard",
+    summary:
+      "An AWS monitoring dashboard for teams with more than one account: EC2, ECS, S3, RDS, Lambda, alarms, logs, and costs in one view, with Corvo, an agent that answers from your own data",
+    price: 499,
+    categories: ["dashboards", "saas", "ai"],
+    released: "2026-11-04",
+    updated: "2026-11-04",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "AWS SDK v3",
+      "AI SDK",
+      "TypeScript",
+    ],
+    sections: [
+      "Overview",
+      "Compute",
+      "Containers",
+      "Storage",
+      "Databases",
+      "Functions",
+      "Logs",
+      "Reports",
+      "Corvo",
+      "Alarms",
+      "Events",
+      "Costs",
+      "Alerts",
+      "Accounts",
+      "Team",
+      "Billing",
+      "Integrations",
+      "Help center",
+      "Settings",
+    ],
+    features: [
+      "Every AWS account on one screen: switch between all accounts, one account, or two side by side, such as Production and Production EU, with every panel lined up.",
+      "Pages for EC2, ECS and Fargate, S3, RDS and Aurora, Lambda, CloudWatch alarms and logs, AWS events, and costs, with detail sheets that link to the right place in the AWS console.",
+      "Corvo, an agent that answers questions about the accounts in view through read-only tools. It uses Claude once you add an Anthropic key, and built-in answers on the demo data without one.",
+      "Read-only by design: a live AWS data source on the AWS SDK v3 that assumes a role in each account, with the CloudFormation template for that role and a three-step connect flow. It is tested against simulated AWS responses.",
+      "Costs with a month-end forecast, spend by service, account, and team tag, and spikes explained in plain words, plus screens for budgets, alert rules, team roles, and settings, ready for your own backend.",
+      "The Cortexcn Ledger look in black and white, with Geist and Hugeicons, light and dark mode, and layouts for phones and tablets. Demo data for a made-up company with three accounts, and 124 Vitest checks.",
+    ],
+    customize:
+      "Connect your accounts with MIRADOR_DATA=live and MIRADOR_ACCOUNTS (see lib/data/aws/README.md), add an Anthropic key for Corvo, rename the product in config/site.ts, and change the colors in app/globals.css.",
+    screenshots: {
+      card: { light: miradorCardLight, dark: miradorCardDark },
+      desktop: { light: miradorDesktopLight, dark: miradorDesktopDark },
+      mobile: { light: miradorMobileLight, dark: miradorMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Compute",
+        image: { light: miradorComputeLight, dark: miradorComputeDark },
+      },
+      {
+        name: "Costs",
+        image: { light: miradorCostsLight, dark: miradorCostsDark },
+      },
+      {
+        name: "Alarms",
+        image: { light: miradorAlarmsLight, dark: miradorAlarmsDark },
+      },
+      {
+        name: "Logs",
+        image: { light: miradorLogsLight, dark: miradorLogsDark },
+      },
+      {
+        name: "Corvo",
+        image: { light: miradorCorvoLight, dark: miradorCorvoDark },
+      },
+    ],
   },
   {
     slug: "ai-infra",

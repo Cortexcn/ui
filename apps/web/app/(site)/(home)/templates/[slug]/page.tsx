@@ -34,6 +34,7 @@ import {
   templateLicenseLabel,
   templatePriceLabel,
 } from "@/lib/site-templates";
+import { cn } from "@/lib/utils";
 
 interface TemplatePageProps {
   params: Promise<{ slug: string }>;
@@ -97,6 +98,13 @@ function BulletList({ items }: { items: string[] }) {
     </ul>
   );
 }
+
+/**
+ * The same CSS-only entrance as the landing page and /blocks heroes, so the
+ * header animates in before hydration and rests for reduced motion.
+ */
+const ENTER =
+  "animate-in fade-in slide-in-from-bottom-4 fill-mode-both duration-700 ease-out motion-reduce:animate-none";
 
 /** Buy or download, the live preview, and the Pro offer. */
 function ActionBar({ template }: { template: SiteTemplate }) {
@@ -217,7 +225,12 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
 
       <section className="container mx-auto flex w-full flex-col gap-6 pt-10 pb-6 md:pt-14">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-          <div className="w-40 shrink-0 overflow-hidden rounded-lg border shadow-xs">
+          <div
+            className={cn(
+              "w-40 shrink-0 overflow-hidden rounded-lg border shadow-xs",
+              ENTER,
+            )}
+          >
             <TemplateScreenshot
               alt=""
               image={template.screenshots.card}
@@ -225,15 +238,25 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
             />
           </div>
           <div className="flex min-w-0 flex-col gap-3">
-            <h1 className="text-balance font-bold text-3xl tracking-tight md:text-4xl">
+            <h1
+              className={cn(
+                "text-balance font-bold text-3xl tracking-tight delay-100 md:text-4xl",
+                ENTER,
+              )}
+            >
               {templateTitle(template)}
             </h1>
-            <p className="max-w-3xl text-pretty text-lg text-muted-foreground leading-relaxed">
+            <p
+              className={cn(
+                "max-w-3xl text-pretty text-lg text-muted-foreground leading-relaxed delay-200",
+                ENTER,
+              )}
+            >
               {template.summary}.
             </p>
           </div>
         </div>
-        <Breadcrumb>
+        <Breadcrumb className={cn("delay-300", ENTER)}>
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
@@ -253,7 +276,7 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
       </section>
 
       <div className="border-y bg-muted/30 py-3">
-        <div className="container mx-auto">
+        <div className={cn("container mx-auto delay-300", ENTER)}>
           <ActionBar template={template} />
         </div>
       </div>
