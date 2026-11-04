@@ -2,7 +2,7 @@
 
 import { Icon } from "@cortexcn/icons";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { DocsScrollArea } from "@/components/docs/docs-scroll-area";
 import type { SidebarGroup, SidebarLink } from "@/lib/docs-sidebar-groups";
@@ -36,6 +36,7 @@ function SidebarLinks({
   pathname: string;
   depth?: number;
 }) {
+  const router = useRouter();
   return (
     <ul
       className={cn(
@@ -45,6 +46,10 @@ function SidebarLinks({
     >
       {links.map((link) => {
         const active = !link.url.includes("?") && link.url === pathname;
+        // The sidebar holds a couple hundred links. Prefetching each one as it
+        // scrolls into view sends a request per link on every docs visit, so
+        // a page is fetched only once the pointer or focus is on its link.
+        const prefetch = () => router.prefetch(link.url);
         return (
           <li key={link.url}>
             <Link
@@ -56,6 +61,9 @@ function SidebarLinks({
                   : "border-transparent text-muted-foreground hover:border-foreground/30 hover:text-foreground",
               )}
               href={link.url}
+              onFocus={prefetch}
+              onPointerEnter={prefetch}
+              prefetch={false}
             >
               <span className="truncate">{link.name}</span>
               {link.isNew ? <NewMark /> : null}

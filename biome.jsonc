@@ -7,7 +7,12 @@
       "!!**/.agents",
       "!!apps/web/public/previews",
       // Written by the Convex CLI.
-      "!!apps/web/convex/_generated"
+      "!!apps/web/convex/_generated",
+      // Video studio: a vendored shader bundle, and per-video work folders
+      // (generated audio timings and one-off recorder scripts).
+      "!!video-studio/assets",
+      "!!video-studio/videos",
+      "!!video-studio/.venv"
     ]
   },
   // Prettier also formats some of these files (the DESIGN.md generator runs
@@ -17,6 +22,12 @@
     "formatter": { "trailingCommas": "all" }
   },
   "overrides": [
+    {
+      // Video studio scripts: Node CLIs and Puppeteer recorders whose page
+      // code runs in the browser. Formatted, but not held to the app's rules.
+      "includes": ["video-studio/**"],
+      "linter": { "enabled": false }
+    },
     {
       "includes": ["apps/web/public/r/**/*.json", "packages/ui/registry.json"],
       "formatter": { "enabled": false },

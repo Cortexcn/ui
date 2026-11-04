@@ -44,5 +44,14 @@ yarn-error.log*
 apps/web/app/playground/components/
 apps/web/app/playground/lib/
 
+# Video studio: the local ffmpeg install, captured frames, and renders
+video-studio/.venv/
+video-studio/**/frames/
+video-studio/**/snaps/
+video-studio/**/renders/
+video-studio/**/*.mp4
+video-studio/**/*.wav
+video-studio/assets/sfx/.soundcn-registry.json
+
 # Cursor rules (design system docs)
 .cursor/rules/animation-feeling-rules.mdc
