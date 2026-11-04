@@ -20,26 +20,16 @@ Visit [ui.cortexcn.dev/docs](https://ui.cortexcn.dev/docs) for the docs, live pr
 
 ## Install a component
 
-Every item installs from its URL, with no registry setup:
-
-```bash
-npx shadcn@latest add https://ui.cortexcn.dev/r/button.json
-```
-
-Or register the `@cortexcn` namespace once in `components.json`:
-
-```json
-{
-  "registries": {
-    "@cortexcn": "https://ui.cortexcn.dev/r/{name}.json"
-  }
-}
-```
-
-and add items by name:
+Cortexcn is listed in the [shadcn registry directory](https://ui.shadcn.com/docs/directory), so every item installs by name with no setup:
 
 ```bash
 npx shadcn@latest add @cortexcn/button
+```
+
+Every item also installs from its URL:
+
+```bash
+npx shadcn@latest add https://ui.cortexcn.dev/r/button.json
 ```
 
 ## Use it with your AI agent
