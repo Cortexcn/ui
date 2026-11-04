@@ -76,10 +76,10 @@ function tooManyRequests(retryAfterSeconds: number) {
 }
 
 async function serve(request: Request) {
-  // Someone opening the URL in a browser gets the setup page instead.
+  // Someone opening the URL in a browser gets the server's page instead.
   const accept = request.headers.get("accept") ?? "";
   if (request.method === "GET" && accept.includes("text/html")) {
-    return Response.redirect(`${DOCS_URL}/docs/integration/mcp`, 307);
+    return Response.redirect(`${DOCS_URL}/mcp-server`, 307);
   }
 
   const limit = await takeRateLimit(clientIp(request) ?? "unknown");

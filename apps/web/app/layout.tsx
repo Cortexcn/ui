@@ -1,6 +1,7 @@
 import "./globals.css";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { RootProvider } from "fumadocs-ui/provider";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -208,6 +209,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <PageScrollbar />
         {/* Vercel Web Analytics: page views on all three hosts, without cookies. */}
         <Analytics />
+        {/* Vercel Speed Insights: Core Web Vitals from real visits. */}
+        <SpeedInsights />
       </body>
     </html>
   );

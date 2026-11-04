@@ -339,7 +339,7 @@ function resourcesMenu(): NavMenu {
           },
           {
             label: "MCP server",
-            href: "/docs/integration/mcp",
+            href: "/mcp-server",
             description: "Let your AI agent search and install components.",
             icon: "IconAgent",
           },

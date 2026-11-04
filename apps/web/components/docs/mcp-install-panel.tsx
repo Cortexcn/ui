@@ -42,7 +42,7 @@ export function McpInstallPanel({ name }: { name: string }) {
         Using Cursor, VS Code, Windsurf, or another assistant? See{" "}
         <Link
           className="font-medium text-foreground underline underline-offset-4"
-          href="/docs/integration/mcp"
+          href="/mcp-server"
         >
           MCP server setup
         </Link>

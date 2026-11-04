@@ -32,6 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     { url: `${DOCS_URL}/blocks`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${DOCS_URL}/changelog`, changeFrequency: "weekly", priority: 0.6 },
+    {
+      url: `${DOCS_URL}/mcp-server`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     { url: `${STUDIO_URL}/`, changeFrequency: "weekly", priority: 0.9 },
     {
       url: `${STUDIO_URL}/services`,

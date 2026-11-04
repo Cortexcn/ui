@@ -9,7 +9,8 @@ import { ChevronRightIcon, PrimaryLink, SecondaryLink } from "./primitives";
 import { HeadingWords } from "./reveal";
 import { StackTicker } from "./stack-ticker";
 
-const MCP_DOCS = "/docs/integration/mcp";
+/** The MCP server's page: what it is, and setup for each AI client. */
+const MCP_PAGE = "/mcp-server";
 
 /** The one-line setup from the MCP docs, for Claude Code. */
 const MCP_COMMAND =
@@ -18,7 +19,7 @@ const MCP_COMMAND =
 const ANNOUNCEMENT = {
   tag: "New",
   text: "Connect your AI agent with the Cortexcn MCP server",
-  href: MCP_DOCS,
+  href: MCP_PAGE,
 };
 
 const HEADLINE = [
@@ -102,7 +103,7 @@ export function HeroSection() {
                 enterClassName,
               )}
             >
-              <PrimaryLink href={MCP_DOCS}>Install the MCP server</PrimaryLink>
+              <PrimaryLink href={MCP_PAGE}>Connect your AI editor</PrimaryLink>
               <SecondaryLink href="/docs/components">
                 Browse components
               </SecondaryLink>
