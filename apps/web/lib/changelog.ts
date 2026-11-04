@@ -60,14 +60,6 @@ export const CHANGELOG: ChangelogRelease[] = [
   {
     date: "2026-11-04",
     kind: "site",
-    title: "Mirador, an AWS monitoring dashboard with Corvo",
-    summary:
-      "A paid dashboard for teams that run more than one AWS account: EC2, ECS, S3, RDS, Lambda, alarms, logs, and costs on one screen, with a switch between all accounts, one account, or two side by side. Corvo, its agent, answers questions from your own data. Mirador reads AWS through a read-only role and never changes anything.",
-    items: [{ label: "Mirador", href: "/templates/mirador" }],
-  },
-  {
-    date: "2026-11-04",
-    kind: "site",
     title: "AI Infra template, Sirvich",
     summary:
       "A paid two-page Next.js launch site for an AI inference platform: a home page with scaling, control plane, rollout, GPU fleet, and budget mockups on a landscape image, an integrations panel with working switches, and four pricing plans, plus a contact page with a checked form and an FAQ. It works in light and dark mode, on phones and tablets, and ships with a live preview.",

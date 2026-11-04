@@ -204,9 +204,14 @@ export interface SiteTemplate {
    * opens the contact form with the order written out.
    */
   checkoutUrl?: string;
+  /**
+   * Kept out of every listing, menu, and sitemap, and its page returns 404,
+   * until the flag is removed.
+   */
+  hidden?: boolean;
 }
 
-export const SITE_TEMPLATES: SiteTemplate[] = [
+const ALL_TEMPLATES: SiteTemplate[] = [
   {
     slug: "project-dashboard-kit",
     name: "Project Dashboard Kit",
@@ -492,6 +497,7 @@ export const SITE_TEMPLATES: SiteTemplate[] = [
       },
     ],
     previewUrl: "https://mirador-demo.vercel.app",
+    hidden: true,
   },
   {
     slug: "ai-infra",
@@ -829,6 +835,10 @@ export const SITE_TEMPLATES: SiteTemplate[] = [
     previewUrl: "/previews/portfolio",
   },
 ];
+
+export const SITE_TEMPLATES: SiteTemplate[] = ALL_TEMPLATES.filter(
+  (template) => !template.hidden,
+);
 
 export function getSiteTemplate(slug: string) {
   return SITE_TEMPLATES.find((template) => template.slug === slug);

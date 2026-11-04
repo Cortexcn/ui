@@ -1,5 +1,6 @@
 import "./globals.css";
 import { OpenPanelComponent } from "@openpanel/nextjs";
+import { Analytics } from "@vercel/analytics/next";
 import { RootProvider } from "fumadocs-ui/provider";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -8,7 +9,6 @@ import { Instrument_Serif, Source_Serif_4 } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import type { ReactNode } from "react";
-import { SiteLeftDotGrid } from "@/components/design/site-left-dot-grid";
 import { DocsSearchDialog } from "@/components/docs/docs-search-dialog";
 import { PageScrollbar } from "@/components/smooth-scroll/page-scrollbar";
 import { SmoothScroll } from "@/components/smooth-scroll/smooth-scroll";
@@ -179,7 +179,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </noscript>
           </>
         ) : null}
-        <SiteLeftDotGrid />
         {openPanelClientId ? (
           <OpenPanelComponent
             apiUrl="/api/op"
@@ -207,6 +206,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
         </RootProvider>
         <PageScrollbar />
+        {/* Vercel Web Analytics: page views on all three hosts, without cookies. */}
+        <Analytics />
       </body>
     </html>
   );

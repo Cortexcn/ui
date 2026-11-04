@@ -36,6 +36,9 @@ const LIBRARY_PATH_RE =
 
 const STUDIO_PATH_RE = /^\/(?:about|contact|pricing|services|work)(?:\/|$)/;
 
+/** Add a path here when a new page goes on www, or the other hosts 404 it. */
+const PRODUCT_PATH_RE = /^\/(?:pro|privacy|refunds|terms)(?:\/|$)/;
+
 /**
  * Pages of the component library site: the docs, the two galleries, the
  * changelog, the templates and dashboard kits with their live previews, the
@@ -53,6 +56,15 @@ export function isLibraryPath(pathname: string) {
  */
 export function isStudioPath(pathname: string) {
   return pathname === "/" || STUDIO_PATH_RE.test(pathname);
+}
+
+/**
+ * Pages of the product site besides its home: Pro and the legal pages. The
+ * library and Studio hosts send these to www; any other path they do not own
+ * stays on them and gets that site's 404 page.
+ */
+export function isProductPath(pathname: string) {
+  return PRODUCT_PATH_RE.test(pathname);
 }
 
 /** The origin that owns a path. Everything else, like /pro, is the product site. */

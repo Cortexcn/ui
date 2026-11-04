@@ -3,11 +3,11 @@ import {
   type NextRequest,
   NextResponse,
 } from "next/server";
+import { siteForHost } from "@/lib/site-host";
 import {
   canonicalUrlFor,
-  DEV_DOCS_HOSTNAME,
-  DEV_STUDIO_HOSTNAME,
   DOCS_URL,
+  isProductPath,
   LIBRARY_HOME_ROUTE,
   SITE_URL,
   STUDIO_URL,
@@ -27,10 +27,8 @@ const APEX_HOST = SITE_HOST.replace(/^www\./, "");
 const SERVED_HOSTS = new Set([SITE_HOST, DOCS_HOST, STUDIO_HOST]);
 const IS_DEV = process.env.NODE_ENV === "development";
 
-/** In dev, `bun run dev` serves each site on its own port (dev-ports.json). */
-const DEV_LIBRARY_PORT = String(devPorts.library);
+/** In dev, the components docs have their own port (dev-ports.json). */
 const DEV_COMPONENTS_PORT = String(devPorts.components);
-const DEV_STUDIO_PORT = String(devPorts.studio);
 
 // Read by crawlers, so they answer on whichever host asked. Each host serves
 // its own pages' share images from /og.
@@ -38,36 +36,6 @@ const HOST_AGNOSTIC_PATH_RE = /^\/(?:robots\.txt|sitemap\.xml|og)$/;
 
 /** Paths that mean the components home, which only ever shows as `/` on its host. */
 const LIBRARY_HOME_ALIASES = new Set([LIBRARY_HOME_ROUTE, "/components"]);
-
-type Site = "product" | "library" | "studio";
-
-/**
- * Which site a host serves at `/`. In production that is its domain; in dev,
- * its port or `*.localhost` name. Unknown hosts, such as preview deployments,
- * open on the components home.
- */
-function siteFor(host: string): Site {
-  if (host === DOCS_HOST) {
-    return "library";
-  }
-  if (host === STUDIO_HOST) {
-    return "studio";
-  }
-  if (IS_DEV) {
-    const [hostname, port = ""] = host.split(":");
-    if (hostname === DEV_STUDIO_HOSTNAME || port === DEV_STUDIO_PORT) {
-      return "studio";
-    }
-    if (
-      hostname === DEV_DOCS_HOSTNAME ||
-      port === DEV_LIBRARY_PORT ||
-      port === DEV_COMPONENTS_PORT
-    ) {
-      return "library";
-    }
-  }
-  return "product";
-}
 
 /** The components home: www.cortexcn.dev, or the site port in dev. */
 function libraryHomeUrl() {
@@ -105,7 +73,17 @@ function productionRedirectFor(host: string, pathname: string): URL | null {
   }
 
   const target = new URL(canonicalUrlFor(pathname));
-  return target.host === host ? null : target;
+  if (target.host === host) {
+    return null;
+  }
+
+  // A path no site owns, such as a mistyped address, stays on the library or
+  // Studio host that was asked, so that site shows its own 404 page.
+  const isOwnSite = host === DOCS_HOST || host === STUDIO_HOST;
+  if (isOwnSite && target.host === SITE_HOST && !isProductPath(pathname)) {
+    return null;
+  }
+  return target;
 }
 
 export function proxy(request: NextRequest, event: NextFetchEvent) {
@@ -145,7 +123,7 @@ export function proxy(request: NextRequest, event: NextFetchEvent) {
     }
   }
 
-  const site = siteFor(host);
+  const site = siteForHost(host);
 
   // In dev, the library ports open on the docs: the components port on the
   // components docs. In production the library host's `/` redirects above.

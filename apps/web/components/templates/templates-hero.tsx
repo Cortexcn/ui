@@ -46,13 +46,13 @@ export function TemplatesHero({ landings, kits }: TemplatesHeroProps) {
                 "group mb-7 inline-flex max-w-full items-center gap-2.5 text-body text-sm sm:text-base",
                 enterClassName,
               )}
-              href="/templates/mirador"
+              href="/templates/ai-infra"
             >
               <span className="rounded-[4px] bg-muted px-1.5 py-1 font-medium text-xs uppercase leading-none">
                 New
               </span>
               <span className="truncate underline-offset-4 group-hover:underline">
-                Mirador, an AWS monitoring dashboard
+                AI Infra, a launch site for AI inference
               </span>
               <ChevronRightIcon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>

@@ -440,35 +440,15 @@ html::-webkit-scrollbar {
 /*
  * The live component previews at /embed/<slug>, framed by other sites. The
  * page stays transparent so the demo sits on the parent's own surface, and
- * the site's fixed dot grid and scrollbar stay out of the frame.
+ * the site's scrollbar stays out of the frame.
  */
 html:has([data-cortexcn-embed]),
 html:has([data-cortexcn-embed]) body {
   background: transparent !important;
 }
 
-body:has([data-cortexcn-embed]) :is(.site-left-dot-grid, .page-scrollbar) {
+body:has([data-cortexcn-embed]) .page-scrollbar {
   display: none;
-}
-
-/* The blocks pages are full of live previews, so they leave out the dot grid. */
-body:has([data-blocks-page]) .site-left-dot-grid {
-  display: none;
-}
-
-/* The dot grid behind a docs page's title, fading out toward the content. */
-.docs-hero-dots {
-  background-image: radial-gradient(
-    color-mix(in oklab, var(--foreground) 20%, transparent) 1px,
-    transparent 1.5px
-  );
-  background-size: 14px 14px;
-  mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    rgb(0 0 0 / 0.45) 50%,
-    transparent 100%
-  );
 }
 
 /*

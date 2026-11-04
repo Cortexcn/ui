@@ -131,10 +131,6 @@ export default async function Page(props: {
           image: shareImageUrl(docsShare(params.slug ?? [], page)),
         })}
       />
-      <div
-        aria-hidden="true"
-        className="docs-hero-dots pointer-events-none absolute inset-x-0 top-0 h-72"
-      />
       <article className="relative w-full max-w-[50rem] px-5 pt-8 pb-16 sm:px-8 lg:pt-12">
         <header className="mb-10">
           <div className="mb-8 flex min-h-9 items-center justify-between gap-4">

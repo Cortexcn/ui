@@ -12,6 +12,7 @@ import { useRef } from "react";
 import type { RailPromo } from "@/lib/nav-menus";
 import { SPONSOR_URL } from "@/lib/site-config";
 import { FeatureVisual } from "./header-nav";
+import { OutlineLine, outlineIndent } from "./toc-outline";
 
 interface TableOfContentsProps {
   items: TOCItemType[];
@@ -59,7 +60,7 @@ function SponsorCard() {
     >
       <span className="flex items-center gap-3">
         <span className="grid size-9 shrink-0 place-items-center rounded-shell-sm bg-pink-500/10 text-pink-500 ring-1 ring-pink-500/25">
-          <Icon className="size-4.5" name="IconHeart" />
+          <Icon className="size-4.5" name="IconSparklesSoft" />
         </span>
         <span className="flex min-w-0 flex-col">
           <span className="font-semibold text-foreground text-sm tracking-tight">
@@ -75,7 +76,7 @@ function SponsorCard() {
         these docs up to date.
       </span>
       <span className="mt-3 flex h-9 items-center justify-center gap-1.5 rounded-shell-sm border border-border bg-background font-medium text-foreground text-sm transition-colors group-hover/sponsor:bg-muted motion-reduce:transition-none">
-        <Icon className="size-4 text-pink-500" name="IconHeart" />
+        <Icon className="size-4 text-pink-500" name="IconSparklesSoft" />
         Become a sponsor
         <Icon
           className="size-3.5 text-muted-foreground"
@@ -89,6 +90,7 @@ function SponsorCard() {
 /** The right rail: the page's headings, then the templates and sponsor cards. */
 export function TableOfContents({ items, promo }: TableOfContentsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   return (
     <aside className="fixed top-(--site-header-height) right-0 hidden h-[calc(100vh-var(--site-header-height))] w-72 overflow-hidden px-5 pt-8 pb-6 xl:block">
@@ -104,21 +106,23 @@ export function TableOfContents({ items, promo }: TableOfContentsProps) {
                 ref={containerRef}
               >
                 <ScrollProvider containerRef={containerRef}>
-                  <ul className="m-0 ml-3 list-none border-border border-l p-0">
-                    {items.map((item) => (
-                      <li
-                        key={item.url}
-                        style={{ paddingLeft: `${(item.depth - 2) * 12}px` }}
-                      >
-                        <TOCItem
-                          className="-ml-px block border-transparent border-l py-1.5 pl-3.5 text-[13px] text-muted-foreground no-underline transition-colors hover:text-foreground data-[active=true]:border-foreground data-[active=true]:text-foreground"
-                          href={item.url}
-                        >
-                          {item.title}
-                        </TOCItem>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Positioned, so the line's measurements start here. */}
+                  <div className="relative ml-3" ref={listRef}>
+                    <OutlineLine items={items} listRef={listRef} />
+                    <ul className="m-0 list-none p-0">
+                      {items.map((item) => (
+                        <li key={item.url}>
+                          <TOCItem
+                            className="block py-1.5 pr-1 text-[13px] text-muted-foreground no-underline transition-colors hover:text-foreground data-[active=true]:text-foreground"
+                            href={item.url}
+                            style={{ paddingLeft: outlineIndent(item.depth) }}
+                          >
+                            {item.title}
+                          </TOCItem>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </ScrollProvider>
               </div>
             </AnchorProvider>
