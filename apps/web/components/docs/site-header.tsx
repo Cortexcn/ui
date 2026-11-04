@@ -12,12 +12,12 @@ import {
 } from "@/lib/component-families";
 import { familyForPath } from "@/lib/docs-sidebar";
 import type { NavCta, NavItem, NavMenu } from "@/lib/nav-menus";
-import { OPEN_SOURCE_REPO_URL } from "@/lib/site-config";
 import { isLibraryPath } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 import { CortexcnLogo } from "../icons/cortexcn";
 import { Button } from "../ui/button";
 import { DocsSearchTrigger } from "./docs-search-trigger";
+import { GitHubStarsLink } from "./github-stars-link";
 import { HeaderNav, isMenuActive } from "./header-nav";
 import { NavLinkLabel, NewMark } from "./nav-link-label";
 
@@ -580,16 +580,7 @@ export function SiteHeader({
                 hideIfDisabled
               />
             )}
-            <a
-              aria-label="Cortexcn on GitHub, the open-source components"
-              className="hidden size-9 shrink-0 items-center justify-center rounded-shell-sm border border-border bg-muted/60 text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50 sm:inline-flex"
-              href={OPEN_SOURCE_REPO_URL}
-              rel="noopener noreferrer"
-              target="_blank"
-              title="Cortexcn on GitHub"
-            >
-              <Icon aria-hidden="true" className="size-4" name="IconGithub" />
-            </a>
+            <GitHubStarsLink />
             <ThemeSwitcher />
             <UserMenu />
             {cta ? (
