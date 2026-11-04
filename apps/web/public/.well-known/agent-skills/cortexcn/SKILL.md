@@ -33,29 +33,21 @@ Kinds of items:
 
 The project needs shadcn set up. If there is no `components.json` in the project root, run `npx shadcn@latest init` first.
 
-Install by URL, which needs no further setup:
+Cortexcn is listed in the shadcn registry directory, so items install by name with no further setup:
 
 ```bash
-npx shadcn@latest add https://ui.cortexcn.dev/r/lanyard-3d.json
+npx shadcn@latest add @cortexcn/button
 ```
 
 Several items at once:
 
 ```bash
-npx shadcn@latest add https://ui.cortexcn.dev/r/hero-studio-01.json https://ui.cortexcn.dev/r/area-chart.json
+npx shadcn@latest add @cortexcn/hero-studio-01 @cortexcn/dialog
 ```
 
-To install by name, add the registry to `components.json` once:
+Every item also installs from its URL, such as `npx shadcn@latest add https://ui.cortexcn.dev/r/button.json`. Use the package manager the project already uses (`pnpm dlx`, `npx`, or `bunx --bun`).
 
-```json
-{
-  "registries": {
-    "@cortexcn": "https://ui.cortexcn.dev/r/{name}.json"
-  }
-}
-```
-
-Then `npx shadcn@latest add @cortexcn/lanyard-3d`. Use the package manager the project already uses (`pnpm dlx`, `npx`, or `bunx --bun`).
+The public registry holds the free items. Charts and some originals, such as Lanyard 3D, are part of Cortexcn Pro and do not install from it; if `add` reports an item as not found, check its docs page for a Pro note before guessing another name.
 
 The CLI installs the item's npm dependencies and the other registry items it needs. Read the files it reports and import from the paths it wrote them to, which follow the aliases in `components.json` (usually `@/components/<name>`).
 
