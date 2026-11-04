@@ -44,6 +44,14 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-04",
+    kind: "site",
+    title: "AI Infra template, Sirvich",
+    summary:
+      "A paid two-page Next.js launch site for an AI inference platform: a home page with scaling, control plane, rollout, GPU fleet, and budget mockups on a landscape image, an integrations panel with working switches, and four pricing plans, plus a contact page with a checked form and an FAQ. It works in light and dark mode, on phones and tablets, and ships with a live preview.",
+    items: [{ label: "AI Infra", href: "/templates/ai-infra" }],
+  },
+  {
     date: "2026-11-03",
     kind: "site",
     title: "Trading Dashboard Kit, Bourse",

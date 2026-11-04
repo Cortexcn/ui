@@ -1,4 +1,12 @@
 import type { StaticImageData } from "next/image";
+import infraCardDark from "@/assets/templates/ai-infra/card-dark.webp";
+import infraCardLight from "@/assets/templates/ai-infra/card-light.webp";
+import infraDesktopDark from "@/assets/templates/ai-infra/desktop-dark.webp";
+import infraDesktopLight from "@/assets/templates/ai-infra/desktop-light.webp";
+import infraMobileDark from "@/assets/templates/ai-infra/mobile-dark.webp";
+import infraMobileLight from "@/assets/templates/ai-infra/mobile-light.webp";
+import infraContactDark from "@/assets/templates/ai-infra/page-contact-dark.webp";
+import infraContactLight from "@/assets/templates/ai-infra/page-contact-light.webp";
 import travelCardDark from "@/assets/templates/ai-travel-app/card-dark.webp";
 import travelCardLight from "@/assets/templates/ai-travel-app/card-light.webp";
 import travelDesktopDark from "@/assets/templates/ai-travel-app/desktop-dark.webp";
@@ -389,6 +397,55 @@ export const SITE_TEMPLATES: SiteTemplate[] = [
       },
     ],
     previewUrl: "/previews/people-dashboard-kit",
+  },
+  {
+    slug: "ai-infra",
+    name: "AI Infra",
+    summary:
+      "Sirvich, a two-page launch site for an AI inference platform, with product mockups on a pastel landscape, a ruled frame with hatched dividers, and serif titles",
+    price: 99,
+    categories: ["saas", "ai"],
+    released: "2026-11-04",
+    updated: "2026-11-04",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Hero",
+      "Audience strip",
+      "Problem",
+      "Scaling",
+      "Control plane",
+      "How it works",
+      "Features",
+      "Cost per request",
+      "Integrations",
+      "Principles",
+      "Pricing",
+      "Footer",
+      "Contact page",
+      "FAQ",
+    ],
+    features: [
+      "Every word, link, number, and plan on both pages comes from one file, config/site.ts.",
+      "Product mockups built in HTML and CSS on crops of one landscape image: an alert card, a deployment window with a scaling plan, an orbit of the control plane, autoscaling bars, a canary rollout, GPU capacity by region, and a team budget.",
+      "A framed column with hairline rules and hatched bands between sections, Newsreader titles whose words come into focus one by one, and a dark features band whose numbered list follows your scroll.",
+      "An integrations panel with filters and working switches, four plans with ruled feature lists, and a contact page with a checked form, addresses, and an FAQ.",
+      "Light and dark mode, a mobile menu, layouts for phones and tablets, and reduced motion respected everywhere.",
+      "Builds as a Next.js app or a static site for any host, with a share image, sitemap, and robots file.",
+    ],
+    customize:
+      "Replace the product name, copy, plans, and addresses in config/site.ts, swap assets/landscape.jpg for your own image, change the mark in components/logo.tsx, and set the colors in app/globals.css.",
+    screenshots: {
+      card: { light: infraCardLight, dark: infraCardDark },
+      desktop: { light: infraDesktopLight, dark: infraDesktopDark },
+      mobile: { light: infraMobileLight, dark: infraMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Contact",
+        image: { light: infraContactLight, dark: infraContactDark },
+      },
+    ],
+    previewUrl: "/previews/ai-infra",
   },
   {
     slug: "data-checks",
