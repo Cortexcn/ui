@@ -44,6 +44,14 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-06",
+    kind: "site",
+    title: "Docs Dashboard Kit, Quire",
+    summary:
+      "A paid twelve-page dashboard kit for a product team's docs: collections with shortcut folders and a file panel, review dates and stale docs, doc tasks on a board, a release calendar, automations, and reporting on what people read and could not find. It works in light and dark mode, on phones and tablets, and ships with a live preview.",
+    items: [{ label: "Docs Dashboard Kit", href: "/templates/quire" }],
+  },
+  {
     date: "2026-11-04",
     kind: "site",
     title: "Cortexcn joins the shadcn registry directory",

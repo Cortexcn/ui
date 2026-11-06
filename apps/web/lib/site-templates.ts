@@ -79,6 +79,22 @@ import kitTeamDark from "@/assets/templates/project-dashboard-kit/page-team-dark
 import kitTeamLight from "@/assets/templates/project-dashboard-kit/page-team-light.webp";
 import kitTimelineDark from "@/assets/templates/project-dashboard-kit/page-timeline-dark.webp";
 import kitTimelineLight from "@/assets/templates/project-dashboard-kit/page-timeline-light.webp";
+import quireCardDark from "@/assets/templates/quire/card-dark.webp";
+import quireCardLight from "@/assets/templates/quire/card-light.webp";
+import quireDesktopDark from "@/assets/templates/quire/desktop-dark.webp";
+import quireDesktopLight from "@/assets/templates/quire/desktop-light.webp";
+import quireMobileDark from "@/assets/templates/quire/mobile-dark.webp";
+import quireMobileLight from "@/assets/templates/quire/mobile-light.webp";
+import quireCalendarDark from "@/assets/templates/quire/page-calendar-dark.webp";
+import quireCalendarLight from "@/assets/templates/quire/page-calendar-light.webp";
+import quireHomeDark from "@/assets/templates/quire/page-home-dark.webp";
+import quireHomeLight from "@/assets/templates/quire/page-home-light.webp";
+import quireReportingDark from "@/assets/templates/quire/page-reporting-dark.webp";
+import quireReportingLight from "@/assets/templates/quire/page-reporting-light.webp";
+import quireTasksDark from "@/assets/templates/quire/page-tasks-dark.webp";
+import quireTasksLight from "@/assets/templates/quire/page-tasks-light.webp";
+import quireTeamDark from "@/assets/templates/quire/page-team-dark.webp";
+import quireTeamLight from "@/assets/templates/quire/page-team-light.webp";
 import saasCardDark from "@/assets/templates/simplistic-saas/card-dark.webp";
 import saasCardLight from "@/assets/templates/simplistic-saas/card-light.webp";
 import saasDesktopDark from "@/assets/templates/simplistic-saas/desktop-dark.webp";
@@ -418,6 +434,76 @@ const ALL_TEMPLATES: SiteTemplate[] = [
       },
     ],
     previewUrl: "/previews/people-dashboard-kit",
+  },
+  {
+    slug: "quire",
+    name: "Docs Dashboard Kit",
+    kind: "dashboard",
+    summary:
+      "Quire, a docs workspace for product teams: collections, review dates, doc tasks, releases, and what people read, built from Cortexcn components and charts",
+    price: 129,
+    categories: ["dashboards", "saas"],
+    released: "2026-11-06",
+    updated: "2026-11-06",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "TypeScript",
+    ],
+    sections: [
+      "Home",
+      "Docs",
+      "Doc",
+      "Collection",
+      "Project",
+      "Tasks",
+      "Calendar",
+      "Team",
+      "Automations",
+      "Reporting",
+      "Releases",
+      "Settings",
+    ],
+    features: [
+      "A Docs page with six collections, each with a Connect button for the tool it syncs from, shortcut folders, twelve weeks of views against the quarter before, and the open collection's files in a side panel.",
+      "Docs that need a check: review dates, published docs untouched past the workspace's stale limit, and a review queue on Home with a button to ask for a review.",
+      "Doc work on a board or a list, a month calendar of releases and reviews that moves from the keyboard, and automations that archive, remind, and draft.",
+      "Reporting on what people read: views and edits by week, the most read docs, docs by status and by collection, and searches that found nothing.",
+      "Every create, edit, and delete goes through one provider, with Undo on deletes, so you turn its actions into API calls and nothing else moves.",
+      "Built from Cortexcn components and Pro charts with Hugeicons and Manrope, with demo data for a 12-person company and 101 Vitest checks. Light and dark mode, a sidebar that folds into an icon rail, and layouts for phones and tablets.",
+    ],
+    customize:
+      "Swap the demo data in lib/data, set today's date in lib/dates.ts, rename the product and pages in config/site.ts, change the colors in app/globals.css, and turn the actions in components/workspace/workspace-provider.tsx into API calls.",
+    screenshots: {
+      card: { light: quireCardLight, dark: quireCardDark },
+      desktop: { light: quireDesktopLight, dark: quireDesktopDark },
+      mobile: { light: quireMobileLight, dark: quireMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Home",
+        image: { light: quireHomeLight, dark: quireHomeDark },
+      },
+      {
+        name: "Tasks",
+        image: { light: quireTasksLight, dark: quireTasksDark },
+      },
+      {
+        name: "Calendar",
+        image: { light: quireCalendarLight, dark: quireCalendarDark },
+      },
+      {
+        name: "Reporting",
+        image: { light: quireReportingLight, dark: quireReportingDark },
+      },
+      {
+        name: "Team",
+        image: { light: quireTeamLight, dark: quireTeamDark },
+      },
+    ],
+    previewUrl: "/previews/quire",
   },
   {
     slug: "mirador",
