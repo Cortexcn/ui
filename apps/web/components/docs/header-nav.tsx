@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { ComponentArt } from "./component-art";
 import { MenuLiveVisual } from "./header-menu-visuals";
 import { NavLinkLabel, NewMark } from "./nav-link-label";
+import { WhatsNewNavLink } from "./whats-new-nav-link";
 
 const focusRing =
   "outline-none focus-visible:ring-2 focus-visible:ring-ring/50 motion-reduce:transition-none";
@@ -345,6 +346,16 @@ export function HeaderNav({
     <NavigationMenu.Root className={cn("hidden lg:block", className)}>
       <NavigationMenu.List className="m-0 flex list-none items-center gap-0.5 p-0">
         {items.map((item) => {
+          if (item.kind === "new") {
+            return (
+              <WhatsNewNavLink
+                active={isLinkActive(item.nav.url)}
+                className={navItemClassName}
+                key={item.nav.url}
+                nav={item.nav}
+              />
+            );
+          }
           if (item.kind === "menu") {
             const { menu } = item;
             return (

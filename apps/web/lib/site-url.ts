@@ -32,7 +32,7 @@ export const DEV_STUDIO_HOSTNAME = "studio.localhost";
 export const LIBRARY_HOME_ROUTE = "/ui-home";
 
 const LIBRARY_PATH_RE =
-  /^\/(?:docs|blocks|charts|changelog|templates|dashboard-kits|previews|mcp|mcp-server|sign-in|admin|design-systems|embed)(?:\/|$)/;
+  /^\/(?:docs|blocks|charts|changelog|new|templates|dashboard-kits|previews|mcp|mcp-server|sign-in|admin|design-systems|embed)(?:\/|$)/;
 
 const STUDIO_PATH_RE = /^\/(?:about|contact|pricing|services|work)(?:\/|$)/;
 
@@ -41,7 +41,7 @@ const PRODUCT_PATH_RE = /^\/(?:pro|privacy|refunds|terms)(?:\/|$)/;
 
 /**
  * Pages of the component library site: the docs, the two galleries, the
- * changelog, the templates and dashboard kits with their live previews, the
+ * changelog and the /new feed, the templates and dashboard kits with their live previews, the
  * MCP server and its page,
  * sign-in, the admin dashboard, the design systems showcase, and the
  * component previews other sites embed.

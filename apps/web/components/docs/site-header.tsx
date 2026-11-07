@@ -16,10 +16,12 @@ import { isLibraryPath } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 import { CortexcnLogo } from "../icons/cortexcn";
 import { Button } from "../ui/button";
+import { VersionTag } from "../version-tag";
 import { DocsSearchTrigger } from "./docs-search-trigger";
 import { GitHubStarsLink } from "./github-stars-link";
 import { HeaderNav, isMenuActive } from "./header-nav";
 import { NavLinkLabel, NewMark } from "./nav-link-label";
+import { WhatsNewMobileLink } from "./whats-new-nav-link";
 
 interface SiteHeaderProps {
   /** Nav for the services site on www.cortexcn.dev. */
@@ -402,8 +404,20 @@ function MobileMenu({ items, cta, isOpen, onClose }: MobileMenuProps) {
         inert={!isOpen}
       >
         <nav className="flex min-h-0 flex-1 flex-col gap-0.5 overflow-y-auto overscroll-contain p-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
-          {items.map((item) =>
-            item.kind === "menu" ? (
+          {items.map((item) => {
+            if (item.kind === "new") {
+              return (
+                <WhatsNewMobileLink
+                  active={isNavLinkActive(item.nav.url, pathname)}
+                  className={mobileLinkClassName}
+                  key={item.nav.url}
+                  nav={item.nav}
+                  onClose={onClose}
+                  open={isOpen}
+                />
+              );
+            }
+            return item.kind === "menu" ? (
               <MobileMenuGroup
                 key={item.menu.id}
                 menu={item.menu}
@@ -422,8 +436,8 @@ function MobileMenu({ items, cta, isOpen, onClose }: MobileMenuProps) {
               >
                 <NavLinkLabel text={item.text} url={item.url} />
               </Link>
-            ),
-          )}
+            );
+          })}
 
           {sections.map((section) => (
             <div
@@ -566,6 +580,10 @@ export function SiteHeader({
             <CortexcnLogo size={22} theme="dark" />
             <span>Cortexcn</span>
           </Link>
+          {/* The library's version. Left out on Studio, and at lg, where the nav needs the room. */}
+          {isLanding ? null : (
+            <VersionTag className="-ml-2 hidden sm:inline-flex lg:hidden xl:inline-flex" />
+          )}
 
           <HeaderNav
             isLinkActive={(url) => isNavLinkActive(url, pathname)}
@@ -573,7 +591,11 @@ export function SiteHeader({
             pathname={pathname}
           />
 
-          <div className="ml-auto flex items-center gap-1.5">
+          {/* Marked so the "New" ticker can tell how much room the nav has. */}
+          <div
+            className="ml-auto flex items-center gap-1.5"
+            data-header-actions
+          >
             {(search || hasDocsSearch(pathname)) && (
               <DocsSearchTrigger
                 className="hidden w-44 md:inline-flex xl:w-52"

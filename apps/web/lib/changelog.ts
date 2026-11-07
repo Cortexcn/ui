@@ -46,6 +46,14 @@ export const CHANGELOG: ChangelogRelease[] = [
   {
     date: "2026-11-07",
     kind: "site",
+    title: "What's new, a daily feed of everything that ships",
+    summary:
+      "A new page lists every component, block, and template on the day it shipped, newest first, with a count for each day, a live preview or screenshot on each card, and an Updated tag when a later release changes it. The header now starts with a New link that shows the week's count and cycles through the latest names.",
+    items: [{ label: "What's new", href: "/new" }],
+  },
+  {
+    date: "2026-11-07",
+    kind: "site",
     title: "Voice AI Agent Dashboard Kit, Ringwise",
     summary:
       "A paid thirteen-page dashboard kit for voice AI agent products: KPIs and call outcomes, live calls with transcripts and take-over, call history, agents, knowledge sources, campaigns, leads on a table or board, workflows, integrations, team, and settings with billing. It works in light and dark mode, on phones and tablets, and ships with a live preview.",

@@ -12,6 +12,7 @@ import {
 } from "@/lib/site-templates";
 import { STUDIO_URL } from "@/lib/site-url";
 import { source } from "@/lib/source";
+import { type WhatsNewNav, whatsNewNav } from "@/lib/whats-new";
 
 /**
  * The header's nav items and the menus they open, for both sites. Built on
@@ -47,7 +48,7 @@ export interface NavMenuPanel {
  * a block's preview.
  */
 export type LiveVisual =
-  | { kind: "live"; live: "number-ticker" | "composed-chart" }
+  | { kind: "live"; live: "number-ticker" }
   | { kind: "block"; slug: string };
 
 /**
@@ -88,7 +89,9 @@ export interface NavMenu {
 
 export type NavItem =
   | { kind: "link"; text: string; url: string }
-  | { kind: "menu"; menu: NavMenu };
+  | { kind: "menu"; menu: NavMenu }
+  /** "New", with the week's count and a ticker of what just shipped. */
+  | { kind: "new"; nav: WhatsNewNav };
 
 export interface NavCta {
   label: string;
@@ -257,11 +260,15 @@ function latestBlocks(count: number): NavMenuLink[] {
   return links.slice(0, count);
 }
 
-function blocksMenu(): NavMenu {
+/**
+ * Blocks and charts in one menu: the latest blocks, every chart type, the
+ * block categories along the bottom, and the newest block on the card.
+ */
+function galleryMenu(): NavMenu {
   return {
-    id: "blocks",
-    label: "Blocks",
-    match: ["/blocks"],
+    id: "gallery",
+    label: "Gallery",
+    match: ["/blocks", "/charts"],
     panels: [
       {
         title: "Latest blocks",
@@ -271,39 +278,21 @@ function blocksMenu(): NavMenu {
         footer: { label: `Browse all ${BLOCK_TOTAL} blocks`, href: "/blocks" },
       },
       {
-        title: "By category",
-        layout: "list",
-        links: BLOCK_CATEGORIES.map((category) => ({
-          label: category.name,
-          href: `/blocks?category=${category.slug}`,
-          meta: String(category.blocks.length),
-        })),
-      },
-    ],
-    feature: newestBlock(),
-  };
-}
-
-function chartsMenu(): NavMenu {
-  const composedUrl = "/docs/charts/composed-chart";
-  return {
-    id: "charts",
-    label: "Charts",
-    match: ["/charts"],
-    panels: [
-      {
-        title: "Chart types",
+        title: "Charts",
         layout: "grid",
-        columns: 3,
+        columns: 2,
         links: familyPages("Charts"),
         footer: { label: "Open the chart gallery", href: "/charts/area-chart" },
       },
     ],
-    feature: {
-      title: pageTitle(composedUrl, "Composed Chart"),
-      description: pageDescription(composedUrl),
-      href: composedUrl,
-      visual: { kind: "live", live: "composed-chart" },
+    feature: newestBlock(),
+    strip: {
+      title: "Block categories",
+      links: BLOCK_CATEGORIES.map((category) => ({
+        label: category.name,
+        href: `/blocks?category=${category.slug}`,
+        meta: String(category.blocks.length),
+      })),
     },
   };
 }
@@ -387,9 +376,9 @@ function resourcesMenu(): NavMenu {
 /** The header nav on ui.cortexcn.dev. */
 export function libraryNavItems(): NavItem[] {
   return [
+    { kind: "new", nav: whatsNewNav() },
     { kind: "menu", menu: componentsMenu() },
-    { kind: "menu", menu: blocksMenu() },
-    { kind: "menu", menu: chartsMenu() },
+    { kind: "menu", menu: galleryMenu() },
     { kind: "link", text: "Templates", url: "/templates" },
     { kind: "link", text: "Pro", url: "/pro" },
     { kind: "menu", menu: resourcesMenu() },

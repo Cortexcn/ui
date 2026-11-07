@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { CortexcnLogo } from "@/components/icons/cortexcn";
 import { ProductCredit } from "@/components/product-credit";
+import { VersionTag } from "@/components/version-tag";
 import { COMPONENT_GROUPS } from "@/lib/component-families";
 import { CONTACT_EMAIL } from "@/lib/contact-details";
 import { SITE_URL, STUDIO_URL } from "@/lib/site-url";
@@ -87,12 +88,15 @@ export function LibraryFooter() {
     <footer className="border-border border-t">
       <Container className="grid gap-12 py-14 md:grid-cols-[minmax(0,1.2fr)_minmax(0,2fr)] md:py-16">
         <div className="flex flex-col items-start gap-4">
-          <Link className="flex items-center gap-2.5" href="/">
-            <CortexcnLogo size={24} theme="auto" />
-            <span className="font-medium text-lg tracking-[-0.02em]">
-              Cortexcn
-            </span>
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link className="flex items-center gap-2.5" href="/">
+              <CortexcnLogo size={24} theme="auto" />
+              <span className="font-medium text-lg tracking-[-0.02em]">
+                Cortexcn
+              </span>
+            </Link>
+            <VersionTag className="text-xs" />
+          </div>
           <p className="max-w-xs text-body text-sm leading-[1.5]">
             React components, charts, and blocks for shadcn/ui. Install them
             with the CLI or your AI agent, and own the code.

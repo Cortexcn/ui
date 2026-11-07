@@ -2,6 +2,7 @@ import Link from "fumadocs-core/link";
 import { StatusBadge } from "@/components/status-badge";
 import { cn } from "@/lib/utils";
 import { CortexcnLogo } from "../icons/cortexcn";
+import { VersionText } from "../version-tag";
 
 /** One floating badge of the credit row. */
 const BADGE =
@@ -32,6 +33,7 @@ export function SiteFooter({
             {/* "auto" also follows the forced-dark landing scope, not just the site theme. */}
             <CortexcnLogo size={16} theme="auto" />
             Cortexcn
+            <VersionText />
           </Link>
           <StatusBadge
             className={cn(

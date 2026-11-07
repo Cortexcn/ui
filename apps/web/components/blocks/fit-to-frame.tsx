@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode, useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 /** Blocks lay out at this width before being scaled into the thumbnail. */
 const RENDER_WIDTH = 1280;
@@ -19,7 +20,14 @@ interface FitLayout {
  * Renders the real block, measures it, and scales it to fit the frame
  * entirely (like object-fit: contain), centered.
  */
-export function FitToFrame({ children }: { children: ReactNode }) {
+export function FitToFrame({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  /** Sets the frame's shape, 16:10 by default. */
+  className?: string;
+}) {
   const frameRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const [layout, setLayout] = useState<FitLayout | null>(null);
@@ -58,7 +66,7 @@ export function FitToFrame({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className="relative aspect-16/10 w-full overflow-hidden"
+      className={cn("relative aspect-16/10 w-full overflow-hidden", className)}
       ref={frameRef}
     >
       <div
