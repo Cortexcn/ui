@@ -44,6 +44,16 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-07",
+    kind: "site",
+    title: "Voice AI Agent Dashboard Kit, Ringwise",
+    summary:
+      "A paid thirteen-page dashboard kit for voice AI agent products: KPIs and call outcomes, live calls with transcripts and take-over, call history, agents, knowledge sources, campaigns, leads on a table or board, workflows, integrations, team, and settings with billing. It works in light and dark mode, on phones and tablets, and ships with a live preview.",
+    items: [
+      { label: "Voice AI Agent Dashboard Kit", href: "/templates/ringwise" },
+    ],
+  },
+  {
     date: "2026-11-06",
     kind: "site",
     title: "Docs Dashboard Kit, Quire",

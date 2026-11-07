@@ -95,6 +95,22 @@ import quireTasksDark from "@/assets/templates/quire/page-tasks-dark.webp";
 import quireTasksLight from "@/assets/templates/quire/page-tasks-light.webp";
 import quireTeamDark from "@/assets/templates/quire/page-team-dark.webp";
 import quireTeamLight from "@/assets/templates/quire/page-team-light.webp";
+import ringwiseCardDark from "@/assets/templates/ringwise/card-dark.webp";
+import ringwiseCardLight from "@/assets/templates/ringwise/card-light.webp";
+import ringwiseDesktopDark from "@/assets/templates/ringwise/desktop-dark.webp";
+import ringwiseDesktopLight from "@/assets/templates/ringwise/desktop-light.webp";
+import ringwiseMobileDark from "@/assets/templates/ringwise/mobile-dark.webp";
+import ringwiseMobileLight from "@/assets/templates/ringwise/mobile-light.webp";
+import ringwiseAgentsDark from "@/assets/templates/ringwise/page-agents-dark.webp";
+import ringwiseAgentsLight from "@/assets/templates/ringwise/page-agents-light.webp";
+import ringwiseAnalyticsDark from "@/assets/templates/ringwise/page-analytics-dark.webp";
+import ringwiseAnalyticsLight from "@/assets/templates/ringwise/page-analytics-light.webp";
+import ringwiseCallsDark from "@/assets/templates/ringwise/page-calls-dark.webp";
+import ringwiseCallsLight from "@/assets/templates/ringwise/page-calls-light.webp";
+import ringwiseCampaignsDark from "@/assets/templates/ringwise/page-campaigns-dark.webp";
+import ringwiseCampaignsLight from "@/assets/templates/ringwise/page-campaigns-light.webp";
+import ringwiseLiveDark from "@/assets/templates/ringwise/page-live-dark.webp";
+import ringwiseLiveLight from "@/assets/templates/ringwise/page-live-light.webp";
 import saasCardDark from "@/assets/templates/simplistic-saas/card-dark.webp";
 import saasCardLight from "@/assets/templates/simplistic-saas/card-light.webp";
 import saasDesktopDark from "@/assets/templates/simplistic-saas/desktop-dark.webp";
@@ -434,6 +450,77 @@ const ALL_TEMPLATES: SiteTemplate[] = [
       },
     ],
     previewUrl: "/previews/people-dashboard-kit",
+  },
+  {
+    slug: "ringwise",
+    name: "Voice AI Agent Dashboard Kit",
+    kind: "dashboard",
+    summary:
+      "Ringwise, a dashboard for voice AI agent products: agents that call and answer, live calls, call history with transcripts, campaigns, leads, and the outcome of every call, built from Cortexcn components and charts",
+    price: 129,
+    categories: ["dashboards", "saas", "ai"],
+    released: "2026-11-07",
+    updated: "2026-11-07",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "TypeScript",
+    ],
+    sections: [
+      "Dashboard",
+      "Analytics",
+      "Voice Agents",
+      "Agent",
+      "Knowledge Base",
+      "Live Calls",
+      "Call History",
+      "Campaigns",
+      "Leads",
+      "Workflows",
+      "Integrations",
+      "Team",
+      "Settings",
+    ],
+    features: [
+      "A dashboard with calls handled, answer rate, leads qualified, appointments booked, and spend against the period before, twelve months of calls by outcome, and each agent's results, calls by channel and by day, the campaign funnel, and calls by language.",
+      "Live calls with a running timer, the transcript so far, and a button to take the call over, and a call history where each call opens with its recording player, summary, the details the agent noted, and the transcript.",
+      "Voice agents with their greeting, voice, languages, handoff to a person, and knowledge sources, and campaigns with progress, a funnel from dialed to booked, calling hours, and pause and resume.",
+      "Leads as a table or a board by stage, follow-up workflows that mix calls, WhatsApp, and waits, integrations and phone numbers, team roles, and settings with billing and usage.",
+      "Every create, edit, and delete goes through one provider, with Undo on deletes, so you turn its actions into API calls and nothing else moves.",
+      "Built from Cortexcn components and Pro charts with Hugeicons and Inter, with demo data for a made-up home builder and 34 Vitest checks. Light and dark mode, and layouts for phones and tablets.",
+    ],
+    customize:
+      "Swap the demo data in lib/data, set today's date in lib/dates.ts, rename the product and pages in config/site.ts, change the colors in app/globals.css, and turn the actions in components/workspace/workspace-provider.tsx into API calls.",
+    screenshots: {
+      card: { light: ringwiseCardLight, dark: ringwiseCardDark },
+      desktop: { light: ringwiseDesktopLight, dark: ringwiseDesktopDark },
+      mobile: { light: ringwiseMobileLight, dark: ringwiseMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Analytics",
+        image: { light: ringwiseAnalyticsLight, dark: ringwiseAnalyticsDark },
+      },
+      {
+        name: "Voice Agents",
+        image: { light: ringwiseAgentsLight, dark: ringwiseAgentsDark },
+      },
+      {
+        name: "Live Calls",
+        image: { light: ringwiseLiveLight, dark: ringwiseLiveDark },
+      },
+      {
+        name: "Call History",
+        image: { light: ringwiseCallsLight, dark: ringwiseCallsDark },
+      },
+      {
+        name: "Campaigns",
+        image: { light: ringwiseCampaignsLight, dark: ringwiseCampaignsDark },
+      },
+    ],
+    previewUrl: "/previews/ringwise",
   },
   {
     slug: "quire",
