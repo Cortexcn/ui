@@ -3,6 +3,7 @@ import { aiQueue01Meta } from "./ai-queue-01/meta";
 import { aiReasoning01Meta } from "./ai-reasoning-01/meta";
 import { aiShimmer01Meta } from "./ai-shimmer-01/meta";
 import { bentoGridInsights01Meta } from "./bento-grid-insights-01/meta";
+import { blogMasonry01Meta } from "./blog-masonry-01/meta";
 import { chartGroupBusiness01Meta } from "./chart-group-business-01/meta";
 import { chartGroupEcommerce01Meta } from "./chart-group-ecommerce-01/meta";
 import { chartGroupEnergy01Meta } from "./chart-group-energy-01/meta";
@@ -29,10 +30,14 @@ import { featureMockupGrid01Meta } from "./feature-mockup-grid-01/meta";
 import { featureSpotlightGrid01Meta } from "./feature-spotlight-grid-01/meta";
 import { featureStudioGrid01Meta } from "./feature-studio-grid-01/meta";
 import { featureWalkthrough01Meta } from "./feature-walkthrough-01/meta";
+import { galleryFlutedGlass01Meta } from "./gallery-fluted-glass-01/meta";
+import { galleryLiquidSeams01Meta } from "./gallery-liquid-seams-01/meta";
+import { galleryPrintPile01Meta } from "./gallery-print-pile-01/meta";
 import { heroCover01Meta } from "./hero-cover-01/meta";
 import { heroDashboard01Meta } from "./hero-dashboard-01/meta";
 import { heroStudio01Meta } from "./hero-studio-01/meta";
 import { heroSynapse01Meta } from "./hero-synapse-01/meta";
+import { heroTiltedWall01Meta } from "./hero-tilted-wall-01/meta";
 import { loaderDotMatrix01Meta } from "./loader-dot-matrix-01/meta";
 import { loaderGlitchText01Meta } from "./loader-glitch-text-01/meta";
 import type { BlockSlug } from "./manifest";
@@ -88,5 +93,10 @@ export const BLOCK_METAS: Record<
   "loader-dot-matrix-01": loaderDotMatrix01Meta,
   "loader-glitch-text-01": loaderGlitchText01Meta,
   "services-image-grid-01": servicesImageGrid01Meta,
+  "gallery-fluted-glass-01": galleryFlutedGlass01Meta,
+  "gallery-liquid-seams-01": galleryLiquidSeams01Meta,
+  "gallery-print-pile-01": galleryPrintPile01Meta,
+  "blog-masonry-01": blogMasonry01Meta,
+  "hero-tilted-wall-01": heroTiltedWall01Meta,
   "services-preview-list-01": servicesPreviewList01Meta,
 };

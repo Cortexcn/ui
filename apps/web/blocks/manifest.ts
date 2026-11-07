@@ -415,6 +415,53 @@ export const servicesImageGrid01Files = [
   "components/services-image-grid.tsx",
 ] as const;
 
+export const galleryFlutedGlass01Files = [
+  "components/fluted-glass-slideshow.tsx",
+  "components/fluted-glass/fluted-layer.tsx",
+  "components/fluted-glass/slide-caption.tsx",
+  "components/fluted-glass/slide-controls.tsx",
+  "components/fluted-glass/slide-progress.tsx",
+  "components/fluted-glass/slides.ts",
+  "components/fluted-glass/use-slideshow.ts",
+] as const;
+
+export const galleryLiquidSeams01Files = [
+  "components/liquid-seams-gallery.tsx",
+  "components/liquid-seams/gallery-header.tsx",
+  "components/liquid-seams/picture-tile.tsx",
+  "components/liquid-seams/pictures.ts",
+  "components/liquid-seams/seam-band.tsx",
+  "components/liquid-seams/seam-filter.tsx",
+  "components/liquid-seams/use-seam-flow.ts",
+] as const;
+
+export const galleryPrintPile01Files = [
+  "components/print-pile-gallery.tsx",
+  "components/print-pile/arrange-toggle.tsx",
+  "components/print-pile/pile-header.tsx",
+  "components/print-pile/pile-layout.ts",
+  "components/print-pile/print-card.tsx",
+  "components/print-pile/print-stage.tsx",
+  "components/print-pile/prints.ts",
+] as const;
+
+export const blogMasonry01Files = [
+  "components/blog-masonry-grid.tsx",
+  "components/blog-masonry/blog-header.tsx",
+  "components/blog-masonry/post-card.tsx",
+  "components/blog-masonry/post-grid.tsx",
+  "components/blog-masonry/posts.ts",
+] as const;
+
+export const heroTiltedWall01Files = [
+  "components/hero-tilted-wall.tsx",
+  "components/hero-tilted-wall/content.ts",
+  "components/hero-tilted-wall/hero-action.tsx",
+  "components/hero-tilted-wall/hero-copy.tsx",
+  "components/hero-tilted-wall/wall-backdrop.tsx",
+  "components/hero-tilted-wall/wall-images.ts",
+] as const;
+
 export const servicesPreviewList01Files = [
   "components/services-preview-list.tsx",
 ] as const;
@@ -462,6 +509,11 @@ export const blockFileManifests = {
   "loader-glitch-text-01": loaderGlitchText01Files,
   "services-image-grid-01": servicesImageGrid01Files,
   "services-preview-list-01": servicesPreviewList01Files,
+  "gallery-fluted-glass-01": galleryFlutedGlass01Files,
+  "gallery-liquid-seams-01": galleryLiquidSeams01Files,
+  "gallery-print-pile-01": galleryPrintPile01Files,
+  "blog-masonry-01": blogMasonry01Files,
+  "hero-tilted-wall-01": heroTiltedWall01Files,
 } as const;
 
 export type BlockSlug = keyof typeof blockFileManifests;

@@ -44,6 +44,56 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-08",
+    kind: "blocks",
+    title: "Tilted Wall joins the Hero blocks",
+    summary:
+      "Hero: Tilted Wall is a Pro hero with a badge, a headline, a short description, and two buttons in front of a tilted wall of paintings whose columns scroll endlessly in opposite directions. It is built on Perspective Marquee, so pointing at a column pauses it, and on small screens the wall sits below the copy. Visitors who prefer less motion see the wall still.",
+    items: [{ label: "Tilted Wall", href: "/blocks/hero/hero-tilted-wall-01" }],
+  },
+  {
+    date: "2026-11-08",
+    kind: "blocks",
+    title: "Blog blocks, starting with Masonry Grid",
+    summary:
+      "A new Blog category opens with Masonry Grid, a Pro grid of posts in staggered columns with cover pictures of mixed shapes. Pointing at a post, or tabbing to it, dims the others and slides its summary up over the picture, and screen readers get the summary with each post.",
+    items: [
+      { label: "Blog", href: "/blocks?category=blog" },
+      { label: "Masonry Grid", href: "/blocks/blog/blog-masonry-01" },
+    ],
+  },
+  {
+    date: "2026-11-08",
+    kind: "blocks",
+    title: "Liquid Seams and Print Pile join the Galleries blocks",
+    summary:
+      "Liquid Seams is a free column of paintings whose joins run together like wet paint while the page scrolls fast, then part into crisp pictures with a clear gap as it slows. Print Pile, a Pro block, lays a loose, tilted pile of portrait prints out into a captioned grid with one button and gathers it back. Both stay still for visitors who prefer less motion.",
+    items: [
+      {
+        label: "Liquid Seams",
+        href: "/blocks/galleries/gallery-liquid-seams-01",
+      },
+      {
+        label: "Print Pile",
+        href: "/blocks/galleries/gallery-print-pile-01",
+      },
+    ],
+  },
+  {
+    date: "2026-11-08",
+    kind: "blocks",
+    title: "Galleries blocks, starting with Fluted Glass Slideshow",
+    summary:
+      "A new Galleries category opens with Fluted Glass Slideshow, a free wide slideshow. Each new slide arrives through ribbed glass that splits it into bent vertical strips, and the strips line up into a clear picture as it lands. It plays on its own and holds while you point at it, with a pause button, arrow keys, previous and next buttons, and a bar per slide; visitors who prefer less motion get a fade.",
+    items: [
+      { label: "Galleries", href: "/blocks?category=galleries" },
+      {
+        label: "Fluted Glass Slideshow",
+        href: "/blocks/galleries/gallery-fluted-glass-01",
+      },
+    ],
+  },
+  {
     date: "2026-11-07",
     kind: "site",
     title: "What's new, a daily feed of everything that ships",

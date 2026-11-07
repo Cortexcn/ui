@@ -18,6 +18,7 @@ export const BLOCK_CATEGORIES: BlockCategory[] = [
       "Opening sections with a headline, a call to action, and a product preview.",
     blocks: [
       "hero-synapse-01",
+      "hero-tilted-wall-01",
       "hero-dashboard-01",
       "hero-studio-01",
       "hero-cover-01",
@@ -43,6 +44,24 @@ export const BLOCK_CATEGORIES: BlockCategory[] = [
     description:
       "Sections that show what you offer, with image cards, a short pitch, and one call to action.",
     blocks: ["services-image-grid-01", "services-preview-list-01"],
+  },
+  {
+    slug: "galleries",
+    name: "Galleries",
+    description:
+      "Image galleries and slideshows with motion, for showing work, products, or places.",
+    blocks: [
+      "gallery-fluted-glass-01",
+      "gallery-liquid-seams-01",
+      "gallery-print-pile-01",
+    ],
+  },
+  {
+    slug: "blog",
+    name: "Blog",
+    description:
+      "Sections that list blog posts, with covers, categories, dates, and reading times.",
+    blocks: ["blog-masonry-01"],
   },
   {
     slug: "ai-assistant",

@@ -2,7 +2,6 @@ import "./globals.css";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { RootProvider } from "fumadocs-ui/provider";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
@@ -11,6 +10,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import type { ReactNode } from "react";
 import { DocsSearchDialog } from "@/components/docs/docs-search-dialog";
+import { SiteRootProvider } from "@/components/site-root-provider";
 import { PageScrollbar } from "@/components/smooth-scroll/page-scrollbar";
 import { SmoothScroll } from "@/components/smooth-scroll/smooth-scroll";
 import { getOpenPanelClientId } from "@/lib/openpanel-env";
@@ -190,7 +190,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             trackScreenViews
           />
         ) : null}
-        <RootProvider
+        <SiteRootProvider
           search={{
             SearchDialog: DocsSearchDialog,
             options: {
@@ -205,7 +205,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         >
           {children}
-        </RootProvider>
+        </SiteRootProvider>
         <PageScrollbar />
         {/* Vercel Web Analytics: page views on all three hosts, without cookies. */}
         <Analytics />

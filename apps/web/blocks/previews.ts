@@ -4,6 +4,7 @@ import { AiQueuePreview } from "./ai-queue-01/preview";
 import { AiReasoningPreview } from "./ai-reasoning-01/preview";
 import { AiShimmerPreview } from "./ai-shimmer-01/preview";
 import { BentoGridInsightsPreview } from "./bento-grid-insights-01/preview";
+import { BlogMasonryPreview } from "./blog-masonry-01/preview";
 import { ChartGroupBusinessPreview } from "./chart-group-business-01/preview";
 import { ChartGroupEcommercePreview } from "./chart-group-ecommerce-01/preview";
 import { ChartGroupEnergyPreview } from "./chart-group-energy-01/preview";
@@ -30,10 +31,14 @@ import { FeatureMockupGridPreview } from "./feature-mockup-grid-01/preview";
 import { FeatureSpotlightGridPreview } from "./feature-spotlight-grid-01/preview";
 import { FeatureStudioGridPreview } from "./feature-studio-grid-01/preview";
 import { FeatureWalkthroughPreview } from "./feature-walkthrough-01/preview";
+import { GalleryFlutedGlassPreview } from "./gallery-fluted-glass-01/preview";
+import { GalleryLiquidSeamsPreview } from "./gallery-liquid-seams-01/preview";
+import { GalleryPrintPilePreview } from "./gallery-print-pile-01/preview";
 import { HeroCoverPreview } from "./hero-cover-01/preview";
 import { HeroDashboardPreview } from "./hero-dashboard-01/preview";
 import { HeroStudioPreview } from "./hero-studio-01/preview";
 import { HeroSynapsePreview } from "./hero-synapse-01/preview";
+import { HeroTiltedWallPreview } from "./hero-tilted-wall-01/preview";
 import { LoaderDotMatrixPreview } from "./loader-dot-matrix-01/preview";
 import { LoaderGlitchTextPreview } from "./loader-glitch-text-01/preview";
 import type { BlockSlug } from "./manifest";
@@ -86,5 +91,10 @@ export const BLOCK_PREVIEWS: Record<BlockSlug, ComponentType> = {
   "loader-dot-matrix-01": LoaderDotMatrixPreview,
   "loader-glitch-text-01": LoaderGlitchTextPreview,
   "services-image-grid-01": ServicesImageGridPreview,
+  "gallery-fluted-glass-01": GalleryFlutedGlassPreview,
+  "gallery-liquid-seams-01": GalleryLiquidSeamsPreview,
+  "gallery-print-pile-01": GalleryPrintPilePreview,
+  "blog-masonry-01": BlogMasonryPreview,
+  "hero-tilted-wall-01": HeroTiltedWallPreview,
   "services-preview-list-01": ServicesPreviewListPreview,
 };

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gallery-fluted-glass-01-example",
+  "title": "Fluted Glass Slideshow Example",
+  "description": "A wide slideshow where each new slide arrives through ribbed glass that splits it into bent vertical strips, which line up into a clear picture as it lands, with autoplay, a pause button, arrows, and a bar per slide — demo for Open in v0",
+  "dependencies": [
+    "lucide-react@1",
+    "motion@13"
+  ],
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/gallery-fluted-glass-01.json"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/gallery-fluted-glass-01.tsx",
+      "content": "\"use client\";\n\nimport { FlutedGlassSlideshow } from \"@/components/fluted-glass-slideshow\";\n\n// Cortexcn item \"gallery-fluted-glass-01-example\", revision ad85e420ee44, MIT license.\n// https://ui.cortexcn.dev/r/v/gallery-fluted-glass-01-example/ad85e420ee44.json\n\nexport default function Component() {\n  return (\n    <main className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-6xl\">\n        <FlutedGlassSlideshow />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:page",
+      "target": "app/page.tsx"
+    }
+  ],
+  "type": "registry:example",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "ad85e420ee44"
+  }
+}

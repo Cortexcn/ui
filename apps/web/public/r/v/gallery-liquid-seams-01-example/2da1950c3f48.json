@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gallery-liquid-seams-01-example",
+  "title": "Liquid Seams Example",
+  "description": "A centered column of pictures whose joins run together like wet paint while the page scrolls fast, then part into crisp, separate pictures with a clear gap as it slows — demo for Open in v0",
+  "dependencies": [
+    "motion@13"
+  ],
+  "registryDependencies": [
+    "https://ui.cortexcn.dev/r/gallery-liquid-seams-01.json"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/gallery-liquid-seams-01.tsx",
+      "content": "\"use client\";\n\nimport { LiquidSeamsGallery } from \"@/components/liquid-seams-gallery\";\n\n// Cortexcn item \"gallery-liquid-seams-01-example\", revision 2da1950c3f48, MIT license.\n// https://ui.cortexcn.dev/r/v/gallery-liquid-seams-01-example/2da1950c3f48.json\n\nexport default function Component() {\n  return (\n    <main className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-3xl\">\n        <LiquidSeamsGallery />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:page",
+      "target": "app/page.tsx"
+    }
+  ],
+  "type": "registry:example",
+  "author": "Cortexcn (https://ui.cortexcn.dev)",
+  "meta": {
+    "license": "MIT",
+    "revision": "2da1950c3f48"
+  }
+}

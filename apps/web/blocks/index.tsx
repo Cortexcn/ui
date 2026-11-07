@@ -6,6 +6,7 @@ import { AiQueueBlock } from "./ai-queue-01";
 import { AiReasoningBlock } from "./ai-reasoning-01";
 import { AiShimmerBlock } from "./ai-shimmer-01";
 import { BentoGridInsightsBlock } from "./bento-grid-insights-01";
+import { BlogMasonryBlock } from "./blog-masonry-01";
 import type { BlockCategory } from "./categories";
 import { ChartGroupBusinessBlock } from "./chart-group-business-01";
 import { ChartGroupEcommerceBlock } from "./chart-group-ecommerce-01";
@@ -33,10 +34,14 @@ import { FeatureMockupGridBlock } from "./feature-mockup-grid-01";
 import { FeatureSpotlightGridBlock } from "./feature-spotlight-grid-01";
 import { FeatureStudioGridBlock } from "./feature-studio-grid-01";
 import { FeatureWalkthroughBlock } from "./feature-walkthrough-01";
+import { GalleryFlutedGlassBlock } from "./gallery-fluted-glass-01";
+import { GalleryLiquidSeamsBlock } from "./gallery-liquid-seams-01";
+import { GalleryPrintPileBlock } from "./gallery-print-pile-01";
 import { HeroCoverBlock } from "./hero-cover-01";
 import { HeroDashboardBlock } from "./hero-dashboard-01";
 import { HeroStudioBlock } from "./hero-studio-01";
 import { HeroSynapseBlock } from "./hero-synapse-01";
+import { HeroTiltedWallBlock } from "./hero-tilted-wall-01";
 import { LoaderDotMatrixBlock } from "./loader-dot-matrix-01";
 import { LoaderGlitchTextBlock } from "./loader-glitch-text-01";
 import { type BlockSlug, blockFileManifests } from "./manifest";
@@ -89,6 +94,11 @@ const BLOCK_VIEWERS: Record<BlockSlug, ComponentType<BlockDisplayProps>> = {
   "loader-dot-matrix-01": LoaderDotMatrixBlock,
   "loader-glitch-text-01": LoaderGlitchTextBlock,
   "services-image-grid-01": ServicesImageGridBlock,
+  "gallery-fluted-glass-01": GalleryFlutedGlassBlock,
+  "gallery-liquid-seams-01": GalleryLiquidSeamsBlock,
+  "gallery-print-pile-01": GalleryPrintPileBlock,
+  "blog-masonry-01": BlogMasonryBlock,
+  "hero-tilted-wall-01": HeroTiltedWallBlock,
   "services-preview-list-01": ServicesPreviewListBlock,
 };
 
