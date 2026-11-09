@@ -111,6 +111,22 @@ import ringwiseCampaignsDark from "@/assets/templates/ringwise/page-campaigns-da
 import ringwiseCampaignsLight from "@/assets/templates/ringwise/page-campaigns-light.webp";
 import ringwiseLiveDark from "@/assets/templates/ringwise/page-live-dark.webp";
 import ringwiseLiveLight from "@/assets/templates/ringwise/page-live-light.webp";
+import shipkinCardDark from "@/assets/templates/shipkin/card-dark.webp";
+import shipkinCardLight from "@/assets/templates/shipkin/card-light.webp";
+import shipkinDesktopDark from "@/assets/templates/shipkin/desktop-dark.webp";
+import shipkinDesktopLight from "@/assets/templates/shipkin/desktop-light.webp";
+import shipkinMobileDark from "@/assets/templates/shipkin/mobile-dark.webp";
+import shipkinMobileLight from "@/assets/templates/shipkin/mobile-light.webp";
+import shipkinAboutDark from "@/assets/templates/shipkin/page-about-dark.webp";
+import shipkinAboutLight from "@/assets/templates/shipkin/page-about-light.webp";
+import shipkinContactDark from "@/assets/templates/shipkin/page-contact-dark.webp";
+import shipkinContactLight from "@/assets/templates/shipkin/page-contact-light.webp";
+import shipkinPricingDark from "@/assets/templates/shipkin/page-pricing-dark.webp";
+import shipkinPricingLight from "@/assets/templates/shipkin/page-pricing-light.webp";
+import shipkinProjectsDark from "@/assets/templates/shipkin/page-projects-dark.webp";
+import shipkinProjectsLight from "@/assets/templates/shipkin/page-projects-light.webp";
+import shipkinServicesDark from "@/assets/templates/shipkin/page-services-dark.webp";
+import shipkinServicesLight from "@/assets/templates/shipkin/page-services-light.webp";
 import saasCardDark from "@/assets/templates/simplistic-saas/card-dark.webp";
 import saasCardLight from "@/assets/templates/simplistic-saas/card-light.webp";
 import saasDesktopDark from "@/assets/templates/simplistic-saas/desktop-dark.webp";
@@ -244,6 +260,72 @@ export interface SiteTemplate {
 }
 
 const ALL_TEMPLATES: SiteTemplate[] = [
+  {
+    slug: "shipkin",
+    name: "Shipkin",
+    summary:
+      "A 41-page website for an AI agents product and its studio, with services, case studies, a gallery, a blog, careers, and pricing",
+    price: 110,
+    categories: ["ai", "saas", "agency"],
+    released: "2026-11-09",
+    updated: "2026-11-09",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
+    sections: [
+      "Home",
+      "About",
+      "Services",
+      "Service page",
+      "Projects",
+      "Case study",
+      "Gallery",
+      "Album",
+      "Blog",
+      "Blog post",
+      "Pricing",
+      "Careers",
+      "Contact",
+      "Legal",
+      "404",
+    ],
+    features: [
+      "41 pages from 15 layouts: 6 services, 7 case studies, 6 gallery albums, 4 blog posts, 7 job pages, and 2 legal pages, each generated from a content file.",
+      "70 original 3D renders in ten palettes, five agent characters drawn in SVG, and drawn interface frames, so there are no stock photos to license.",
+      "Scroll-driven motion: a statement that lights up word by word, a six-week timeline with a moving playhead, a sideways company history, and numbers that count up.",
+      "A hover deck of agents, a team carousel, a gallery deck with album tabs, lightbox frames, and filters on services, projects, albums, and roles.",
+      "Pricing with a monthly and annual switch, a 24-line comparison table, a plan finder, add-ons, and a billing FAQ.",
+      "A contact form that opens the visitor's email app or posts to any form service, with a sitemap, a robots file, and a title and description on every page. Light mode, with reduced motion respected throughout.",
+    ],
+    customize:
+      "Change the brand and links in content/site.ts, the services, projects, posts, albums, roles, and plans in the other content/ files, and the colors in app/globals.css.",
+    screenshots: {
+      card: { light: shipkinCardLight, dark: shipkinCardDark },
+      desktop: { light: shipkinDesktopLight, dark: shipkinDesktopDark },
+      mobile: { light: shipkinMobileLight, dark: shipkinMobileDark },
+    },
+    pageShots: [
+      {
+        name: "About",
+        image: { light: shipkinAboutLight, dark: shipkinAboutDark },
+      },
+      {
+        name: "Services",
+        image: { light: shipkinServicesLight, dark: shipkinServicesDark },
+      },
+      {
+        name: "Projects",
+        image: { light: shipkinProjectsLight, dark: shipkinProjectsDark },
+      },
+      {
+        name: "Pricing",
+        image: { light: shipkinPricingLight, dark: shipkinPricingDark },
+      },
+      {
+        name: "Contact",
+        image: { light: shipkinContactLight, dark: shipkinContactDark },
+      },
+    ],
+    previewUrl: "/previews/shipkin",
+  },
   {
     slug: "project-dashboard-kit",
     name: "Project Dashboard Kit",

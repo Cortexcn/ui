@@ -44,6 +44,14 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-09",
+    kind: "site",
+    title: "AI Agents Website, Shipkin",
+    summary:
+      "A paid 41-page website for an AI agents product and the studio behind it: home, about, services, case studies, a gallery, a blog, careers, pricing with a plan comparison, contact, legal pages, and a custom 404. Every service, project, album, post, and role is a page generated from a content file, and every picture is an original 3D render or drawing made for it. It ships with a live preview.",
+    items: [{ label: "Shipkin", href: "/templates/shipkin" }],
+  },
+  {
     date: "2026-11-08",
     kind: "blocks",
     title: "Tilted Wall joins the Hero blocks",
