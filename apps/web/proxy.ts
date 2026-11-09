@@ -3,6 +3,7 @@ import {
   type NextRequest,
   NextResponse,
 } from "next/server";
+import { withAuth } from "@/lib/auth/proxy";
 import { siteForHost } from "@/lib/site-host";
 import {
   canonicalUrlFor,
@@ -86,11 +87,17 @@ function productionRedirectFor(host: string, pathname: string): URL | null {
   return target;
 }
 
-export function proxy(request: NextRequest, event: NextFetchEvent) {
+function route(request: NextRequest, event: NextFetchEvent) {
   const host = (
     request.headers.get("host") ?? request.nextUrl.host
   ).toLowerCase();
   const { pathname, search } = request.nextUrl;
+
+  // Route handlers only come through here for sign-in (see `config`), and
+  // answer on the host that called them.
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
+  }
 
   // Registry files (/r/<name>.json, and pinned revisions under /r/v/) are
   // served as they always were; the request is only logged for /admin/stats,
@@ -155,11 +162,16 @@ export function proxy(request: NextRequest, event: NextFetchEvent) {
   return response;
 }
 
+/** Clerk reads the session first, so pages and route handlers can use it. */
+export const proxy = withAuth(route);
+
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
     "/robots.txt",
     "/sitemap.xml",
+    // Route handlers that read the signed-in user.
+    "/api/admin/:path*",
     // Registry files, only to log them; see the top of `proxy`.
     "/r/:path*",
   ],

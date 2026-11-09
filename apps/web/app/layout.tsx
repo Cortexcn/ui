@@ -9,6 +9,7 @@ import { Instrument_Serif, Source_Serif_4 } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import type { ReactNode } from "react";
+import { AuthProvider } from "@/components/auth/auth-provider";
 import { DocsSearchDialog } from "@/components/docs/docs-search-dialog";
 import { SiteRootProvider } from "@/components/site-root-provider";
 import { PageScrollbar } from "@/components/smooth-scroll/page-scrollbar";
@@ -204,7 +205,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             enableSystem: true,
           }}
         >
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </SiteRootProvider>
         <PageScrollbar />
         {/* Vercel Web Analytics: page views on all three hosts, without cookies. */}

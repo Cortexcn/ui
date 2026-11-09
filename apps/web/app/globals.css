@@ -3,6 +3,8 @@
 @import "fumadocs-ui/css/shadcn.css";
 @import "fumadocs-ui/css/preset.css";
 @import "shadcn/tailwind.css";
+/* Clerk's sign-in and account screens, styled from the shadcn tokens */
+@import "@clerk/ui/themes/shadcn.css";
 @import "../../../packages/ui/src/styles/cortexcn-tokens.css";
 @import "../../../packages/ui/src/styles/cortexcn-recipes.css";
 @import "../../../packages/ui/src/styles/theme-toggle-effect.css";

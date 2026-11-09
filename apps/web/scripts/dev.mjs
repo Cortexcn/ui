@@ -14,7 +14,8 @@
  * When .env names a Convex deployment (CONVEX_DEPLOYMENT), it also runs
  * `convex dev` to keep the functions in convex/ synced. The Convex values go
  * to the CLI through the environment, so it never writes a .env.local; every
- * setting stays in .env. Without a deployment, sign-in simply stays off.
+ * setting stays in .env. Without a deployment, the usage log stays off.
+ * Sign-in needs only the Clerk keys in .env.
  *
  * Usage: node scripts/dev.mjs [--webpack]
  */
