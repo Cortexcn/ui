@@ -193,20 +193,6 @@
     }
   }
 
-  /* Header "New" ticker: the caret behind typed text. */
-  --animate-caret: caret 1s steps(1, end) infinite;
-
-  @keyframes caret {
-    0%,
-    50% {
-      opacity: 1;
-    }
-    50.01%,
-    100% {
-      opacity: 0;
-    }
-  }
-
   /* Marquee: mirrors the cssVars/css shipped with the `marquee` registry item. */
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;

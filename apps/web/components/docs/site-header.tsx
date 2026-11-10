@@ -413,7 +413,6 @@ function MobileMenu({ items, cta, isOpen, onClose }: MobileMenuProps) {
                   key={item.nav.url}
                   nav={item.nav}
                   onClose={onClose}
-                  open={isOpen}
                 />
               );
             }
@@ -591,11 +590,7 @@ export function SiteHeader({
             pathname={pathname}
           />
 
-          {/* Marked so the "New" ticker can tell how much room the nav has. */}
-          <div
-            className="ml-auto flex items-center gap-1.5"
-            data-header-actions
-          >
+          <div className="ml-auto flex items-center gap-1.5">
             {(search || hasDocsSearch(pathname)) && (
               <DocsSearchTrigger
                 className="hidden w-44 md:inline-flex xl:w-52"

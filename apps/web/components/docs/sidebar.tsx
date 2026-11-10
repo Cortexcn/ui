@@ -5,10 +5,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { SidebarGroup, SidebarLink } from "@/lib/docs-sidebar-groups";
+import type { RailPromo } from "@/lib/nav-menus";
 import { cn } from "@/lib/utils";
 import { NewMark } from "./nav-link-label";
 import { SidebarHighlight } from "./sidebar-highlight";
 import { SidebarScrollCard } from "./sidebar-scroll-card";
+import { TemplatesPromoCard } from "./templates-promo-card";
 
 function linkPath(url: string) {
   return url.split("?")[0] ?? url;
@@ -141,7 +143,14 @@ function SidebarGroupItem({
  * holds the current page open. It sits in a rounded card that scrolls on its
  * own, and a pill slides behind the current page's link.
  */
-export function Sidebar({ groups }: { groups: SidebarGroup[] }) {
+export function Sidebar({
+  groups,
+  promo,
+}: {
+  groups: SidebarGroup[];
+  /** The templates card under the links. */
+  promo?: RailPromo;
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(() => initialOpen(groups, pathname));
   const navRef = useRef<HTMLElement>(null);
@@ -182,23 +191,30 @@ export function Sidebar({ groups }: { groups: SidebarGroup[] }) {
   };
 
   return (
-    <aside className="fixed top-(--site-header-height) left-0 hidden h-[calc(100vh-var(--site-header-height))] w-72 p-3 lg:block">
-      <SidebarScrollCard>
-        <nav aria-label="Docs" className="relative px-3 pt-4 pb-8" ref={navRef}>
-          <SidebarHighlight navRef={navRef} pathname={pathname} />
-          <ul className="m-0 flex list-none flex-col gap-0.5 p-0">
-            {groups.map((group) => (
-              <SidebarGroupItem
-                group={group}
-                key={group.id}
-                onToggle={() => toggle(group.id)}
-                open={open.has(group.id)}
-                pathname={pathname}
-              />
-            ))}
-          </ul>
-        </nav>
-      </SidebarScrollCard>
+    <aside className="fixed top-(--site-header-height) left-0 hidden h-[calc(100vh-var(--site-header-height))] w-72 flex-col gap-3 p-3 lg:flex">
+      <div className="min-h-0 flex-1">
+        <SidebarScrollCard>
+          <nav
+            aria-label="Docs"
+            className="relative px-3 pt-4 pb-8"
+            ref={navRef}
+          >
+            <SidebarHighlight navRef={navRef} pathname={pathname} />
+            <ul className="m-0 flex list-none flex-col gap-0.5 p-0">
+              {groups.map((group) => (
+                <SidebarGroupItem
+                  group={group}
+                  key={group.id}
+                  onToggle={() => toggle(group.id)}
+                  open={open.has(group.id)}
+                  pathname={pathname}
+                />
+              ))}
+            </ul>
+          </nav>
+        </SidebarScrollCard>
+      </div>
+      {promo ? <TemplatesPromoCard promo={promo} /> : null}
     </aside>
   );
 }

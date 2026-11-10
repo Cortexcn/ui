@@ -14,7 +14,7 @@ import {
 import { source } from "@/lib/source";
 
 /**
- * The /new feed and the header's "New" ticker. Both are built from the
+ * The /new feed and the header's "New" link. Both are built from the
  * changelog: every component, block, and template a release links to becomes
  * a card on the day it first shipped, and a later release that links to it
  * again lists it as updated. Adding a changelog entry is the only step.
@@ -28,20 +28,7 @@ export const FEED_DAYS = 90;
 /** The window for the count on the header's "New" item. */
 const WEEK_DAYS = 7;
 
-/** The window for the release count the header ticker rolls up. */
-const MONTH_DAYS = 30;
-
-/** Items the header ticker announces, newest first. */
-const TICKER_ITEMS = 6;
-
 const DAY_MS = 24 * 60 * 60 * 1000;
-
-/**
- * What is being built next, announced in the header ticker as "Soon: ...".
- * Add only real, planned work, and remove a line once it ships, since the
- * changelog then announces it.
- */
-const UPCOMING: string[] = [];
 
 export type NewItemType = "component" | "block" | "template";
 
@@ -68,7 +55,7 @@ export interface NewItem {
   /** "Free", "Pro", or a template's price. */
   access: string;
   pro: boolean;
-  /** A short name for the header ticker: "Muster", "Ringwise kit". */
+  /** A short name for the header link's label: "Muster", "Ringwise kit". */
   short: string;
   visual: NewItemVisual;
 }
@@ -324,73 +311,21 @@ export function whatsNewStats(now = Date.now()): WhatsNewStats {
   };
 }
 
-/**
- * One line of the header ticker. `effect` picks how it enters: typed out,
- * flickered in from scrambled glyphs, dropped in letter by letter, or, for a
- * number, counted up.
- */
-export type TickerEffect = "type" | "flicker" | "drizzle" | "count";
-
-export interface TickerMessage {
-  text: string;
-  effect: TickerEffect;
-  /** For `count`: the number to roll up to, written before `text`. */
-  value?: number;
-}
-
 export interface WhatsNewNav {
   url: string;
   /** New items in the last week; 0 hides the count. */
   count: number;
-  messages: TickerMessage[];
-  /** Read out instead of the moving text. */
+  /** What a screen reader says for the link: the count and the latest item. */
   label: string;
 }
 
-const ITEM_EFFECTS: TickerEffect[] = ["type", "flicker", "drizzle"];
-
-/** The header's "New" item: the week's count and the lines its ticker cycles through. */
+/** The header's "New" item: the week's count and its spoken label. */
 export function whatsNewNav(now = Date.now()): WhatsNewNav {
-  const monthStart = daysAgo(MONTH_DAYS, now);
-  const added = entries().filter((entry) => !entry.updated);
+  const latest = entries().find((entry) => !entry.updated);
   const count = addedThisWeek(now);
-  const releases = CHANGELOG.filter(
-    (release) => release.date > monthStart,
-  ).length;
-
-  const items: TickerMessage[] = added
-    .slice(0, TICKER_ITEMS)
-    .map((entry, index) => ({
-      text: entry.short,
-      effect: ITEM_EFFECTS[index % ITEM_EFFECTS.length] ?? "type",
-    }));
-  const upcoming: TickerMessage[] = UPCOMING.map((line) => ({
-    text: `Soon: ${line}`,
-    effect: "flicker",
-  }));
-  const tally: TickerMessage[] =
-    releases > 0
-      ? [
-          {
-            text: releases === 1 ? "release this month" : "releases this month",
-            value: releases,
-            effect: "count",
-          },
-        ]
-      : [];
-
-  // The newest item leads, then the tally, then the rest and what is coming.
-  const messages = [
-    ...items.slice(0, 1),
-    ...tally,
-    ...items.slice(1),
-    ...upcoming,
-  ];
-  const latest = added[0];
   return {
     url: WHATS_NEW_URL,
     count,
-    messages,
     label: [
       "New",
       count > 0 ? `${count} this week` : "",

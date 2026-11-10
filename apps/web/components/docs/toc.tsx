@@ -7,46 +7,12 @@ import {
   TOCItem,
   type TOCItemType,
 } from "fumadocs-core/toc";
-import Link from "next/link";
 import { useRef } from "react";
-import type { RailPromo } from "@/lib/nav-menus";
 import { SPONSOR_URL } from "@/lib/site-config";
-import { FeatureVisual } from "./header-nav";
 import { OutlineLine, outlineIndent } from "./toc-outline";
 
 interface TableOfContentsProps {
   items: TOCItemType[];
-  promo?: RailPromo;
-}
-
-function PromoCard({ promo }: { promo: RailPromo }) {
-  return (
-    <div className="shrink-0 [@media(max-height:760px)]:hidden">
-      <div className="group/feature rounded-shell-xl border border-border bg-card p-1.5 shadow-sm">
-        <div className="overflow-hidden rounded-shell-lg border border-border bg-muted">
-          <FeatureVisual feature={promo.feature} />
-        </div>
-        <div className="flex flex-col gap-1.5 px-2.5 pt-3 pb-2.5">
-          <p className="m-0 text-muted-foreground text-xs">{promo.eyebrow}</p>
-          <p className="m-0 font-semibold text-foreground text-sm tracking-tight">
-            {promo.feature.title}
-          </p>
-          <p className="m-0 text-muted-foreground text-xs leading-relaxed">
-            {promo.feature.description}
-          </p>
-          <Link
-            className="mt-2 flex h-9 items-center justify-center rounded-shell-sm bg-[var(--cta,var(--foreground))] font-medium text-[var(--cta-foreground,var(--background))] text-sm no-underline outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-card"
-            href={promo.feature.href}
-          >
-            {promo.cta}
-          </Link>
-        </div>
-      </div>
-      <p className="m-0 mt-2.5 px-1 text-muted-foreground text-xs leading-relaxed">
-        {promo.note}
-      </p>
-    </div>
-  );
 }
 
 /** A card that asks readers to back the library on GitHub Sponsors. */
@@ -87,8 +53,11 @@ function SponsorCard() {
   );
 }
 
-/** The right rail: the page's headings, then the templates and sponsor cards. */
-export function TableOfContents({ items, promo }: TableOfContentsProps) {
+/**
+ * The right rail: the page's headings, then the sponsor card. The templates
+ * card sits at the foot of the left sidebar.
+ */
+export function TableOfContents({ items }: TableOfContentsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -130,7 +99,6 @@ export function TableOfContents({ items, promo }: TableOfContentsProps) {
         ) : (
           <div className="flex-1" />
         )}
-        {promo ? <PromoCard promo={promo} /> : null}
         <SponsorCard />
       </div>
     </aside>

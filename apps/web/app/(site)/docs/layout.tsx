@@ -4,6 +4,7 @@ import { NextProvider } from "fumadocs-core/framework/next";
 import type { ReactNode } from "react";
 import { DocsLayout } from "@/components/docs/docs-layout";
 import { docsSidebarGroups } from "@/lib/docs-sidebar-groups";
+import { templatesPromo } from "@/lib/nav-menus";
 import { source } from "@/lib/source";
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -11,7 +12,10 @@ export default function Layout({ children }: { children: ReactNode }) {
     <NextProvider>
       {/* shadcn/ui tooltips need a provider above them, as in any app that uses them. */}
       <TooltipProvider>
-        <DocsLayout groups={docsSidebarGroups(source.pageTree)}>
+        <DocsLayout
+          groups={docsSidebarGroups(source.pageTree)}
+          promo={templatesPromo()}
+        >
           {children}
         </DocsLayout>
       </TooltipProvider>

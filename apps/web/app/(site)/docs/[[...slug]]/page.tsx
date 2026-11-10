@@ -21,7 +21,6 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { componentGroupOf } from "@/lib/component-groups";
 import { sidebarTreeFor } from "@/lib/docs-sidebar";
 import { stripMdxComments } from "@/lib/llms";
-import { templatesPromo } from "@/lib/nav-menus";
 import { openSourceFileUrl } from "@/lib/open-source";
 import { isProItem } from "@/lib/pro";
 import {
@@ -204,7 +203,7 @@ export default async function Page(props: {
         </div>
         <PageFooter next={neighbours.next} previous={neighbours.previous} />
       </article>
-      <TableOfContents items={data.toc} promo={templatesPromo()} />
+      <TableOfContents items={data.toc} />
     </div>
   );
 }
