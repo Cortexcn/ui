@@ -44,6 +44,8 @@ import { heroCover01Meta } from "./hero-cover-01/meta";
 import { heroDashboard01Meta } from "./hero-dashboard-01/meta";
 import { heroStudio01Meta } from "./hero-studio-01/meta";
 import { heroSynapse01Meta } from "./hero-synapse-01/meta";
+import { heroTapestry01Meta } from "./hero-tapestry-01/meta";
+import { heroTideline01Meta } from "./hero-tideline-01/meta";
 import { heroTiltedWall01Meta } from "./hero-tilted-wall-01/meta";
 import { loaderDotMatrix01Meta } from "./loader-dot-matrix-01/meta";
 import { loaderGlitchText01Meta } from "./loader-glitch-text-01/meta";
@@ -76,6 +78,8 @@ export const BLOCK_METAS: Record<
   "hero-studio-01": heroStudio01Meta,
   "hero-cover-01": heroCover01Meta,
   "hero-synapse-01": heroSynapse01Meta,
+  "hero-tapestry-01": heroTapestry01Meta,
+  "hero-tideline-01": heroTideline01Meta,
   "dashboard-harbor-01": dashboardHarbor01Meta,
   "chart-group-business-01": chartGroupBusiness01Meta,
   "chart-group-saas-01": chartGroupSaas01Meta,

@@ -70,6 +70,24 @@ export const heroCover01Files = [
 
 export const heroSynapse01Files = ["components/hero-synapse.tsx"] as const;
 
+export const heroTapestry01Files = [
+  "components/hero-tapestry.tsx",
+  "components/hero-tapestry/content.ts",
+  "components/hero-tapestry/hero-copy.tsx",
+  "components/hero-tapestry/site-nav.tsx",
+  "components/hero-tapestry/stitched-image.tsx",
+  "components/hero-tapestry/tool-strip.tsx",
+] as const;
+
+export const heroTideline01Files = [
+  "components/hero-tideline.tsx",
+  "components/hero-tideline/backdrop.tsx",
+  "components/hero-tideline/content.ts",
+  "components/hero-tideline/hero-copy.tsx",
+  "components/hero-tideline/site-nav.tsx",
+  "components/hero-tideline/subscribe-form.tsx",
+] as const;
+
 export const dashboardHarbor01Files = [
   "components/dashboard-harbor.tsx",
   "components/harbor/top-bar.tsx",
@@ -596,6 +614,8 @@ export const blockFileManifests = {
   "hero-studio-01": heroStudio01Files,
   "hero-cover-01": heroCover01Files,
   "hero-synapse-01": heroSynapse01Files,
+  "hero-tapestry-01": heroTapestry01Files,
+  "hero-tideline-01": heroTideline01Files,
   "dashboard-harbor-01": dashboardHarbor01Files,
   "chart-group-business-01": chartGroupBusiness01Files,
   "chart-group-saas-01": chartGroupSaas01Files,

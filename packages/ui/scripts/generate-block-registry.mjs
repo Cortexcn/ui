@@ -490,6 +490,40 @@ const BLOCKS = {
     files: ["components/hero-synapse.tsx"],
     pro: true,
   },
+  "hero-tapestry-01": {
+    title: "Hero Tapestry",
+    description:
+      "A wide painting redrawn as fine needlepoint glyphs that resolve from coarse to sharp, a serif headline beside a short pitch and two buttons, and a ruled strip of tool names",
+    previewMaxWidth: "max-w-7xl",
+    registryDependencies: ["@cortexcn/utils"],
+    dependencies: ["lucide-react", "motion"],
+    files: [
+      "components/hero-tapestry.tsx",
+      "components/hero-tapestry/content.ts",
+      "components/hero-tapestry/hero-copy.tsx",
+      "components/hero-tapestry/site-nav.tsx",
+      "components/hero-tapestry/stitched-image.tsx",
+      "components/hero-tapestry/tool-strip.tsx",
+    ],
+    pro: true,
+  },
+  "hero-tideline-01": {
+    title: "Hero Tideline",
+    description:
+      "A newsletter hero on a full-bleed watercolor picture, with a serif headline, an italic second line, and a frosted email field with a handwritten note",
+    previewMaxWidth: "max-w-7xl",
+    registryDependencies: ["@cortexcn/utils"],
+    dependencies: ["motion"],
+    files: [
+      "components/hero-tideline.tsx",
+      "components/hero-tideline/backdrop.tsx",
+      "components/hero-tideline/content.ts",
+      "components/hero-tideline/hero-copy.tsx",
+      "components/hero-tideline/site-nav.tsx",
+      "components/hero-tideline/subscribe-form.tsx",
+    ],
+    pro: true,
+  },
   "ai-tool-router-01": {
     title: "Tool Router",
     description:
@@ -1551,6 +1585,8 @@ const COMPONENT_EXPORTS = {
   "hero-studio-01": "HeroStudio",
   "hero-cover-01": "HeroCover",
   "hero-synapse-01": "HeroSynapse",
+  "hero-tapestry-01": "HeroTapestry",
+  "hero-tideline-01": "HeroTideline",
   "ai-tool-router-01": "ToolRouter",
   "ai-integration-beam-01": "IntegrationBeam",
   "ai-integration-section-01": "IntegrationSection",

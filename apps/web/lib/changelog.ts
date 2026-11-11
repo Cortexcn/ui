@@ -80,6 +80,17 @@ export const CHANGELOG: ChangelogRelease[] = [
   },
   {
     date: "2026-11-11",
+    kind: "blocks",
+    title: "Tapestry and Tideline join the Hero blocks",
+    summary:
+      "Two Pro heroes built around a painted picture. Tapestry redraws a wide landscape as fine needlepoint glyphs on a canvas, resolving from coarse to sharp as it scrolls into view, with a serif headline, two buttons, and a ruled strip of tool names. Tideline is a newsletter hero on a full-bleed watercolor scene with a serif headline, an italic second line, and a frosted email field that turns into a thank-you line after sign-up. Visitors who prefer less motion get both without movement.",
+    items: [
+      { label: "Tapestry", href: "/blocks/hero/hero-tapestry-01" },
+      { label: "Tideline", href: "/blocks/hero/hero-tideline-01" },
+    ],
+  },
+  {
+    date: "2026-11-11",
     kind: "site",
     title: "Invoicing Dashboard Kit, Florin",
     summary:

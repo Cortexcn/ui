@@ -17,6 +17,8 @@ export const BLOCK_CATEGORIES: BlockCategory[] = [
     description:
       "Opening sections with a headline, a call to action, and a product preview.",
     blocks: [
+      "hero-tapestry-01",
+      "hero-tideline-01",
       "hero-synapse-01",
       "hero-tilted-wall-01",
       "hero-dashboard-01",

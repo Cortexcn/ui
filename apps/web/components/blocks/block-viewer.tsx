@@ -147,10 +147,6 @@ export function BlockViewer({
             </Tabs>
 
             {isPro ? <ProBadge /> : null}
-
-            <p className="min-w-0 flex-1 truncate text-muted-foreground text-sm">
-              {description}
-            </p>
           </div>
 
           <div className="flex shrink-0 flex-wrap items-center gap-2 lg:flex-nowrap">

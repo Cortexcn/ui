@@ -45,6 +45,8 @@ import { HeroCoverPreview } from "./hero-cover-01/preview";
 import { HeroDashboardPreview } from "./hero-dashboard-01/preview";
 import { HeroStudioPreview } from "./hero-studio-01/preview";
 import { HeroSynapsePreview } from "./hero-synapse-01/preview";
+import { HeroTapestryPreview } from "./hero-tapestry-01/preview";
+import { HeroTidelinePreview } from "./hero-tideline-01/preview";
 import { HeroTiltedWallPreview } from "./hero-tilted-wall-01/preview";
 import { LoaderDotMatrixPreview } from "./loader-dot-matrix-01/preview";
 import { LoaderGlitchTextPreview } from "./loader-glitch-text-01/preview";
@@ -74,6 +76,8 @@ export const BLOCK_PREVIEWS: Record<BlockSlug, ComponentType> = {
   "hero-studio-01": HeroStudioPreview,
   "hero-cover-01": HeroCoverPreview,
   "hero-synapse-01": HeroSynapsePreview,
+  "hero-tapestry-01": HeroTapestryPreview,
+  "hero-tideline-01": HeroTidelinePreview,
   "dashboard-harbor-01": DashboardHarborPreview,
   "chart-group-business-01": ChartGroupBusinessPreview,
   "chart-group-saas-01": ChartGroupSaasPreview,

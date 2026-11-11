@@ -48,6 +48,8 @@ import { HeroCoverBlock } from "./hero-cover-01";
 import { HeroDashboardBlock } from "./hero-dashboard-01";
 import { HeroStudioBlock } from "./hero-studio-01";
 import { HeroSynapseBlock } from "./hero-synapse-01";
+import { HeroTapestryBlock } from "./hero-tapestry-01";
+import { HeroTidelineBlock } from "./hero-tideline-01";
 import { HeroTiltedWallBlock } from "./hero-tilted-wall-01";
 import { LoaderDotMatrixBlock } from "./loader-dot-matrix-01";
 import { LoaderGlitchTextBlock } from "./loader-glitch-text-01";
@@ -77,6 +79,8 @@ const BLOCK_VIEWERS: Record<BlockSlug, ComponentType<BlockDisplayProps>> = {
   "hero-studio-01": HeroStudioBlock,
   "hero-cover-01": HeroCoverBlock,
   "hero-synapse-01": HeroSynapseBlock,
+  "hero-tapestry-01": HeroTapestryBlock,
+  "hero-tideline-01": HeroTidelineBlock,
   "dashboard-harbor-01": DashboardHarborBlock,
   "chart-group-business-01": ChartGroupBusinessBlock,
   "chart-group-saas-01": ChartGroupSaasBlock,
