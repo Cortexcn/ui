@@ -87,12 +87,15 @@ function productionRedirectFor(host: string, pathname: string): URL | null {
   return target;
 }
 
-/** A background fetch from the Next.js router, for a prefetch or a navigation. */
+/**
+ * A fetch a browser makes from a page, such as the Next.js router's
+ * prefetches and client-side navigations, as opposed to loading a page.
+ * Next.js strips the router's own `RSC` header and `_rsc` parameter before
+ * the proxy runs, so this reads the browser's Sec-Fetch-Dest header instead.
+ * Crawlers send none, so they still get the 308.
+ */
 function isRouterFetch(request: NextRequest) {
-  return (
-    request.headers.get("rsc") === "1" ||
-    request.nextUrl.searchParams.has("_rsc")
-  );
+  return request.headers.get("sec-fetch-dest") === "empty";
 }
 
 /**
