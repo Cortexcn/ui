@@ -87,6 +87,44 @@ function productionRedirectFor(host: string, pathname: string): URL | null {
   return target;
 }
 
+/** A background fetch from the Next.js router, for a prefetch or a navigation. */
+function isRouterFetch(request: NextRequest) {
+  return (
+    request.headers.get("rsc") === "1" ||
+    request.nextUrl.searchParams.has("_rsc")
+  );
+}
+
+/**
+ * The answer for a production request that another of our domains owns: a
+ * 308 to it, or null when this host serves it.
+ *
+ * The router fetches pages in the background for prefetches and client-side
+ * navigations. A redirect to another of our domains fails there: the browser
+ * blocks it as a cross-origin fetch, and the router logs an error and only
+ * then reloads. An empty answer makes it load the page with a full navigation
+ * straight away, which follows the redirect normally.
+ */
+function otherSiteResponse(
+  request: NextRequest,
+  host: string,
+  pathname: string,
+  search: string,
+) {
+  const target = productionRedirectFor(host, pathname);
+  if (!target) {
+    return null;
+  }
+  if (isRouterFetch(request)) {
+    return new NextResponse(null, {
+      status: 204,
+      headers: { "Cache-Control": "no-store" },
+    });
+  }
+  target.search = search;
+  return NextResponse.redirect(target, 308);
+}
+
 function route(request: NextRequest, event: NextFetchEvent) {
   const host = (
     request.headers.get("host") ?? request.nextUrl.host
@@ -123,10 +161,9 @@ function route(request: NextRequest, event: NextFetchEvent) {
   }
 
   if (isProduction) {
-    const target = productionRedirectFor(host, pathname);
-    if (target) {
-      target.search = search;
-      return NextResponse.redirect(target, 308);
+    const moved = otherSiteResponse(request, host, pathname, search);
+    if (moved) {
+      return moved;
     }
   }
 
