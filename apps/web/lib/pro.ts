@@ -21,3 +21,11 @@ export function isProItem(name: string | undefined) {
 
 /** Where every Buy Pro button goes: the pricing page, to pick a license. */
 export const PRO_BUY_HREF = PRO_PRICING_PATH;
+
+/**
+ * Where a license holder finds the source of a Pro item: their purchases
+ * page, opened at that item. It asks them to sign in first.
+ */
+export function proSourceHref(name: string) {
+  return `/account/purchases?item=${encodeURIComponent(name)}`;
+}

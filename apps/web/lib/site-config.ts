@@ -49,11 +49,16 @@ export const CHECKOUT_URLS = {
   ultra: "",
 };
 
-/** The same, for the Cortexcn Pro licenses on /pro/pricing. */
+/**
+ * Where each Cortexcn Pro license's Buy button goes: the checkout page, which
+ * signs the buyer in and hands them to Dodo Payments. Until the payment keys
+ * are set on the server, that page sends them on to the contact form with the
+ * order written out.
+ */
 export const PRO_LICENSE_CHECKOUT_URLS = {
-  year: "",
-  lifetime: "",
-  team: "",
+  year: "/checkout/year",
+  lifetime: "/checkout/lifetime",
+  team: "/checkout/team",
 };
 
 /**

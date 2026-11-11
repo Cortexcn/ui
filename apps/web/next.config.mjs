@@ -48,6 +48,8 @@ const nextConfig = {
     "/mcp": ["./content/docs/**", "./public/r/**"],
     // The share image route reads its fonts and the Cortexcn mark.
     "/og": ["./lib/og-fonts/**", "./public/img/cortexcn/icon-dark.png"],
+    // The purchases page reads one Pro item at a time for license holders.
+    "/account/purchases/source/[name]": ["./private/r/**"],
   },
   experimental: {
     // Keeps dev/prod from pulling the entire charts package per MDX page.

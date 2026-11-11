@@ -29,7 +29,12 @@
       "linter": { "enabled": false }
     },
     {
-      "includes": ["apps/web/public/r/**/*.json", "packages/ui/registry.json"],
+      "includes": [
+        "apps/web/public/r/**/*.json",
+        // The Pro items the registry build keeps out of public/r.
+        "apps/web/private/**/*.json",
+        "packages/ui/registry.json"
+      ],
       "formatter": { "enabled": false },
       "linter": { "enabled": false },
       "assist": { "enabled": false }

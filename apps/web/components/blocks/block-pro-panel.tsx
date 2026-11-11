@@ -1,6 +1,6 @@
 import { ProBadge } from "@/components/docs/pro-install-panel";
 import { Button } from "@/components/ui/button";
-import { PRO_PRICING_PATH } from "@/lib/pro";
+import { PRO_PRICING_PATH, proSourceHref } from "@/lib/pro";
 import { PAID_PRO_LICENSES } from "@/lib/pro-licenses";
 import { formatUsd } from "@/lib/service-pricing";
 import { cn } from "@/lib/utils";
@@ -8,12 +8,16 @@ import { cn } from "@/lib/utils";
 /**
  * Shown in a Pro block's Code tab instead of its source: the paid licenses,
  * each with its price and buy link, since every one of them includes the code.
+ * License holders get a link to the block in their purchases.
  */
 export function BlockProPanel({
   name,
+  item,
   height,
 }: {
   name: string;
+  /** The registry name of the block, such as "hero-synapse-01". */
+  item: string;
   height: number;
 }) {
   return (
@@ -91,6 +95,13 @@ export function BlockProPanel({
             href={PRO_PRICING_PATH}
           >
             Compare everything in each license
+          </a>
+          <span aria-hidden="true"> / </span>
+          <a
+            className="underline underline-offset-4 transition-colors hover:text-foreground"
+            href={proSourceHref(item)}
+          >
+            Already have a license? Open the code
           </a>
         </p>
       </div>

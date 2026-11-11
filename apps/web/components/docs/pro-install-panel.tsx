@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { PRO_BUY_HREF, PRO_PATH } from "@/lib/pro";
+import { PRO_BUY_HREF, PRO_PATH, proSourceHref } from "@/lib/pro";
 
 /** A small "Pro" tag, for items whose code comes with Cortexcn Pro. */
 export function ProBadge() {
@@ -49,6 +49,15 @@ export function ProInstallPanel({ name }: { name: string }) {
           See what is in Pro
         </Button>
       </div>
+      <p className="text-muted-foreground text-sm">
+        Already have a license?{" "}
+        <a
+          className="underline underline-offset-4 transition-colors hover:text-foreground"
+          href={proSourceHref(name)}
+        >
+          Open the code
+        </a>
+      </p>
     </div>
   );
 }

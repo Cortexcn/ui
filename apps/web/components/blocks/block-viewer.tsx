@@ -315,7 +315,11 @@ export function BlockViewer({
         ) : null}
 
         {view === "code" && isPro ? (
-          <BlockProPanel height={previewHeight} name={name} />
+          <BlockProPanel
+            height={previewHeight}
+            item={registryName}
+            name={name}
+          />
         ) : null}
 
         {view === "code" && !isPro ? (
