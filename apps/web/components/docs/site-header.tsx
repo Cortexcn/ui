@@ -18,7 +18,6 @@ import { CortexcnLogo } from "../icons/cortexcn";
 import { Button } from "../ui/button";
 import { VersionTag } from "../version-tag";
 import { DocsSearchTrigger } from "./docs-search-trigger";
-import { GitHubStarsLink } from "./github-stars-link";
 import { HeaderNav, isMenuActive } from "./header-nav";
 import { NavLinkLabel, NewMark } from "./nav-link-label";
 import { WhatsNewMobileLink } from "./whats-new-nav-link";
@@ -597,7 +596,6 @@ export function SiteHeader({
                 hideIfDisabled
               />
             )}
-            <GitHubStarsLink />
             <ThemeSwitcher />
             <UserMenu />
             {cta ? (

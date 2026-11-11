@@ -1,34 +1,19 @@
 "use client";
 
-import { Icon, type IconName } from "@cortexcn/icons";
+import { Icon } from "@cortexcn/icons";
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 import { playClickSound } from "@/lib/click-sound";
 import { cn } from "@/lib/utils";
 
-type ThemeChoice = "light" | "system" | "dark";
-
-const THEME_CHOICES: { value: ThemeChoice; label: string; icon: IconName }[] = [
-  { value: "light", label: "Light", icon: "IconSun" },
-  { value: "system", label: "System", icon: "IconImac" },
-  { value: "dark", label: "Dark", icon: "IconMoon" },
-];
+type ThemeChoice = "light" | "dark";
 
 /** Set on <html> while a switch animates; see `data-theme-switching` in globals.css. */
 const SWITCHING_ATTRIBUTE = "data-theme-switching";
 
 let activeSwitch: ViewTransition | null = null;
-
-function resolveChoice(choice: ThemeChoice): "light" | "dark" {
-  if (choice !== "system") {
-    return choice;
-  }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
 
 function isTypingTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) {
@@ -44,19 +29,14 @@ function isTypingTarget(target: EventTarget | null): boolean {
 }
 
 /**
- * Light, System, and Dark in one pill. The thumb slides to the choice, a soft
- * click plays, and the new theme spreads out in a circle from the choice.
- * Reduced motion switches at once. D still flips between light and dark.
+ * One button that flips between light and dark mode in a single click. A soft
+ * click plays, and the new theme spreads out in a circle from the button.
+ * Reduced motion switches at once. D flips it from the keyboard too.
  */
 export function ThemeSwitcher({ className }: { className?: string }) {
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const name = useId();
-  const optionRefs = useRef<Record<ThemeChoice, HTMLLabelElement | null>>({
-    light: null,
-    system: null,
-    dark: null,
-  });
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -66,7 +46,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
     (choice: ThemeChoice) => {
       playClickSound();
 
-      const next = resolveChoice(choice);
+      const next = choice;
       const root = document.documentElement;
       const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
@@ -81,7 +61,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
         return;
       }
 
-      const rect = optionRefs.current[choice]?.getBoundingClientRect();
+      const rect = buttonRef.current?.getBoundingClientRect();
       const x = rect ? rect.left + rect.width / 2 : window.innerWidth;
       const y = rect ? rect.top + rect.height / 2 : 0;
       const radius = Math.hypot(
@@ -150,59 +130,35 @@ export function ThemeSwitcher({ className }: { className?: string }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [choose, resolvedTheme]);
 
-  const selected = mounted
-    ? THEME_CHOICES.findIndex((choice) => choice.value === theme)
-    : -1;
+  const isDark = mounted && resolvedTheme === "dark";
+  const label = mounted
+    ? `Switch to ${isDark ? "light" : "dark"} mode`
+    : "Switch theme";
 
   return (
-    <div
+    <button
       aria-keyshortcuts="D"
-      aria-label="Theme"
+      aria-label={label}
       className={cn(
-        "relative flex h-9 shrink-0 items-center rounded-shell-sm border border-border bg-muted/60 p-0.5",
+        "inline-flex size-9 shrink-0 items-center justify-center rounded-shell-sm border border-border bg-muted/60 text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50",
         className,
       )}
-      role="radiogroup"
+      // The theme as it is now, even in the moment before the icon has mounted.
+      onClick={() => choose(resolvedTheme === "dark" ? "light" : "dark")}
+      ref={buttonRef}
+      title={`${label} (D)`}
+      type="button"
     >
-      {/*
-        The thumb. `transition-transform!` outlasts the `transition: none`
-        next-themes adds while the theme class changes.
-      */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          "pointer-events-none absolute top-0.5 bottom-0.5 left-0.5 w-8 rounded-[calc(var(--radius-shell-sm)-2px)] bg-background shadow-sm ring-1 ring-border transition-transform! duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none!",
-          selected < 0 && "opacity-0",
-        )}
-        style={{ transform: `translateX(${Math.max(selected, 0) * 100}%)` }}
-      />
-      {THEME_CHOICES.map((choice) => {
-        const checked = mounted && theme === choice.value;
-        return (
-          <label
-            className={cn(
-              "relative inline-flex size-8 cursor-pointer items-center justify-center rounded-[calc(var(--radius-shell-sm)-2px)] text-muted-foreground transition-colors hover:text-foreground has-focus-visible:outline-2 has-focus-visible:outline-ring has-focus-visible:outline-offset-1",
-              checked && "text-foreground",
-            )}
-            key={choice.value}
-            ref={(node) => {
-              optionRefs.current[choice.value] = node;
-            }}
-            title={`${choice.label} theme`}
-          >
-            <input
-              checked={checked}
-              className="sr-only"
-              name={name}
-              onChange={() => choose(choice.value)}
-              type="radio"
-              value={choice.value}
-            />
-            <Icon aria-hidden="true" className="size-4" name={choice.icon} />
-            <span className="sr-only">{choice.label}</span>
-          </label>
-        );
-      })}
-    </div>
+      {/* Empty until mounted, so the server and the first render match. */}
+      {mounted ? (
+        <Icon
+          aria-hidden="true"
+          className="size-4"
+          name={isDark ? "IconSun" : "IconMoon"}
+        />
+      ) : (
+        <span aria-hidden="true" className="size-4" />
+      )}
+    </button>
   );
 }
