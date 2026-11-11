@@ -2,9 +2,16 @@ import type { ComponentType } from "react";
 import { readBlockFiles } from "@/lib/blocks/read-block-files";
 import { isProItem } from "@/lib/pro";
 import { AiChainOfThoughtBlock } from "./ai-chain-of-thought-01";
+import { IntegrationBeamBlock } from "./ai-integration-beam-01";
+import { IntegrationEventsBlock } from "./ai-integration-events-01";
+import { IntegrationOrbitBlock } from "./ai-integration-orbit-01";
+import { IntegrationPipelineBlock } from "./ai-integration-pipeline-01";
+import { IntegrationSectionBlock } from "./ai-integration-section-01";
+import { IntegrationSyncStatusBlock } from "./ai-integration-sync-status-01";
 import { AiQueueBlock } from "./ai-queue-01";
 import { AiReasoningBlock } from "./ai-reasoning-01";
 import { AiShimmerBlock } from "./ai-shimmer-01";
+import { AiToolRouterBlock } from "./ai-tool-router-01";
 import { BentoGridInsightsBlock } from "./bento-grid-insights-01";
 import { BlogMasonryBlock } from "./blog-masonry-01";
 import type { BlockCategory } from "./categories";
@@ -100,6 +107,13 @@ const BLOCK_VIEWERS: Record<BlockSlug, ComponentType<BlockDisplayProps>> = {
   "blog-masonry-01": BlogMasonryBlock,
   "hero-tilted-wall-01": HeroTiltedWallBlock,
   "services-preview-list-01": ServicesPreviewListBlock,
+  "ai-tool-router-01": AiToolRouterBlock,
+  "ai-integration-beam-01": IntegrationBeamBlock,
+  "ai-integration-section-01": IntegrationSectionBlock,
+  "ai-integration-orbit-01": IntegrationOrbitBlock,
+  "ai-integration-pipeline-01": IntegrationPipelineBlock,
+  "ai-integration-events-01": IntegrationEventsBlock,
+  "ai-integration-sync-status-01": IntegrationSyncStatusBlock,
 };
 
 /** A block's source files, or none for a Pro block, so its code stays out of the page. */

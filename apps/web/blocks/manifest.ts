@@ -466,6 +466,118 @@ export const servicesPreviewList01Files = [
   "components/services-preview-list.tsx",
 ] as const;
 
+export const aiToolRouter01Files = [
+  "components/tool-router.tsx",
+  "components/beam/arrival-ring.tsx",
+  "components/beam/beam-engine.ts",
+  "components/beam/beam-geometry.ts",
+  "components/beam/beam-layer.tsx",
+  "components/beam/beam-timeline.ts",
+  "components/beam/brand-logos.tsx",
+  "components/beam/cortexcn-mark.tsx",
+  "components/beam/status-chip.tsx",
+  "components/tool-router/call-list.tsx",
+  "components/tool-router/router-tasks.tsx",
+  "components/tool-router/router-tool.tsx",
+  "components/tool-router/use-router-run.ts",
+] as const;
+
+export const aiIntegrationBeam01Files = [
+  "components/integration-beam.tsx",
+  "components/beam/arrival-ring.tsx",
+  "components/beam/beam-engine.ts",
+  "components/beam/beam-geometry.ts",
+  "components/beam/beam-layer.tsx",
+  "components/beam/beam-timeline.ts",
+  "components/beam/brand-logos.tsx",
+  "components/beam/cortexcn-mark.tsx",
+  "components/beam/status-chip.tsx",
+  "components/integration-beam/beam-hub.tsx",
+  "components/integration-beam/beam-tool.tsx",
+  "components/integration-beam/beam-tools.tsx",
+  "components/integration-beam/use-sync-cycle.ts",
+] as const;
+
+export const aiIntegrationSection01Files = [
+  "components/integration-section.tsx",
+  "components/beam/arrival-ring.tsx",
+  "components/beam/beam-engine.ts",
+  "components/beam/beam-geometry.ts",
+  "components/beam/beam-layer.tsx",
+  "components/beam/beam-timeline.ts",
+  "components/beam/brand-logos.tsx",
+  "components/beam/cortexcn-mark.tsx",
+  "components/beam/status-chip.tsx",
+  "components/integration-beam.tsx",
+  "components/integration-beam/beam-hub.tsx",
+  "components/integration-beam/beam-tool.tsx",
+  "components/integration-beam/beam-tools.tsx",
+  "components/integration-beam/use-sync-cycle.ts",
+] as const;
+
+export const aiIntegrationOrbit01Files = [
+  "components/integration-orbit.tsx",
+  "components/beam/arrival-ring.tsx",
+  "components/beam/beam-engine.ts",
+  "components/beam/beam-geometry.ts",
+  "components/beam/beam-layer.tsx",
+  "components/beam/beam-timeline.ts",
+  "components/beam/brand-logos.tsx",
+  "components/beam/cortexcn-mark.tsx",
+  "components/beam/status-chip.tsx",
+  "components/integration-orbit/orbit-hub.tsx",
+  "components/integration-orbit/orbit-tile.tsx",
+  "components/integration-orbit/orbit-tools.tsx",
+  "components/integration-orbit/use-orbit-waves.ts",
+] as const;
+
+export const aiIntegrationPipeline01Files = [
+  "components/integration-pipeline.tsx",
+  "components/beam/arrival-ring.tsx",
+  "components/beam/beam-engine.ts",
+  "components/beam/beam-geometry.ts",
+  "components/beam/beam-layer.tsx",
+  "components/beam/beam-timeline.ts",
+  "components/beam/brand-logos.tsx",
+  "components/beam/cortexcn-mark.tsx",
+  "components/beam/status-chip.tsx",
+  "components/integration-pipeline/pipeline-header.tsx",
+  "components/integration-pipeline/pipeline-step.tsx",
+  "components/integration-pipeline/pipeline-steps.tsx",
+  "components/integration-pipeline/use-pipeline-run.ts",
+] as const;
+
+export const aiIntegrationEvents01Files = [
+  "components/integration-events.tsx",
+  "components/beam/arrival-ring.tsx",
+  "components/beam/beam-engine.ts",
+  "components/beam/beam-geometry.ts",
+  "components/beam/beam-layer.tsx",
+  "components/beam/beam-timeline.ts",
+  "components/beam/brand-logos.tsx",
+  "components/beam/cortexcn-mark.tsx",
+  "components/beam/status-chip.tsx",
+  "components/integration-events/event-feed.tsx",
+  "components/integration-events/event-log.tsx",
+  "components/integration-events/event-target.tsx",
+  "components/integration-events/use-event-stream.ts",
+] as const;
+
+export const aiIntegrationSyncStatus01Files = [
+  "components/integration-sync-status.tsx",
+  "components/beam/arrival-ring.tsx",
+  "components/beam/beam-engine.ts",
+  "components/beam/beam-geometry.ts",
+  "components/beam/beam-layer.tsx",
+  "components/beam/beam-timeline.ts",
+  "components/beam/brand-logos.tsx",
+  "components/beam/cortexcn-mark.tsx",
+  "components/beam/status-chip.tsx",
+  "components/integration-sync-status/sync-row.tsx",
+  "components/integration-sync-status/sync-tools.tsx",
+  "components/integration-sync-status/use-sync-rounds.ts",
+] as const;
+
 export const blockFileManifests = {
   "feature-spotlight-grid-01": featureSpotlightGrid01Files,
   "feature-studio-grid-01": featureStudioGrid01Files,
@@ -514,6 +626,13 @@ export const blockFileManifests = {
   "gallery-print-pile-01": galleryPrintPile01Files,
   "blog-masonry-01": blogMasonry01Files,
   "hero-tilted-wall-01": heroTiltedWall01Files,
+  "ai-tool-router-01": aiToolRouter01Files,
+  "ai-integration-beam-01": aiIntegrationBeam01Files,
+  "ai-integration-section-01": aiIntegrationSection01Files,
+  "ai-integration-orbit-01": aiIntegrationOrbit01Files,
+  "ai-integration-pipeline-01": aiIntegrationPipeline01Files,
+  "ai-integration-events-01": aiIntegrationEvents01Files,
+  "ai-integration-sync-status-01": aiIntegrationSyncStatus01Files,
 } as const;
 
 export type BlockSlug = keyof typeof blockFileManifests;

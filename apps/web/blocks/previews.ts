@@ -1,8 +1,15 @@
 import type { ComponentType } from "react";
 import { AiChainOfThoughtPreview } from "./ai-chain-of-thought-01/preview";
+import { IntegrationBeamPreview } from "./ai-integration-beam-01/preview";
+import { IntegrationEventsPreview } from "./ai-integration-events-01/preview";
+import { IntegrationOrbitPreview } from "./ai-integration-orbit-01/preview";
+import { IntegrationPipelinePreview } from "./ai-integration-pipeline-01/preview";
+import { IntegrationSectionPreview } from "./ai-integration-section-01/preview";
+import { IntegrationSyncStatusPreview } from "./ai-integration-sync-status-01/preview";
 import { AiQueuePreview } from "./ai-queue-01/preview";
 import { AiReasoningPreview } from "./ai-reasoning-01/preview";
 import { AiShimmerPreview } from "./ai-shimmer-01/preview";
+import { AiToolRouterPreview } from "./ai-tool-router-01/preview";
 import { BentoGridInsightsPreview } from "./bento-grid-insights-01/preview";
 import { BlogMasonryPreview } from "./blog-masonry-01/preview";
 import { ChartGroupBusinessPreview } from "./chart-group-business-01/preview";
@@ -97,4 +104,11 @@ export const BLOCK_PREVIEWS: Record<BlockSlug, ComponentType> = {
   "blog-masonry-01": BlogMasonryPreview,
   "hero-tilted-wall-01": HeroTiltedWallPreview,
   "services-preview-list-01": ServicesPreviewListPreview,
+  "ai-tool-router-01": AiToolRouterPreview,
+  "ai-integration-beam-01": IntegrationBeamPreview,
+  "ai-integration-section-01": IntegrationSectionPreview,
+  "ai-integration-orbit-01": IntegrationOrbitPreview,
+  "ai-integration-pipeline-01": IntegrationPipelinePreview,
+  "ai-integration-events-01": IntegrationEventsPreview,
+  "ai-integration-sync-status-01": IntegrationSyncStatusPreview,
 };

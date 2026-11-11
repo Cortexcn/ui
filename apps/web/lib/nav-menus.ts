@@ -380,6 +380,7 @@ export function libraryNavItems(): NavItem[] {
     { kind: "menu", menu: componentsMenu() },
     { kind: "menu", menu: galleryMenu() },
     { kind: "link", text: "Templates", url: "/templates" },
+    { kind: "link", text: "AI", url: "/ai" },
     { kind: "link", text: "Pro", url: "/pro" },
     { kind: "menu", menu: resourcesMenu() },
   ];

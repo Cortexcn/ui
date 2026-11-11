@@ -32,7 +32,7 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
       { label: "Blocks", href: "/blocks" },
       { label: "Templates", href: "/templates" },
       { label: "Pro", href: "/pro" },
-      { label: "AI Assistant", href: "/blocks?category=ai-assistant" },
+      { label: "AI Assistant", href: "/ai" },
       { label: "Backgrounds", href: "/docs/backgrounds" },
     ],
   },

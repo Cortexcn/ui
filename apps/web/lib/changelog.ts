@@ -45,6 +45,41 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 export const CHANGELOG: ChangelogRelease[] = [
   {
     date: "2026-11-11",
+    kind: "blocks",
+    title: "Tool Router and six more AI Assistant blocks, with an AI page",
+    summary:
+      "Seven Pro blocks join AI Assistant, all built on one engine that joins tiles with curved lines and sends pulses along them: Tool Router shows an agent calling tools, Workflow Pipeline runs steps in turn, Event Stream logs each event as it lands, Sync Status counts the time since each tool last synced, and Integration Beam, Section, and Orbit show a product among the tools it connects. A new AI page lists every AI Assistant block running live. With reduced motion the states still change without anything moving.",
+    items: [
+      { label: "AI page", href: "/ai" },
+      { label: "Tool Router", href: "/blocks/ai-assistant/ai-tool-router-01" },
+      {
+        label: "Integration Beam",
+        href: "/blocks/ai-assistant/ai-integration-beam-01",
+      },
+      {
+        label: "Integration Section",
+        href: "/blocks/ai-assistant/ai-integration-section-01",
+      },
+      {
+        label: "Integration Orbit",
+        href: "/blocks/ai-assistant/ai-integration-orbit-01",
+      },
+      {
+        label: "Workflow Pipeline",
+        href: "/blocks/ai-assistant/ai-integration-pipeline-01",
+      },
+      {
+        label: "Event Stream",
+        href: "/blocks/ai-assistant/ai-integration-events-01",
+      },
+      {
+        label: "Sync Status",
+        href: "/blocks/ai-assistant/ai-integration-sync-status-01",
+      },
+    ],
+  },
+  {
+    date: "2026-11-11",
     kind: "site",
     title: "Invoicing Dashboard Kit, Florin",
     summary:

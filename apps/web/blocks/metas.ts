@@ -1,7 +1,14 @@
 import { aiChainOfThought01Meta } from "./ai-chain-of-thought-01/meta";
+import { aiIntegrationBeam01Meta } from "./ai-integration-beam-01/meta";
+import { aiIntegrationEvents01Meta } from "./ai-integration-events-01/meta";
+import { aiIntegrationOrbit01Meta } from "./ai-integration-orbit-01/meta";
+import { aiIntegrationPipeline01Meta } from "./ai-integration-pipeline-01/meta";
+import { aiIntegrationSection01Meta } from "./ai-integration-section-01/meta";
+import { aiIntegrationSyncStatus01Meta } from "./ai-integration-sync-status-01/meta";
 import { aiQueue01Meta } from "./ai-queue-01/meta";
 import { aiReasoning01Meta } from "./ai-reasoning-01/meta";
 import { aiShimmer01Meta } from "./ai-shimmer-01/meta";
+import { aiToolRouter01Meta } from "./ai-tool-router-01/meta";
 import { bentoGridInsights01Meta } from "./bento-grid-insights-01/meta";
 import { blogMasonry01Meta } from "./blog-masonry-01/meta";
 import { chartGroupBusiness01Meta } from "./chart-group-business-01/meta";
@@ -99,4 +106,11 @@ export const BLOCK_METAS: Record<
   "blog-masonry-01": blogMasonry01Meta,
   "hero-tilted-wall-01": heroTiltedWall01Meta,
   "services-preview-list-01": servicesPreviewList01Meta,
+  "ai-tool-router-01": aiToolRouter01Meta,
+  "ai-integration-beam-01": aiIntegrationBeam01Meta,
+  "ai-integration-section-01": aiIntegrationSection01Meta,
+  "ai-integration-orbit-01": aiIntegrationOrbit01Meta,
+  "ai-integration-pipeline-01": aiIntegrationPipeline01Meta,
+  "ai-integration-events-01": aiIntegrationEvents01Meta,
+  "ai-integration-sync-status-01": aiIntegrationSyncStatus01Meta,
 };

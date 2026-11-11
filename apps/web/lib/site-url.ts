@@ -37,7 +37,7 @@ const LIBRARY_PATH_RE =
 const STUDIO_PATH_RE = /^\/(?:about|contact|pricing|services|work)(?:\/|$)/;
 
 /** Add a path here when a new page goes on www, or the other hosts 404 it. */
-const PRODUCT_PATH_RE = /^\/(?:pro|privacy|refunds|terms)(?:\/|$)/;
+const PRODUCT_PATH_RE = /^\/(?:ai|pro|privacy|refunds|terms)(?:\/|$)/;
 
 /**
  * Pages of the component library site: the docs, the two galleries, the
