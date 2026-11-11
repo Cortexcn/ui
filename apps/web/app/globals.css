@@ -486,6 +486,16 @@ body:has([data-cortexcn-embed]) .page-scrollbar {
   --cta: #facc15;
   --cta-hover: #eab308;
   --cta-foreground: #0a0a0a;
+
+  /*
+   * The "Unique" tag on one-of-a-kind templates: a band of purples, deepest
+   * on the left. White text meets AA on every stop (5.7:1 at the lightest).
+   */
+  --unique-deep: #5b21b6;
+  --unique: #7c3aed;
+  --unique-bright: #9333ea;
+  --unique-foreground: #ffffff;
+  --unique-glow: rgb(124 58 237 / 0.35);
 }
 
 .dark {

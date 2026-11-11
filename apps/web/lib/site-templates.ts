@@ -19,6 +19,22 @@ import checksDesktopDark from "@/assets/templates/data-checks/desktop-dark.webp"
 import checksDesktopLight from "@/assets/templates/data-checks/desktop-light.webp";
 import checksMobileDark from "@/assets/templates/data-checks/mobile-dark.webp";
 import checksMobileLight from "@/assets/templates/data-checks/mobile-light.webp";
+import florinCardDark from "@/assets/templates/florin/card-dark.webp";
+import florinCardLight from "@/assets/templates/florin/card-light.webp";
+import florinDesktopDark from "@/assets/templates/florin/desktop-dark.webp";
+import florinDesktopLight from "@/assets/templates/florin/desktop-light.webp";
+import florinMobileDark from "@/assets/templates/florin/mobile-dark.webp";
+import florinMobileLight from "@/assets/templates/florin/mobile-light.webp";
+import florinCheckoutsDark from "@/assets/templates/florin/page-checkouts-dark.webp";
+import florinCheckoutsLight from "@/assets/templates/florin/page-checkouts-light.webp";
+import florinPaymentsDark from "@/assets/templates/florin/page-payments-dark.webp";
+import florinPaymentsLight from "@/assets/templates/florin/page-payments-light.webp";
+import florinPayoutsDark from "@/assets/templates/florin/page-payouts-dark.webp";
+import florinPayoutsLight from "@/assets/templates/florin/page-payouts-light.webp";
+import florinRecurringDark from "@/assets/templates/florin/page-recurring-dark.webp";
+import florinRecurringLight from "@/assets/templates/florin/page-recurring-light.webp";
+import florinReportsDark from "@/assets/templates/florin/page-reports-dark.webp";
+import florinReportsLight from "@/assets/templates/florin/page-reports-light.webp";
 import growthCardDark from "@/assets/templates/growth-agency/card-dark.webp";
 import growthCardLight from "@/assets/templates/growth-agency/card-light.webp";
 import growthDesktopDark from "@/assets/templates/growth-agency/desktop-dark.webp";
@@ -216,6 +232,11 @@ export interface SiteTemplate {
   summary: string;
   /** In US dollars, paid once. 0 makes it a free MIT download. */
   price: number;
+  /**
+   * A tag beside the name. "unique" marks a template with a look of its
+   * own, priced apart from the rest, and shows the purple Unique badge.
+   */
+  badge?: "unique";
   categories: TemplateCategory[];
   /** ISO dates, YYYY-MM-DD: the first release and the latest change. */
   released: string;
@@ -260,6 +281,79 @@ export interface SiteTemplate {
 }
 
 const ALL_TEMPLATES: SiteTemplate[] = [
+  {
+    slug: "florin",
+    name: "Invoicing Dashboard Kit",
+    kind: "dashboard",
+    summary:
+      "Florin, an invoicing and payments dashboard: invoices on one sheet, estimates, recurring invoices, payment links, payouts, and reports, in a dark navy and lime design of its own",
+    price: 199,
+    badge: "unique",
+    categories: ["dashboards", "saas"],
+    released: "2026-11-11",
+    updated: "2026-11-11",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "TypeScript",
+    ],
+    sections: [
+      "Invoices",
+      "Estimates",
+      "Payments",
+      "Recurring Invoices",
+      "Checkouts",
+      "New invoice",
+      "Products",
+      "Payouts",
+      "Reports",
+      "Activity",
+      "Customers",
+      "Customer",
+      "Settings",
+      "Pay",
+    ],
+    features: [
+      "An Invoices page with what is overdue, what is due within a month, and how many days clients take to pay, then the unpaid invoices on a white sheet with All, Draft, and Unpaid tabs set into its top edge.",
+      "Pick an invoice and its lines open beside the list as tiles you can change or add to, with its totals, attachments, due date, and the next step: send it, remind, or record a part payment.",
+      "Estimates that convert into invoices, recurring invoices on a weekly to yearly schedule that can charge a saved card, and payment links that take money with no invoice.",
+      "Payments by day, payouts sent instantly or on a schedule, and reports of invoiced and collected by month, money owed by age, top clients, and payment methods.",
+      "A Pay page that shows your client the invoice and a way to pay it, without the dashboard around it.",
+      "Built from Cortexcn components and Pro charts with Hugeicons and Urbanist, with demo data for a 12-client studio and 137 Vitest checks. Dark first with a full light mode, Undo on deletes, and layouts for phones and tablets.",
+    ],
+    customize:
+      "Swap the demo data in lib/data, set today's date in lib/dates.ts, rename the product and pages in config/site.ts, change the colors in app/globals.css, and turn the actions in components/workspace/workspace-provider.tsx into API calls.",
+    screenshots: {
+      card: { light: florinCardLight, dark: florinCardDark },
+      desktop: { light: florinDesktopLight, dark: florinDesktopDark },
+      mobile: { light: florinMobileLight, dark: florinMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Payments",
+        image: { light: florinPaymentsLight, dark: florinPaymentsDark },
+      },
+      {
+        name: "Recurring Invoices",
+        image: { light: florinRecurringLight, dark: florinRecurringDark },
+      },
+      {
+        name: "Checkouts",
+        image: { light: florinCheckoutsLight, dark: florinCheckoutsDark },
+      },
+      {
+        name: "Reports",
+        image: { light: florinReportsLight, dark: florinReportsDark },
+      },
+      {
+        name: "Payouts",
+        image: { light: florinPayoutsLight, dark: florinPayoutsDark },
+      },
+    ],
+    previewUrl: "/previews/florin",
+  },
   {
     slug: "shipkin",
     name: "Shipkin",

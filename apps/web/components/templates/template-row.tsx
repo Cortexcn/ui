@@ -6,6 +6,7 @@ import {
   templatePartsLabel,
   templatePriceLabel,
 } from "@/lib/site-templates";
+import { TemplateBadge } from "./template-badge";
 import { TemplateShotGrid, TemplateStack } from "./template-shots";
 
 /** One template on /templates: what it is on the left, its page on the right. */
@@ -15,6 +16,7 @@ export function TemplateRow({ template }: { template: SiteTemplate }) {
   return (
     <article className="grid gap-6 py-10 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-10">
       <div className="flex flex-col items-start gap-3">
+        <TemplateBadge template={template} />
         <h2 className="font-semibold text-2xl tracking-tight">
           <Link className="hover:underline" href={href}>
             {template.name}

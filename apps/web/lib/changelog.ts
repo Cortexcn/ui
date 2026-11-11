@@ -44,6 +44,14 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-11",
+    kind: "site",
+    title: "Invoicing Dashboard Kit, Florin",
+    summary:
+      "A paid fourteen-page invoicing and payments dashboard with a dark navy and lime design of its own, the first template with the purple Unique badge: invoices on a white sheet with their lines beside them, estimates, recurring invoices, payment links, payouts, reports, and the page a client pays from. It works in light and dark mode, on phones and tablets, and ships with a live preview.",
+    items: [{ label: "Invoicing Dashboard Kit", href: "/templates/florin" }],
+  },
+  {
     date: "2026-11-09",
     kind: "site",
     title: "AI Agents Website, Shipkin",

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { DocsCodeBlock } from "@/components/docs/docs-code-block";
 import { JsonLd } from "@/components/seo/json-ld";
+import { TemplateBadge } from "@/components/templates/template-badge";
 import { TemplateScreenshot } from "@/components/templates/template-screenshot";
 import {
   TemplateShotRail,
@@ -237,7 +238,11 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
               sizes="160px"
             />
           </div>
-          <div className="flex min-w-0 flex-col gap-3">
+          <div className="flex min-w-0 flex-col items-start gap-3">
+            <TemplateBadge
+              className={cn("delay-100", ENTER)}
+              template={template}
+            />
             <h1
               className={cn(
                 "text-balance font-bold text-3xl tracking-tight delay-100 md:text-4xl",
