@@ -1,6 +1,5 @@
 import { BLOCK_CATEGORIES } from "@/blocks/categories";
 import { COMPONENT_GROUPS } from "@/lib/component-families";
-import { contactHref } from "@/lib/contact/prefill";
 import { isProItem } from "@/lib/pro";
 import {
   formatUsd,
@@ -9,8 +8,15 @@ import {
   PRO_LICENSE_REGULAR_PRICES,
   PRO_TEAM_SEATS,
 } from "@/lib/service-pricing";
-import { PRO_LICENSE_CHECKOUT_URLS } from "@/lib/site-config";
-import { isFreeTemplate, SITE_TEMPLATES } from "@/lib/site-templates";
+import {
+  CUSTOM_QUOTE_PATH,
+  PRO_LICENSE_CHECKOUT_URLS,
+} from "@/lib/site-config";
+import {
+  isFreeTemplate,
+  isProTemplate,
+  SITE_TEMPLATES,
+} from "@/lib/site-templates";
 
 /*
  * The Cortexcn Pro licenses shown on /pro/pricing, and the counts the Pro
@@ -25,17 +31,18 @@ const BLOCK_SLUGS: string[] = BLOCK_CATEGORIES.flatMap(
   (category) => category.blocks,
 );
 
-/** The paid website templates, which every paid license includes. */
-export const PRO_TEMPLATES = SITE_TEMPLATES.filter(
-  (template) => !isFreeTemplate(template),
-);
+/**
+ * The paid website templates, which every Pro license includes. Dashboard
+ * kits are not among them: they sell on their own (`lib/kit-plans.ts`).
+ */
+export const PRO_TEMPLATES = SITE_TEMPLATES.filter(isProTemplate);
 
 /** The four landing page templates the Pro page shows, in its order. */
 const FEATURED_TEMPLATE_SLUGS = [
   "data-checks",
   "team-workspace",
   "simplistic-saas",
-  "ai-travel-app",
+  "ai-infra",
 ];
 
 export const PRO_FEATURED_TEMPLATES = FEATURED_TEMPLATE_SLUGS.flatMap(
@@ -67,14 +74,16 @@ const MOTION_COUNT =
   COMPONENT_GROUPS.find((group) => group.category === "cortex")?.slugs.length ??
   0;
 
-export type ProLicenseId = "free" | "year" | "lifetime" | "team";
+export type ProLicenseId = "free" | "hobby" | "business" | "custom";
 
 export interface ProLicense {
   id: ProLicenseId;
   name: string;
   summary: string;
-  /** In US dollars, paid once. */
+  /** In US dollars, paid once. 0 for Free and for Custom, which is quoted. */
   price: number;
+  /** Shown in place of the price, for a card that has none. */
+  priceLabel?: string;
   /** Shown struck through beside the price, when set. */
   regularPrice?: number;
   /** The line under the price. */
@@ -87,32 +96,19 @@ export interface ProLicense {
   badge?: string;
 }
 
-/**
- * Goes to the license's checkout link in `lib/site-config.ts`, or, until that
- * is set, to the contact form with the order written out.
- */
-function buyAction(
-  id: Exclude<ProLicenseId, "free">,
-  name: string,
-): PlanAction {
-  const price = formatUsd(PRO_LICENSE_PRICES[id]);
+/** "Buy Hobby: $199", to the license's checkout page. */
+function buyAction(id: "hobby" | "business", name: string): PlanAction {
   return {
-    label: `Buy ${name.toLowerCase()}: ${price}`,
-    href:
-      PRO_LICENSE_CHECKOUT_URLS[id] ||
-      contactHref(
-        "question",
-        `Hi, I would like to buy the Cortexcn Pro ${name} license (${price}). Please send me a payment link.`,
-      ),
+    label: `Buy ${name}: ${formatUsd(PRO_LICENSE_PRICES[id])}`,
+    href: PRO_LICENSE_CHECKOUT_URLS[id],
   };
 }
 
 /** What every paid license covers, in the order the cards list it. */
 const PRO_CONTENT = [
   `${PRO_COUNTS.charts} premium charts and ${PRO_COUNTS.blocks} premium blocks`,
-  `${PRO_COUNTS.templates} ready-to-use website templates`,
-  `${PRO_FEATURED_TEMPLATES.length} complete landing pages, ready to launch`,
   `${MOTION_COUNT} motion components for micro-interactions`,
+  `${PRO_COUNTS.templates} complete website templates, ready to launch`,
 ];
 
 const MCP_LINE =
@@ -152,65 +148,67 @@ export const PRO_LICENSES: ProLicense[] = [
     action: { label: "Browse free components", href: "/docs/components" },
   },
   {
-    id: "year",
-    name: "1-year",
-    summary: "For a year of every block, template, and update.",
-    price: PRO_LICENSE_PRICES.year,
-    regularPrice: PRO_LICENSE_REGULAR_PRICES.year,
-    priceNote: "Paid once, 1-year license",
-    featuresHeading: "1-year license includes:",
+    id: "hobby",
+    name: "Hobby",
+    summary:
+      "For one developer: side projects, your own products, and client work.",
+    price: PRO_LICENSE_PRICES.hobby,
+    regularPrice: PRO_LICENSE_REGULAR_PRICES.hobby,
+    priceNote: "Paid once, lifetime access",
+    featuresHeading: "Hobby includes:",
     features: [
       ...PRO_CONTENT,
-      "A year of updates and new releases",
+      "One developer",
+      "Unlimited personal, commercial, and client projects",
+      LIFETIME_UPDATES_LINE,
+      FUTURE_LINE,
       MCP_LINE,
       PROMPTS_LINE,
       COMMUNITY_LINE,
       SUPPORT_LINE,
-      "Use in unlimited personal and client projects",
       COPY_LINE,
       STACK_LINE,
-      RESPONSIVE_LINE,
-      "Paid once, no subscription. Renew after a year if you want",
     ],
-    action: buyAction("year", "1-year"),
-  },
-  {
-    id: "lifetime",
-    name: "Lifetime",
-    summary: "For developers who want all of it, for good.",
-    price: PRO_LICENSE_PRICES.lifetime,
-    regularPrice: PRO_LICENSE_REGULAR_PRICES.lifetime,
-    priceNote: "Paid once, lifetime access",
-    featuresHeading: "Everything in 1-year, plus:",
-    features: [LIFETIME_UPDATES_LINE, FUTURE_LINE],
-    action: buyAction("lifetime", "Lifetime"),
+    action: buyAction("hobby", "Hobby"),
     badge: "Recommended",
   },
   {
-    id: "team",
-    name: "Team",
-    summary: `For studios and product teams of up to ${PRO_TEAM_SEATS} people.`,
-    price: PRO_LICENSE_PRICES.team,
-    regularPrice: PRO_LICENSE_REGULAR_PRICES.team,
+    id: "business",
+    name: "Business",
+    summary: `For studios and product teams of up to ${PRO_TEAM_SEATS} developers.`,
+    price: PRO_LICENSE_PRICES.business,
+    regularPrice: PRO_LICENSE_REGULAR_PRICES.business,
     priceNote: "Paid once, lifetime access",
-    featuresHeading: "Team license includes:",
+    featuresHeading: "Everything in Hobby, plus:",
     features: [
-      `Seats for ${PRO_TEAM_SEATS} people on your team`,
-      ...PRO_CONTENT,
-      LIFETIME_UPDATES_LINE,
-      FUTURE_LINE,
-      COMMUNITY_LINE,
-      SUPPORT_LINE,
-      MCP_LINE,
-      PROMPTS_LINE,
-      COPY_LINE,
-      STACK_LINE,
+      `Seats for ${PRO_TEAM_SEATS} developers on your team`,
+      "Add and remove teammates by email, from your purchases page",
+      "Use it in the products your company sells, SaaS included",
+      "One payment and one invoice for the whole team",
     ],
-    action: buyAction("team", "Team"),
+    action: buyAction("business", "Business"),
+  },
+  {
+    id: "custom",
+    name: "Custom",
+    summary:
+      "For components, dashboards, or pages we build to your brief, on your stack.",
+    price: 0,
+    priceLabel: "Quote",
+    priceNote: "A price range online, then a fixed price in writing",
+    featuresHeading: "Custom covers:",
+    features: [
+      "Custom components and blocks",
+      "Dashboards, built screen by screen",
+      "Landing pages and full websites",
+      "See an estimated range before you send anything",
+      "A fixed price and timeline in writing before work starts",
+    ],
+    action: { label: "Get an estimate", href: CUSTOM_QUOTE_PATH },
   },
 ];
 
-/** The paid licenses, cheapest first, for the Pro page's structured data. */
+/** The licenses sold at checkout, cheapest first, for the Pro page's structured data. */
 export const PAID_PRO_LICENSES = PRO_LICENSES.filter(
-  (license) => license.price > 0,
+  (license) => license.id === "hobby" || license.id === "business",
 );

@@ -34,7 +34,8 @@ export const LIBRARY_HOME_ROUTE = "/ui-home";
 const LIBRARY_PATH_RE =
   /^\/(?:docs|blocks|charts|changelog|new|templates|dashboard-kits|previews|mcp|mcp-server|sign-in|sign-up|account|checkout|admin|design-systems|embed)(?:\/|$)/;
 
-const STUDIO_PATH_RE = /^\/(?:about|contact|pricing|services|work)(?:\/|$)/;
+const STUDIO_PATH_RE =
+  /^\/(?:about|contact|custom|pricing|services|work)(?:\/|$)/;
 
 /** Add a path here when a new page goes on www, or the other hosts 404 it. */
 const PRODUCT_PATH_RE = /^\/(?:ai|pro|privacy|refunds|terms)(?:\/|$)/;
@@ -53,7 +54,7 @@ export function isLibraryPath(pathname: string) {
 
 /**
  * Pages of Cortexcn Studio: its home (the `/` route), services, client work,
- * project pricing, about, and the contact form.
+ * project pricing, custom work requests, about, and the contact form.
  */
 export function isStudioPath(pathname: string) {
   return pathname === "/" || STUDIO_PATH_RE.test(pathname);

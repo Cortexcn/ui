@@ -5,6 +5,7 @@ export const libraryNavLinks = [
   { text: "Blocks", url: "/blocks" },
   { text: "Templates", url: "/templates" },
   { text: "Dashboard Kits", url: "/dashboard-kits" },
+  { text: "Kit Pricing", url: "/dashboard-kits/pricing" },
   { text: "Charts", url: "/charts/area-chart" },
   { text: "Design Systems", url: "/design-systems" },
   { text: "Changelog", url: "/changelog" },

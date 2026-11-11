@@ -12,8 +12,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { PRO_PRICING_PATH } from "@/lib/pro";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+import { formatUsd, KIT_BUNDLE_PRICES } from "@/lib/service-pricing";
+import { KIT_PRICING_PATH } from "@/lib/site-config";
 import { isDashboardKit, SITE_TEMPLATES } from "@/lib/site-templates";
 
 const KITS = SITE_TEMPLATES.filter(isDashboardKit);
@@ -65,13 +66,13 @@ export default function DashboardKitsPage() {
           <BlocksPageHeader
             action={
               <p className="max-w-3xl text-foreground/85 text-sm">
-                Pay once per kit, or get every kit and template with{" "}
-                <a
+                Pay once per kit, or{" "}
+                <Link
                   className="text-foreground underline underline-offset-4 hover:no-underline"
-                  href={PRO_PRICING_PATH}
+                  href={KIT_PRICING_PATH}
                 >
-                  Cortexcn Pro
-                </a>
+                  get every kit, from {formatUsd(KIT_BUNDLE_PRICES.hobby)}
+                </Link>
                 . Looking for a landing page instead? See the{" "}
                 <Link
                   className="text-foreground underline underline-offset-4 hover:no-underline"

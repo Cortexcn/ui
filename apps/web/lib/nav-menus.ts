@@ -340,6 +340,11 @@ function resourcesMenu(): NavMenu {
         links: [
           { label: "Introduction", href: "/docs", icon: "IconBook" },
           {
+            label: "Kit Pricing",
+            href: "/dashboard-kits/pricing",
+            icon: "IconReceiptBill",
+          },
+          {
             label: "Design Systems",
             href: "/design-systems",
             icon: "IconColorSwatch",
@@ -406,7 +411,7 @@ function servicesMenu(): NavMenu {
   return {
     id: "services",
     label: "Services",
-    match: ["/services", "/pricing"],
+    match: ["/services", "/pricing", "/custom"],
     panels: [
       {
         title: "What I build",
@@ -426,6 +431,7 @@ function servicesMenu(): NavMenu {
       title: "Also",
       links: [
         { label: "Pricing", href: "/pricing", icon: "IconDollar" },
+        { label: "Custom work", href: "/custom", icon: "IconReceiptBill" },
         { label: "Work", href: "/work", icon: "IconSuitcaseWork" },
         { label: "Contact", href: "/contact", icon: "IconMailbox" },
       ],

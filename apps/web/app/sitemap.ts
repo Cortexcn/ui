@@ -46,6 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     { url: `${STUDIO_URL}/pricing`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${STUDIO_URL}/custom`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${STUDIO_URL}/work`, changeFrequency: "monthly", priority: 0.7 },
     ...WORK.map((study) => ({
       url: `${STUDIO_URL}/work/${study.slug}`,
@@ -60,6 +61,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOCS_URL}/templates`, changeFrequency: "weekly", priority: 0.9 },
     {
       url: `${DOCS_URL}/dashboard-kits`,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${DOCS_URL}/dashboard-kits/pricing`,
       changeFrequency: "weekly",
       priority: 0.8,
     },

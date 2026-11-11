@@ -30,7 +30,7 @@ export interface CaseStudy {
   draft?: boolean;
 }
 
-const templateScreenshot = getSiteTemplate("growth-agency")?.screenshots.card;
+const templateScreenshot = getSiteTemplate("simplistic-saas")?.screenshots.card;
 
 /** A template from site-templates.ts. A wrong slug fails the build. */
 function siteTemplate(slug: string) {
@@ -90,19 +90,18 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "template",
     title: "Template",
-    summary:
-      "Four complete Next.js sites, sold as templates with live previews.",
+    summary: "Complete Next.js sites, sold as templates with live previews.",
     clientType: "My own product",
     problem:
       "Founders and small teams want a finished site they can launch this week, not a blank page or a site builder they cannot leave.",
     built: [
-      "Four complete sites: AI Travel App, Growth Agency, Trek Agency, and Simplistic SaaS.",
+      "Complete sites such as Shipkin, AI Infra, Data Checks, Team Workspace, and Simplistic SaaS.",
       "Every word, link, and price in one config file, so a buyer edits one file.",
       "Art drawn in SVG and CSS, so there are no stock images to license.",
       "Light and dark mode, keyboard support, reduced motion, and a static export for any host.",
     ],
     stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
-    result: { value: "4", label: "complete sites, each with a live preview" },
+    result: { value: "5", label: "complete sites, each with a live preview" },
     screenshot: templateScreenshot,
     liveUrl: "/templates",
   },

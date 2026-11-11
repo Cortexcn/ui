@@ -65,8 +65,8 @@ const QUESTIONS: Question[] = [
     answer: (
       <>
         Cortexcn Pro adds {PRO_COUNTS.charts} charts, the blocks built on them,
-        and {PRO_COUNTS.templates} full website templates. Pick a 1-year,
-        lifetime, or team license on the{" "}
+        and {PRO_COUNTS.templates} full website templates. Pick Hobby for one
+        developer or Business for a team on the{" "}
         <Link href={PRO_PRICING_PATH}>pricing page</Link>. Each one is a
         one-time payment.
       </>

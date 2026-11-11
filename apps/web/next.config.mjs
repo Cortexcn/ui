@@ -50,6 +50,8 @@ const nextConfig = {
     "/og": ["./lib/og-fonts/**", "./public/img/cortexcn/icon-dark.png"],
     // The purchases page reads one Pro item at a time for license holders.
     "/account/purchases/source/[name]": ["./private/r/**"],
+    // ...and hands buyers the packed paid templates and dashboard kits.
+    "/account/purchases/download/[slug]": ["./private/templates/**"],
   },
   experimental: {
     // Keeps dev/prod from pulling the entire charts package per MDX page.
@@ -135,10 +137,28 @@ const nextConfig = {
       },
       { source: `/work/${from}`, destination: `/work/${to}`, permanent: true },
     ]);
+    // Templates taken off sale; their pages and previews go to the list.
+    const removedTemplates = [
+      "ai-travel-app",
+      "trek-agency",
+      "growth-agency",
+    ].flatMap((slug) => [
+      {
+        source: `/templates/${slug}`,
+        destination: "/templates",
+        permanent: true,
+      },
+      {
+        source: `/previews/${slug}/:path*`,
+        destination: "/templates",
+        permanent: true,
+      },
+    ]);
     return [
       ...movedToBlocks,
       ...movedToSections,
       ...renamedTemplates,
+      ...removedTemplates,
       // Skills moved under Integration, next to the MCP server and DESIGN.md.
       {
         source: "/docs/skills",

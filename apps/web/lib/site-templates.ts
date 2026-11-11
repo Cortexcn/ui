@@ -7,12 +7,6 @@ import infraMobileDark from "@/assets/templates/ai-infra/mobile-dark.webp";
 import infraMobileLight from "@/assets/templates/ai-infra/mobile-light.webp";
 import infraContactDark from "@/assets/templates/ai-infra/page-contact-dark.webp";
 import infraContactLight from "@/assets/templates/ai-infra/page-contact-light.webp";
-import travelCardDark from "@/assets/templates/ai-travel-app/card-dark.webp";
-import travelCardLight from "@/assets/templates/ai-travel-app/card-light.webp";
-import travelDesktopDark from "@/assets/templates/ai-travel-app/desktop-dark.webp";
-import travelDesktopLight from "@/assets/templates/ai-travel-app/desktop-light.webp";
-import travelMobileDark from "@/assets/templates/ai-travel-app/mobile-dark.webp";
-import travelMobileLight from "@/assets/templates/ai-travel-app/mobile-light.webp";
 import checksCardDark from "@/assets/templates/data-checks/card-dark.webp";
 import checksCardLight from "@/assets/templates/data-checks/card-light.webp";
 import checksDesktopDark from "@/assets/templates/data-checks/desktop-dark.webp";
@@ -35,12 +29,6 @@ import florinRecurringDark from "@/assets/templates/florin/page-recurring-dark.w
 import florinRecurringLight from "@/assets/templates/florin/page-recurring-light.webp";
 import florinReportsDark from "@/assets/templates/florin/page-reports-dark.webp";
 import florinReportsLight from "@/assets/templates/florin/page-reports-light.webp";
-import growthCardDark from "@/assets/templates/growth-agency/card-dark.webp";
-import growthCardLight from "@/assets/templates/growth-agency/card-light.webp";
-import growthDesktopDark from "@/assets/templates/growth-agency/desktop-dark.webp";
-import growthDesktopLight from "@/assets/templates/growth-agency/desktop-light.webp";
-import growthMobileDark from "@/assets/templates/growth-agency/mobile-dark.webp";
-import growthMobileLight from "@/assets/templates/growth-agency/mobile-light.webp";
 import miradorCardDark from "@/assets/templates/mirador/card-dark.webp";
 import miradorCardLight from "@/assets/templates/mirador/card-light.webp";
 import miradorDesktopDark from "@/assets/templates/mirador/desktop-dark.webp";
@@ -171,14 +159,8 @@ import tradingKitScreenerDark from "@/assets/templates/trading-dashboard-kit/pag
 import tradingKitScreenerLight from "@/assets/templates/trading-dashboard-kit/page-screener-light.webp";
 import tradingKitTradeDark from "@/assets/templates/trading-dashboard-kit/page-trade-dark.webp";
 import tradingKitTradeLight from "@/assets/templates/trading-dashboard-kit/page-trade-light.webp";
-import trekCardDark from "@/assets/templates/trek-agency/card-dark.webp";
-import trekCardLight from "@/assets/templates/trek-agency/card-light.webp";
-import trekDesktopDark from "@/assets/templates/trek-agency/desktop-dark.webp";
-import trekDesktopLight from "@/assets/templates/trek-agency/desktop-light.webp";
-import trekMobileDark from "@/assets/templates/trek-agency/mobile-dark.webp";
-import trekMobileLight from "@/assets/templates/trek-agency/mobile-light.webp";
-import { contactHref } from "@/lib/contact/prefill";
 import { formatUsd } from "@/lib/service-pricing";
+import { kitCheckoutUrl } from "@/lib/site-config";
 
 export interface ThemedImage {
   light: StaticImageData;
@@ -189,8 +171,10 @@ export interface ThemedImage {
  * Full-website templates listed on /templates. Each one is a standalone
  * Next.js project: free ones in templates/<slug> in this repo, paid ones in
  * the private cortexcn-templates repo next to it. Free templates are
- * zipped at build time by the download route next to their page; paid ones
- * are sold through `checkoutUrl` and never served from this site.
+ * zipped at build time by the download route next to their page. Paid ones
+ * are packed into apps/web/private/templates and handed only to buyers, from
+ * their purchases page: website templates come with Cortexcn Pro, and
+ * dashboard kits are sold one by one or all together.
  */
 /** The filters on /templates. "free" is not listed: it follows the price. */
 export type TemplateCategory =
@@ -267,12 +251,6 @@ export interface SiteTemplate {
   previewUrl?: string;
   /** The public source repository, once there is one. */
   repoUrl?: string;
-  /**
-   * The hosted checkout for a paid template (Lemon Squeezy, Gumroad, Polar,
-   * or a Stripe Payment Link) that hands buyers the zip. Until it is set, Buy
-   * opens the contact form with the order written out.
-   */
-  checkoutUrl?: string;
   /**
    * Kept out of every listing, menu, and sitemap, and its page returns 404,
    * until the flag is removed.
@@ -1023,132 +1001,6 @@ const ALL_TEMPLATES: SiteTemplate[] = [
     previewUrl: "/previews/simplistic-saas",
   },
   {
-    slug: "ai-travel-app",
-    name: "AI Travel App",
-    summary:
-      "A launch site for an AI trip planner app, with a typing prompt bar, glassy itinerary mockups, and painted landscapes",
-    price: 99,
-    categories: ["ai", "travel"],
-    released: "2026-10-10",
-    updated: "2026-10-10",
-    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
-    sections: [
-      "Hero",
-      "Feature carousel",
-      "Intro",
-      "Desktop app",
-      "Testimonials",
-      "Integrations",
-      "Stays",
-      "Partners",
-      "Value banner",
-      "Pricing",
-      "Journal",
-      "FAQ",
-      "Call to action",
-      "Footer",
-    ],
-    features: [
-      "Every word, link, plan, and quote comes from one file, config/site.ts.",
-      "A hero prompt bar that types out example trips, with itinerary chips and a live re-route card above it.",
-      "Landscapes painted in SVG from seeded scenes in place of photos, so there are no images to license.",
-      "A swipeable feature carousel of app mockups, and a desktop app window whose route draws itself as you scroll.",
-      "Pricing with a monthly and yearly toggle, a newsletter form, and an FAQ accordion.",
-      "Light and dark mode, a mobile menu, corners set by one radius token, and reduced motion respected everywhere.",
-    ],
-    customize:
-      "Put your app name, copy, plans, and quotes in config/site.ts, swap the mark in components/logo.tsx, and change the colors and radius in app/globals.css.",
-    screenshots: {
-      card: { light: travelCardLight, dark: travelCardDark },
-      desktop: { light: travelDesktopLight, dark: travelDesktopDark },
-      mobile: { light: travelMobileLight, dark: travelMobileDark },
-    },
-    previewUrl: "/previews/ai-travel-app",
-  },
-  {
-    slug: "trek-agency",
-    name: "Trek Agency",
-    summary:
-      "A website for a guided hiking company, with editorial serif type, trek cards, and painted mountain scenes",
-    price: 99,
-    categories: ["travel", "small-business"],
-    released: "2026-10-10",
-    updated: "2026-10-10",
-    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
-    sections: [
-      "Hero",
-      "About",
-      "Treks",
-      "What's included",
-      "Gallery",
-      "Guides",
-      "How it works",
-      "Reviews",
-      "Journal",
-      "FAQ",
-      "Call to action",
-      "Footer",
-    ],
-    features: [
-      "Every word, link, trek, guide, and quote comes from one file, config/site.ts.",
-      "Terrain buttons in the hero that switch the landscape behind the headline.",
-      "Landscapes painted in SVG from seeded scenes in place of photos, so there are no images to license.",
-      "Trek cards with terrain filters, a gallery, guide cards, and stats that count up.",
-      "An enquiry form in the closing section, and an FAQ accordion.",
-      "Light and dark mode, a mobile menu, corners set by one radius token, and reduced motion respected everywhere.",
-    ],
-    customize:
-      "Put your company name, treks, guides, and quotes in config/site.ts, swap the mark in components/logo.tsx, and change the colors and radius in app/globals.css.",
-    screenshots: {
-      card: { light: trekCardLight, dark: trekCardDark },
-      desktop: { light: trekDesktopLight, dark: trekDesktopDark },
-      mobile: { light: trekMobileLight, dark: trekMobileDark },
-    },
-    previewUrl: "/previews/trek-agency",
-  },
-  {
-    slug: "growth-agency",
-    name: "Growth Agency",
-    summary:
-      "A website for a growth marketing agency, with giant condensed type, generative art, and case studies that stack as you scroll",
-    price: 99,
-    categories: ["agency"],
-    released: "2026-10-10",
-    updated: "2026-10-10",
-    stack: ["Next.js 16", "React 19", "Tailwind CSS 4", "Motion", "TypeScript"],
-    sections: [
-      "Hero",
-      "Clients",
-      "Process",
-      "Principles",
-      "Services",
-      "Selected work",
-      "Numbers",
-      "Testimonials",
-      "Pricing",
-      "FAQ",
-      "Journal",
-      "Call to action",
-      "Footer",
-    ],
-    features: [
-      "Every word, link, plan, and quote comes from one file, config/site.ts.",
-      "A hero word that fills the page width at every screen size, with letters that rise in and a slowly drifting gradient.",
-      "Seeded generative art in place of photos: color fields with grain, light streaks, poster shapes, and ripples, so there are no images to license.",
-      "Process cards that widen on hover or focus, and four case studies that stack on top of each other as you scroll.",
-      "Counters, floating testimonials, a monthly and yearly pricing toggle, and an FAQ with keyboard-friendly topic tabs.",
-      "Light and dark mode, a mobile menu, corners set by one radius token, and reduced motion respected everywhere.",
-    ],
-    customize:
-      "Put your studio name, copy, clients, plans, and quotes in config/site.ts, swap the mark in components/logo.tsx, and change the accent, highlight, and art colors in app/globals.css.",
-    screenshots: {
-      card: { light: growthCardLight, dark: growthCardDark },
-      desktop: { light: growthDesktopLight, dark: growthDesktopDark },
-      mobile: { light: growthMobileLight, dark: growthMobileDark },
-    },
-    previewUrl: "/previews/growth-agency",
-  },
-  {
     slug: "portfolio",
     name: "Portfolio",
     summary: "A one-page portfolio for developers and designers",
@@ -1208,14 +1060,28 @@ export function isFreeTemplate(template: SiteTemplate) {
   return template.price === 0;
 }
 
-/** "Free" or "$130". */
+/**
+ * A paid website template, which comes with every Cortexcn Pro license and is
+ * not sold on its own. Dashboard kits are sold one by one, or all together.
+ */
+export function isProTemplate(template: SiteTemplate) {
+  return !(isFreeTemplate(template) || isDashboardKit(template));
+}
+
+/** "Free", "With Pro", or a kit's price such as "$129". */
 export function templatePriceLabel(template: SiteTemplate) {
-  return isFreeTemplate(template) ? "Free" : formatUsd(template.price);
+  if (isFreeTemplate(template)) {
+    return "Free";
+  }
+  return isProTemplate(template) ? "With Pro" : formatUsd(template.price);
 }
 
 export function templateLicenseLabel(template: SiteTemplate) {
-  return isFreeTemplate(template)
-    ? "MIT licensed"
+  if (isFreeTemplate(template)) {
+    return "MIT licensed";
+  }
+  return isProTemplate(template)
+    ? "Cortexcn Pro license"
     : "Cortexcn template license";
 }
 
@@ -1228,15 +1094,18 @@ export function templateDownloadPath(template: SiteTemplate) {
   return `/templates/${template.slug}/download`;
 }
 
-/** Where Buy goes: the hosted checkout, or a prefilled order email for now. */
+/** Where Buy goes: a kit's own checkout, or the Pro licenses for a Pro template. */
 export function templateBuyHref(template: SiteTemplate) {
-  return (
-    template.checkoutUrl ??
-    contactHref(
-      "question",
-      `Hi, I would like to buy the ${template.name} template (${templatePriceLabel(template)}). Please send me a payment link.`,
-    )
-  );
+  return isProTemplate(template)
+    ? "/pro/pricing"
+    : kitCheckoutUrl(template.slug);
+}
+
+/** "Buy for $129", or "Get it with Pro" for a Pro template. */
+export function templateBuyLabel(template: SiteTemplate) {
+  return isProTemplate(template)
+    ? "Get it with Pro"
+    : `Buy for ${templatePriceLabel(template)}`;
 }
 
 const RELEASE_DATE = new Intl.DateTimeFormat("en-US", {

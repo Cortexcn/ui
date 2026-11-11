@@ -2,14 +2,13 @@ import { COMPONENT_COUNT_LABEL } from "@/lib/component-count";
 import {
   ADD_ONS,
   CARE_PLAN_MONTHLY_PRICE,
-  COMPONENT_PLAN_PRICES,
   COMPONENT_PLANS,
   cadenceLabel,
   countLabel,
   ESTIMATOR_OPTIONS,
   ESTIMATOR_PROJECTS,
-  FREE_PLAN_LIMITS,
   formatUsd,
+  PRO_LICENSE_PRICES,
   PROJECT_PACKAGES,
   PROJECT_STARTING_PRICES,
   type PricedPackage,
@@ -245,7 +244,7 @@ Every project includes 30 days of fixes after launch. After that, the care plan 
 Yes. I take on work in codebases that already exist, most often Next.js, React, and TypeScript. If yours runs on something else, tell me, and I will say honestly whether I am the right fit.
 
 **What is the component library?**
-Cortexcn is also a library of React components, charts, and blocks that I build every project on. ${FREE_PLAN_LIMITS.components} components are free, and Pro (${formatUsd(COMPONENT_PLAN_PRICES.pro)}) and Ultra (${formatUsd(COMPONENT_PLAN_PRICES.ultra)}) are paid once, if you want to use them yourself.
+Cortexcn is also a library of React components, charts, and blocks that I build every project on. Most of it is free, and Cortexcn Pro (${formatUsd(PRO_LICENSE_PRICES.hobby)} for one developer, ${formatUsd(PRO_LICENSE_PRICES.business)} for a team) is paid once, if you want to use the rest yourself.
 
 ## Links
 

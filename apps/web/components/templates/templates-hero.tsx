@@ -87,7 +87,7 @@ export function TemplatesHero({ landings, kits }: TemplatesHeroProps) {
             >
               <PrimaryLink href="#templates">Browse templates</PrimaryLink>
               <SecondaryLink href={PRO_PRICING_PATH}>
-                Get every template with Pro
+                Every template comes with Pro
               </SecondaryLink>
             </div>
           </div>

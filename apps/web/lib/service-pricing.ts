@@ -1,5 +1,5 @@
 import { contactHref } from "@/lib/contact/prefill";
-import { CHECKOUT_URLS } from "@/lib/site-config";
+import { PRO_LICENSE_CHECKOUT_URLS } from "@/lib/site-config";
 
 /**
  * Prices in US dollars for the component plans and for client work. The
@@ -63,96 +63,98 @@ function quoteAction(subject: string): PlanAction {
 /* Component plans                                                           */
 /* ------------------------------------------------------------------------ */
 
-export const FREE_PLAN_LIMITS = { components: 20, templates: 2 } as const;
-
-export const COMPONENT_PLAN_PRICES = { pro: 149, ultra: 449 } as const;
-
-/** The Cortexcn Pro licenses on /pro/pricing (`lib/pro-licenses.ts`), paid once. */
+/**
+ * Cortexcn Pro (`lib/pro-licenses.ts` and /pro/pricing), paid once: Hobby for
+ * one developer, Business for a team. Both open every Pro chart, component,
+ * and block, and every website template.
+ */
 export const PRO_LICENSE_PRICES = {
-  year: 149,
-  lifetime: 249,
-  team: 999,
+  hobby: 199,
+  business: 599,
 } as const;
 
 /**
- * The struck-through price beside each license's price. Delete an entry to
- * show its price alone.
+ * A struck-through price beside a license's price. Only for a price that was
+ * really charged before; leave it empty otherwise.
  */
 export const PRO_LICENSE_REGULAR_PRICES: Partial<
   Record<keyof typeof PRO_LICENSE_PRICES, number>
-> = {
-  year: 199,
-  lifetime: 349,
-  team: 1490,
-};
-
-/** How many people one Team license covers. */
-export const PRO_TEAM_SEATS = 10;
-
-/** Days after purchase that a component plan can be refunded in full. */
-export const PLAN_REFUND_DAYS = 14;
+> = {};
 
 /**
- * "Buy Pro: $149". Goes to the plan's checkout link in `lib/site-config.ts`,
- * or, until that is set, to the contact form with the order written out.
+ * Developers one Business license covers, the buyer included. The Business
+ * dashboard kit bundle covers the same number.
  */
-function buyAction(plan: "Pro" | "Ultra", price: number): PlanAction {
-  const checkout = plan === "Pro" ? CHECKOUT_URLS.pro : CHECKOUT_URLS.ultra;
+export const PRO_TEAM_SEATS = 10;
+
+/**
+ * Every dashboard kit in one purchase, now and future (`lib/kit-plans.ts`
+ * and /dashboard-kits/pricing), paid once. Each kit also sells on its own,
+ * at the price in `lib/site-templates.ts`.
+ */
+export const KIT_BUNDLE_PRICES = {
+  hobby: 349,
+  business: 799,
+} as const;
+
+/** Days after purchase that a license or a kit can be refunded in full. */
+export const PLAN_REFUND_DAYS = 14;
+
+/** "Buy Hobby: $199", to the license's checkout page. */
+function buyAction(id: keyof typeof PRO_LICENSE_PRICES, name: string) {
   return {
-    label: `Buy ${plan}: ${formatUsd(price)}`,
-    href:
-      checkout ||
-      contactHref(
-        "question",
-        `Hi, I would like to buy the Cortexcn ${plan} plan (${formatUsd(price)}). Please send me a payment link.`,
-      ),
+    label: `Buy ${name}: ${formatUsd(PRO_LICENSE_PRICES[id])}`,
+    href: PRO_LICENSE_CHECKOUT_URLS[id],
   };
 }
 
-/** Every paid plan is a single payment, with no subscription. */
+/**
+ * Cortexcn Pro as the Studio pricing page shows it, beside the client work.
+ * /pro/pricing has the full comparison. Every paid plan is a single payment.
+ */
 export const COMPONENT_PLANS: PricedPackage[] = [
   {
     name: "Free",
-    summary: "The basics, to try Cortexcn in a real project.",
+    summary: "Free components and blocks, to try Cortexcn in a real project.",
     price: 0,
     cadence: "once",
-    tag: `${FREE_PLAN_LIMITS.components} components`,
+    tag: "Free for good",
     features: [
-      `${FREE_PLAN_LIMITS.components} components with full source`,
-      `${FREE_PLAN_LIMITS.templates} page templates`,
+      "Free components and blocks, with full source",
+      "The Portfolio template",
       "Install with the shadcn CLI or your agent",
       "Use in personal and client projects",
     ],
     action: { label: "Get started", href: "/docs/installation" },
   },
   {
-    name: "Pro",
-    summary: "Every component, chart, and block, paid once.",
-    price: COMPONENT_PLAN_PRICES.pro,
+    name: "Hobby",
+    summary: "Cortexcn Pro for one developer, paid once.",
+    price: PRO_LICENSE_PRICES.hobby,
     cadence: "once",
-    tag: "All components",
+    tag: "One developer",
     features: [
-      "Every component, chart, and block",
-      "Fixes and updates to all of them",
-      "Unlimited projects",
-      "Email support",
+      "Every Pro chart, component, and block",
+      "Every website template",
+      "Updates for life",
+      "Personal, commercial, and client projects",
     ],
-    action: buyAction("Pro", COMPONENT_PLAN_PRICES.pro),
+    action: buyAction("hobby", "Hobby"),
     badge: "Recommended",
   },
   {
-    name: "Ultra",
-    summary: "Everything we make, now and later, for life.",
-    price: COMPONENT_PLAN_PRICES.ultra,
+    name: "Business",
+    summary: `Cortexcn Pro for a team of up to ${PRO_TEAM_SEATS} developers.`,
+    price: PRO_LICENSE_PRICES.business,
     cadence: "once",
-    tag: "Lifetime access",
+    tag: `Up to ${PRO_TEAM_SEATS} developers`,
     features: [
-      "Everything in Pro",
-      "Every template, now and later",
-      "Every new component, for life",
-      "Priority email support",
+      "Everything in Hobby",
+      `Seats for ${PRO_TEAM_SEATS} developers`,
+      "Add and remove teammates by email",
+      "Updates for life",
     ],
-    action: buyAction("Ultra", COMPONENT_PLAN_PRICES.ultra),
+    action: buyAction("business", "Business"),
   },
 ];
 

@@ -20,17 +20,20 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { PRO_PRICING_PATH } from "@/lib/pro";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+import { formatUsd, KIT_BUNDLE_PRICES } from "@/lib/service-pricing";
+import { KIT_PRICING_PATH } from "@/lib/site-config";
 import {
   formatTemplateDate,
   getSiteTemplate,
   isDashboardKit,
   isFreeTemplate,
+  isProTemplate,
   SITE_TEMPLATES,
   type SiteTemplate,
   templateArchiveName,
   templateBuyHref,
+  templateBuyLabel,
   templateDownloadPath,
   templateLicenseLabel,
   templatePriceLabel,
@@ -56,13 +59,20 @@ export async function generateMetadata({
   }
   return pageMetadata({
     title: templateTitle(template),
-    description: `${template.summary}, built with ${template.stack.slice(0, 3).join(", ")}. ${
-      isFreeTemplate(template)
-        ? "Free to download and use under the MIT license."
-        : `${templatePriceLabel(template)} once, for as many sites as you like.`
-    }`,
+    description: `${template.summary}, built with ${template.stack.slice(0, 3).join(", ")}. ${howToGet(template)}`,
     path: `/templates/${template.slug}`,
   });
+}
+
+/** How a template is had: free, with Pro, or bought on its own. */
+function howToGet(template: SiteTemplate) {
+  if (isFreeTemplate(template)) {
+    return "Free to download and use under the MIT license.";
+  }
+  if (isProTemplate(template)) {
+    return "Included with every Cortexcn Pro license, for as many sites as you like.";
+  }
+  return `${templatePriceLabel(template)} once, for as many sites as you like.`;
 }
 
 /** "Data Checks template for Next.js", or "Project Dashboard Kit for Next.js". */
@@ -141,7 +151,7 @@ function ActionBar({ template }: { template: SiteTemplate }) {
           size="lg"
         >
           <Icon data-icon="inline-start" name="IconShoppingBag1" />
-          Purchase for {templatePriceLabel(template)}
+          {templateBuyLabel(template)}
         </Button>
       )}
       {template.previewUrl ? (
@@ -158,17 +168,17 @@ function ActionBar({ template }: { template: SiteTemplate }) {
           Preview demo
         </Button>
       ) : null}
-      {free ? null : (
-        <a
+      {isDashboardKit(template) ? (
+        <Link
           className="rounded-md border bg-background px-3 py-2 text-muted-foreground text-sm transition-colors hover:bg-muted hover:text-foreground"
-          href={PRO_PRICING_PATH}
+          href={KIT_PRICING_PATH}
         >
-          Get every template, for life, with{" "}
+          Get every dashboard kit, from{" "}
           <span className="font-medium underline underline-offset-4">
-            Cortexcn Pro
+            {formatUsd(KIT_BUNDLE_PRICES.hobby)}
           </span>
-        </a>
-      )}
+        </Link>
+      ) : null}
     </div>
   );
 }
@@ -365,9 +375,12 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
               </p>
             ) : (
               <p className="text-muted-foreground text-sm">
-                {templatePriceLabel(template)} once, with updates. Use it for as
-                many sites as you like, for yourself or your clients, and change
-                anything. Please don't resell or share the template itself.
+                {isProTemplate(template)
+                  ? "Included with every Cortexcn Pro license, with updates."
+                  : `${templatePriceLabel(template)} once, with updates.`}{" "}
+                Use it for as many sites as you like, for yourself or your
+                clients, and change anything. Please don't resell or share the
+                template itself.
               </p>
             )}
           </div>

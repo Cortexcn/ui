@@ -37,7 +37,7 @@ export function BlockProPanel({
           </p>
         </div>
 
-        <ul className="grid gap-3 md:grid-cols-3">
+        <ul className="grid gap-3 sm:grid-cols-2">
           {PAID_PRO_LICENSES.map((license) => (
             <li
               className={cn(

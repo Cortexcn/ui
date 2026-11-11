@@ -58,11 +58,20 @@ export async function sendEmail(payload: EmailPayload): Promise<SendResult> {
   }
 }
 
-/** The message itself, to the team inbox; replies go straight to the sender. */
+/**
+ * Where every email meant for the owner goes: contact messages, quote
+ * requests, and sale notices. CONTACT_TO_EMAIL, a server secret so a personal
+ * address never sits in the code, or the public studio inbox.
+ */
+export function ownerInbox() {
+  return process.env.CONTACT_TO_EMAIL || CONTACT_EMAIL;
+}
+
+/** The message itself, to the owner's inbox; replies go straight to the sender. */
 export function sendContactEmail(input: ContactInput, receivedAt = new Date()) {
   return sendEmail({
     ...teamNotificationEmail(input, receivedAt),
-    to: process.env.CONTACT_TO_EMAIL || CONTACT_EMAIL,
+    to: ownerInbox(),
     replyTo: input.email,
   });
 }

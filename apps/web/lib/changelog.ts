@@ -46,6 +46,19 @@ export const CHANGELOG: ChangelogRelease[] = [
   {
     date: "2026-11-11",
     kind: "site",
+    title:
+      "Hobby and Business licenses, dashboard kit checkout, and custom work",
+    summary:
+      "Cortexcn Pro now comes as Hobby for one developer or Business for a team of up to 10, both paid once, and every website template comes with it to download from your purchases page. Dashboard kits have their own checkout: buy one, or every kit now and later from one price, on the new kit pricing page. A custom work page has forms for components, dashboards, and websites that show an estimated price range as you fill them in.",
+    items: [
+      { label: "Pro pricing", href: "/pro/pricing" },
+      { label: "Dashboard kit pricing", href: "/dashboard-kits/pricing" },
+      { label: "Custom work", href: "/custom" },
+    ],
+  },
+  {
+    date: "2026-11-11",
+    kind: "site",
     title: "Checkout and a purchases page for Cortexcn Pro",
     summary:
       "The Buy buttons on the Pro pricing page now go to checkout: you sign in, check the order, and pay through Dodo Payments. Your purchases page then shows your license and the source of every Pro chart, component, and block, with a copy button on each file. With a Team license you add teammates there by email, and every Pro docs and block page links license holders straight to its code.",

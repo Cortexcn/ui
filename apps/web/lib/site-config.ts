@@ -40,26 +40,31 @@ export const PROOF_STATS = {
 };
 
 /**
- * Hosted checkout links (Lemon Squeezy, Gumroad, Polar, or a Stripe Payment
- * Link) for the component plans. Until a link is set, the Buy button opens
- * the contact form with the order written out.
- */
-export const CHECKOUT_URLS = {
-  pro: "",
-  ultra: "",
-};
-
-/**
- * Where each Cortexcn Pro license's Buy button goes: the checkout page, which
- * signs the buyer in and hands them to Dodo Payments. Until the payment keys
- * are set on the server, that page sends them on to the contact form with the
- * order written out.
+ * Where each Buy button goes: the checkout page, which signs the buyer in and
+ * hands them to Dodo Payments. Until payments are set up on the server, that
+ * page sends them on to the contact form with the order written out.
  */
 export const PRO_LICENSE_CHECKOUT_URLS = {
-  year: "/checkout/year",
-  lifetime: "/checkout/lifetime",
-  team: "/checkout/team",
+  hobby: "/checkout/hobby",
+  business: "/checkout/business",
 };
+
+/** The same, for every dashboard kit in one purchase. */
+export const KIT_BUNDLE_CHECKOUT_URLS = {
+  hobby: "/checkout/kits-hobby",
+  business: "/checkout/kits-business",
+};
+
+/** The same, for one dashboard kit. */
+export function kitCheckoutUrl(slug: string) {
+  return `/checkout/kit-${slug}`;
+}
+
+/** The dashboard kit prices: each kit, and all of them together. */
+export const KIT_PRICING_PATH = "/dashboard-kits/pricing";
+
+/** Custom work: the request forms with a price estimate, on the Studio site. */
+export const CUSTOM_QUOTE_PATH = "/custom";
 
 /**
  * The public repository with the source of every free registry item. It is
