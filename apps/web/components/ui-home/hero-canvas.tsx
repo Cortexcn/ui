@@ -4,9 +4,9 @@ import { AvatarGroupWithCount } from "@cortexcn/ui/examples/avatar";
 import { BadgeVariants } from "@cortexcn/ui/examples/badge";
 import { ButtonGroupPagination } from "@cortexcn/ui/examples/button-group";
 import { CalendarInCard } from "@cortexcn/ui/examples/calendar";
-import { CommandInline } from "@cortexcn/ui/examples/command";
 import { EmptyInCard } from "@cortexcn/ui/examples/empty";
 import { InputOTPSimple } from "@cortexcn/ui/examples/input-otp";
+import { OutlineItemGroup } from "@cortexcn/ui/examples/item";
 import { FileUploadList } from "@cortexcn/ui/examples/progress";
 import { RadioGroupWithDescriptions } from "@cortexcn/ui/examples/radio-group";
 import { SwitchWithDescription } from "@cortexcn/ui/examples/switch";
@@ -305,10 +305,12 @@ const COLUMNS: CanvasColumn[] = [
         demo: <SphereMenuDemo />,
       },
       {
-        slug: "command",
-        title: "Command",
+        // Not the Command example: cmdk scrolls its selected item into view
+        // on mount, which scrolls the whole page down to the wall on phones.
+        slug: "item",
+        title: "Item",
         kind: "Component",
-        demo: <CommandInline />,
+        demo: <OutlineItemGroup />,
       },
       {
         slug: "bar-chart-horizontal",
@@ -357,7 +359,7 @@ const TOUR = [
   "logos-carousel",
   "radio-group",
   "sphere-menu",
-  "command",
+  "item",
   "live-line-chart",
   "radar-chart",
   "gauge-chart",

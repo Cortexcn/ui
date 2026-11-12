@@ -19,7 +19,7 @@ export function HomeBlocksSection() {
       reverse
       secondary={{ label: "Read the docs", href: "/docs/installation" }}
       stage={<BlocksStageLoader />}
-      stageLabel="The Feature Bento Grid block on a landing page."
+      stageLabel="The Hero Dashboard block at the top of a landing page: a serif headline and a call to action over a framed product dashboard."
       stats={[
         { value: String(CATALOG_COUNTS.pageBlocks), label: "page blocks" },
         { value: String(CATALOG_COUNTS.freeBlocks), label: "free to install" },

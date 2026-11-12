@@ -1,19 +1,24 @@
 "use client";
 
-import { FeatureBentoGridPreview } from "@/blocks/feature-bento-grid-01/preview";
-import { FitToFrame } from "@/components/blocks/fit-to-frame";
+import { HeroDashboardPreview } from "@/blocks/hero-dashboard-01/preview";
 
+import { ScaledFrame } from "./home-stage-frame";
 import { StageLayout } from "./product-showcase";
 import { Safari } from "./safari";
 
-/** The free Feature Bento Grid block, as a section of a landing page. */
+/**
+ * The free Hero Dashboard block as the top of a landing page: laid out at
+ * desktop width and filling the window from the top, as a site opens.
+ */
 export function BlocksStage() {
   return (
     <StageLayout>
       <Safari url="acme.com">
-        <FitToFrame className="aspect-auto h-full bg-background">
-          <FeatureBentoGridPreview />
-        </FitToFrame>
+        <ScaledFrame className="items-start" height={747} width={1280}>
+          <div className="w-full">
+            <HeroDashboardPreview />
+          </div>
+        </ScaledFrame>
       </Safari>
     </StageLayout>
   );
