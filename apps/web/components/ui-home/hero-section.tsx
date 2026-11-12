@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BLOCK_CATEGORIES } from "@/blocks/categories";
 import { CopyButton } from "@/components/copy-button";
+import { ProductHuntBadge } from "@/components/product-hunt-badge";
 import { COMPONENT_GROUPS } from "@/lib/component-families";
 import { cn } from "@/lib/utils";
 
@@ -130,6 +131,10 @@ export function HeroSection() {
                 text={MCP_COMMAND}
               />
             </div>
+
+            <ProductHuntBadge
+              className={cn("mt-6 delay-1000", enterClassName)}
+            />
           </div>
         </div>
 

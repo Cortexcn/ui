@@ -1,4 +1,5 @@
 import { CtaSection } from "@/components/ui-home/cta-section";
+import { CustomWorkSection } from "@/components/ui-home/custom-work-section";
 import { FaqSection } from "@/components/ui-home/faq-section";
 import { FeaturesSection } from "@/components/ui-home/features-section";
 import { HeroSection } from "@/components/ui-home/hero-section";
@@ -33,6 +34,7 @@ export default function LibraryHomePage() {
         are hidden for now; their files are kept to bring back.
       */}
       <InsightsSection />
+      <CustomWorkSection source="home" />
       <FaqSection />
       <CtaSection />
     </main>

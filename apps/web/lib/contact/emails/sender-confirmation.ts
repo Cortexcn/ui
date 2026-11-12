@@ -2,6 +2,7 @@ import {
   CONTACT_EMAIL,
   CONTACT_LOCATION,
   CONTACT_PHONE,
+  REPLY_WITHIN_HOURS,
 } from "@/lib/contact-details";
 import { DOCS_URL, SITE_URL, STUDIO_URL } from "@/lib/site-url";
 
@@ -15,6 +16,7 @@ import {
   formatReceivedAt,
   MONO,
   monoLabel,
+  multilineHtml,
   SANS,
   textLink,
 } from "./layout";
@@ -36,29 +38,40 @@ function nextStepRows() {
 }
 
 /**
- * The note that goes back to whoever sent the form. It repeats only the
- * topic, never the message, so the form cannot be used to mail spam to others.
+ * The acknowledgement that goes back to whoever sent the form: the message
+ * reached us, a reply comes within REPLY_WITHIN_HOURS, and a copy of what they
+ * sent. It repeats their own words, so the route only sends it after the
+ * security check, the rate limit, and the mail domain check have passed.
  */
 export function senderConfirmationEmail(input: ContactInput, sentAt: Date) {
   const topic = contactTopicLabel(input.topic);
-  const subject = "We got your message";
+  const subject = `We got your message. We'll reply within ${REPLY_WITHIN_HOURS} hours`;
   const sent = formatReceivedAt(sentAt);
+  const name = `${input.firstName} ${input.lastName}`.trim();
 
   const body = `<tr>
   <td class="px" style="padding:20px 24px 0;">
-    <p style="margin:0;font-family:${SANS};font-size:18px;line-height:1.45;letter-spacing:-0.03em;color:${COLORS.text};">Thanks for writing to Cortexcn. A person reads every message, and the reply will come from <span style="font-family:${MONO};font-size:15px;">${CONTACT_EMAIL}</span> to this address.</p>
+    <p style="margin:0;font-family:${SANS};font-size:18px;line-height:1.45;letter-spacing:-0.03em;color:${COLORS.text};">Thanks for writing to Cortexcn. Your message reached us, and a person reads every one. We'll reply within ${REPLY_WITHIN_HOURS} hours from <span style="font-family:${MONO};font-size:15px;">${CONTACT_EMAIL}</span> to this address.</p>
   </td>
 </tr>
 <tr>
-  <td class="px" style="padding:24px 24px 8px;">
+  <td class="px" style="padding:28px 24px 0;">
+    <p style="margin:0 0 10px;${monoLabel()}">What you sent</p>
     ${detailRows([
+      ["Name", escapeHtml(name)],
+      ["Email", escapeHtml(input.email)],
       [
         "Topic",
         `<span style="display:inline-block;width:7px;height:7px;margin-right:8px;background:${COLORS.primary};vertical-align:middle;"></span><span style="vertical-align:middle;">${escapeHtml(topic)}</span>`,
       ],
       ["Sent", escapeHtml(sent)],
-      ["Reply to", escapeHtml(input.email)],
     ])}
+  </td>
+</tr>
+<tr>
+  <td class="px" style="padding:24px 24px 0;">
+    <p style="margin:0 0 10px;${monoLabel()}">Your message</p>
+    <p style="margin:0;font-family:${SANS};font-size:16px;line-height:1.5;letter-spacing:-0.02em;color:${COLORS.text};">${multilineHtml(input.message)}</p>
   </td>
 </tr>
 <tr>
@@ -77,11 +90,11 @@ export function senderConfirmationEmail(input: ContactInput, sentAt: Date) {
 
   const html = emailDocument({
     title: subject,
-    preheader: `Thanks, ${input.firstName}. Your message about ${topic.toLowerCase()} is in our inbox.`,
+    preheader: `Thanks, ${input.firstName}. Your message about ${topic.toLowerCase()} is in. We'll reply within ${REPLY_WITHIN_HOURS} hours.`,
     eyebrow: "Contact form",
     label: "Message received",
     heading: `Thanks, ${input.firstName}.`,
-    subheading: "Your message is in our inbox",
+    subheading: `We'll reply within ${REPLY_WITHIN_HOURS} hours`,
     body,
     footer,
   });
@@ -89,11 +102,17 @@ export function senderConfirmationEmail(input: ContactInput, sentAt: Date) {
   const text = [
     `Thanks, ${input.firstName}.`,
     "",
-    "Your message is in our inbox. A person reads every message, and the reply",
-    `will come from ${CONTACT_EMAIL} to this address.`,
+    "Your message reached us, and a person reads every one. We'll reply within",
+    `${REPLY_WITHIN_HOURS} hours from ${CONTACT_EMAIL} to this address.`,
     "",
+    "What you sent:",
+    `Name: ${name}`,
+    `Email: ${input.email}`,
     `Topic: ${topic}`,
     `Sent: ${sent}`,
+    "",
+    "Your message:",
+    input.message,
     "",
     "While you wait:",
     ...NEXT_STEPS.map((step) => `- ${step.label}: ${step.href}`),

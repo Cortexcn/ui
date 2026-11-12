@@ -44,6 +44,19 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-12",
+    kind: "site",
+    title: "Custom work requests from the home, Pro, and AI pages",
+    summary:
+      "The custom work form, with its live price range, now sits on the home page, the Pro page, and the AI page, so you can ask for components, a dashboard, or a site without leaving the page you are on. Every request and contact message now gets an email back that says it reached us, promises a reply within 48 hours, and repeats everything you sent.",
+    items: [
+      { label: "Home", href: "/#custom-work" },
+      { label: "Pro", href: "/pro#custom-work" },
+      { label: "AI", href: "/ai#custom-work" },
+      { label: "Custom work", href: "/custom" },
+    ],
+  },
+  {
     date: "2026-11-11",
     kind: "site",
     title:

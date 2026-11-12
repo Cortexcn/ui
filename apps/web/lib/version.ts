@@ -15,7 +15,7 @@ import { CHANGELOG } from "@/lib/changelog";
 const MAJOR = { number: 1, since: "2026-09-20" };
 
 /** Fix-only deploys since the latest release. Back to 0 with the next entry. */
-const PATCH = 3;
+const PATCH = 1;
 
 const MINOR = CHANGELOG.filter((release) => release.date >= MAJOR.since).length;
 

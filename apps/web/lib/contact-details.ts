@@ -7,3 +7,9 @@ export const CONTACT_PHONE = {
 } as const;
 
 export const CONTACT_LOCATION = "Bangalore, India";
+
+/**
+ * How soon a person answers a contact message or a custom work request. The
+ * emails that confirm a request and the forms' sent notes promise it.
+ */
+export const REPLY_WITHIN_HOURS = 48;
