@@ -9,8 +9,8 @@ import { StackTicker } from "./stack-ticker";
 
 const ANNOUNCEMENT = {
   tag: "New",
-  text: "The Invoicing Dashboard Kit, with invoices, payouts, and reports",
-  href: "/templates/florin",
+  text: "The Personal Finance Dashboard Kit, with budgets, goals, and cash flow",
+  href: "/templates/tansy",
 };
 
 const HEADLINE = [

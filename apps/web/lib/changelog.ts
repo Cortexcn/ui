@@ -44,6 +44,17 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-13",
+    kind: "site",
+    title: "Tansy, the Personal Finance Dashboard Kit",
+    summary:
+      "A paid eleven-page personal finance and budgeting dashboard with the purple Unique badge and a light design of its own: income, spending, and cash flow on one dashboard, transactions with filters and Undo, budgets by category, savings goals, analytics, accounts, recurring bills, and an assistant that answers questions from the numbers. It works in light and dark mode, on phones and tablets, and ships with a live preview.",
+    items: [
+      { label: "Personal Finance Dashboard Kit", href: "/templates/tansy" },
+      { label: "Dashboard Kits", href: "/dashboard-kits" },
+    ],
+  },
+  {
     date: "2026-11-12",
     kind: "site",
     title: "Custom work requests from the home, Pro, and AI pages",

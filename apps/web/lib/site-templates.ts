@@ -137,6 +137,22 @@ import saasDesktopDark from "@/assets/templates/simplistic-saas/desktop-dark.web
 import saasDesktopLight from "@/assets/templates/simplistic-saas/desktop-light.webp";
 import saasMobileDark from "@/assets/templates/simplistic-saas/mobile-dark.webp";
 import saasMobileLight from "@/assets/templates/simplistic-saas/mobile-light.webp";
+import tansyCardDark from "@/assets/templates/tansy/card-dark.webp";
+import tansyCardLight from "@/assets/templates/tansy/card-light.webp";
+import tansyDesktopDark from "@/assets/templates/tansy/desktop-dark.webp";
+import tansyDesktopLight from "@/assets/templates/tansy/desktop-light.webp";
+import tansyMobileDark from "@/assets/templates/tansy/mobile-dark.webp";
+import tansyMobileLight from "@/assets/templates/tansy/mobile-light.webp";
+import tansyAccountsDark from "@/assets/templates/tansy/page-accounts-dark.webp";
+import tansyAccountsLight from "@/assets/templates/tansy/page-accounts-light.webp";
+import tansyAnalyticsDark from "@/assets/templates/tansy/page-analytics-dark.webp";
+import tansyAnalyticsLight from "@/assets/templates/tansy/page-analytics-light.webp";
+import tansyBudgetDark from "@/assets/templates/tansy/page-budget-dark.webp";
+import tansyBudgetLight from "@/assets/templates/tansy/page-budget-light.webp";
+import tansyGoalsDark from "@/assets/templates/tansy/page-goals-dark.webp";
+import tansyGoalsLight from "@/assets/templates/tansy/page-goals-light.webp";
+import tansyTransactionsDark from "@/assets/templates/tansy/page-transactions-dark.webp";
+import tansyTransactionsLight from "@/assets/templates/tansy/page-transactions-light.webp";
 import workspaceCardDark from "@/assets/templates/team-workspace/card-dark.webp";
 import workspaceCardLight from "@/assets/templates/team-workspace/card-light.webp";
 import workspaceDesktopDark from "@/assets/templates/team-workspace/desktop-dark.webp";
@@ -259,6 +275,76 @@ export interface SiteTemplate {
 }
 
 const ALL_TEMPLATES: SiteTemplate[] = [
+  {
+    slug: "tansy",
+    name: "Personal Finance Dashboard Kit",
+    kind: "dashboard",
+    summary:
+      "Tansy, a personal finance and budgeting dashboard: income, spending, and cash flow, budgets, savings goals, accounts, recurring bills, and an assistant that answers from the numbers, in a light design of its own with black page pills and white panels set in pale cards",
+    price: 199,
+    badge: "unique",
+    categories: ["dashboards", "saas"],
+    released: "2026-11-13",
+    updated: "2026-11-13",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "TypeScript",
+    ],
+    sections: [
+      "Dashboard",
+      "Transactions",
+      "Budget",
+      "Goals",
+      "Analytics",
+      "Accounts",
+      "Recurring",
+      "Categories",
+      "Assistant",
+      "Settings",
+      "Help",
+    ],
+    features: [
+      "A dashboard with income split by source, net saving with the latest deposits into three goals, expenses over the last seven days, the balance across accounts with six months of bars, six months of cash flow as stacked hatched bars, spending by category as a donut, and recent transactions.",
+      "Transactions with search and filters by kind, category, account, and period, a table on wide screens and cards grouped by day on phones, and a detail sheet to change the category, add a note, or delete with Undo.",
+      "Budgets by category with what is left and the daily amount that keeps the month on budget, and savings goals with dotted progress, the amount each one needs every month, its projected finish, and every deposit.",
+      "Analytics with twelve months of income and spending, top payees, category trends, and any two months side by side, plus accounts with net worth and a 90-day trend, bills and income due in the next 30 days, and categories you pin to the dashboard.",
+      "An assistant that answers questions about budgets, categories, income, savings, goals, bills, and balances from the numbers on screen. Its rules run in the browser and call no AI service, so you can keep them or point it at your own model.",
+      "Built from Cortexcn components and Pro charts with Hugeicons and Inter, with a year of demo data for one made-up person and 97 Vitest checks. Light first with a full dark mode, the currency set in one line, Undo on deletes, and layouts for phones and tablets.",
+    ],
+    customize:
+      "Swap the demo data in lib/data, set today's date in lib/dates.ts, rename the product and pages and set the currency in config/site.ts, change the colors in app/globals.css, and turn the actions in components/workspace/workspace-provider.tsx into API calls.",
+    screenshots: {
+      card: { light: tansyCardLight, dark: tansyCardDark },
+      desktop: { light: tansyDesktopLight, dark: tansyDesktopDark },
+      mobile: { light: tansyMobileLight, dark: tansyMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Transactions",
+        image: { light: tansyTransactionsLight, dark: tansyTransactionsDark },
+      },
+      {
+        name: "Budget",
+        image: { light: tansyBudgetLight, dark: tansyBudgetDark },
+      },
+      {
+        name: "Goals",
+        image: { light: tansyGoalsLight, dark: tansyGoalsDark },
+      },
+      {
+        name: "Analytics",
+        image: { light: tansyAnalyticsLight, dark: tansyAnalyticsDark },
+      },
+      {
+        name: "Accounts",
+        image: { light: tansyAccountsLight, dark: tansyAccountsDark },
+      },
+    ],
+    previewUrl: "/previews/tansy",
+  },
   {
     slug: "florin",
     name: "Invoicing Dashboard Kit",

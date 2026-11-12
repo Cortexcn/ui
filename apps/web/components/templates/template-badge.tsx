@@ -23,7 +23,7 @@ export function TemplateBadge({
         className,
       )}
     >
-      <Icon aria-hidden="true" className="size-3" name="IconSparkle" />
+      <Icon aria-hidden="true" className="size-3" name="IconDiamondShine" />
       Unique
     </span>
   );
