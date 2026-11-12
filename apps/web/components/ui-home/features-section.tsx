@@ -103,7 +103,7 @@ export function FeaturesSection() {
   return (
     <section className="py-20 md:py-28" id="features">
       <Container>
-        <SectionHeader badge="What you get" lines={HEADLINE} />
+        <SectionHeader badge="How it works" lines={HEADLINE} />
         <div className="mt-12 grid gap-x-6 gap-y-12 md:mt-16 lg:grid-cols-3">
           {FEATURES.map((feature, index) => (
             <Reveal className="min-w-0" delay={index * 120} key={feature.title}>

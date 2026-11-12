@@ -30,13 +30,11 @@ export function CtaSection() {
               />
             </h2>
             <p className="mt-6 max-w-md text-base text-body leading-[1.45] md:text-lg">
-              Pick a component, install it with one command, and make it yours
-              in your own code.
+              Pick a component, a block, or a whole kit, install it with one
+              command, and make it yours in your own code.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <PrimaryLink href="/docs/components">
-                Browse components
-              </PrimaryLink>
+              <PrimaryLink href="#products">Explore Cortexcn</PrimaryLink>
               <SecondaryLink href="/docs/installation">
                 Read the docs
               </SecondaryLink>
