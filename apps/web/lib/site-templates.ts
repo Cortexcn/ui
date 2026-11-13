@@ -29,6 +29,22 @@ import florinRecurringDark from "@/assets/templates/florin/page-recurring-dark.w
 import florinRecurringLight from "@/assets/templates/florin/page-recurring-light.webp";
 import florinReportsDark from "@/assets/templates/florin/page-reports-dark.webp";
 import florinReportsLight from "@/assets/templates/florin/page-reports-light.webp";
+import heardlineCardDark from "@/assets/templates/heardline/card-dark.webp";
+import heardlineCardLight from "@/assets/templates/heardline/card-light.webp";
+import heardlineDesktopDark from "@/assets/templates/heardline/desktop-dark.webp";
+import heardlineDesktopLight from "@/assets/templates/heardline/desktop-light.webp";
+import heardlineMobileDark from "@/assets/templates/heardline/mobile-dark.webp";
+import heardlineMobileLight from "@/assets/templates/heardline/mobile-light.webp";
+import heardlineAnalyticsDark from "@/assets/templates/heardline/page-analytics-dark.webp";
+import heardlineAnalyticsLight from "@/assets/templates/heardline/page-analytics-light.webp";
+import heardlineCheckInsDark from "@/assets/templates/heardline/page-check-ins-dark.webp";
+import heardlineCheckInsLight from "@/assets/templates/heardline/page-check-ins-light.webp";
+import heardlineFollowUpsDark from "@/assets/templates/heardline/page-follow-ups-dark.webp";
+import heardlineFollowUpsLight from "@/assets/templates/heardline/page-follow-ups-light.webp";
+import heardlineSettingsDark from "@/assets/templates/heardline/page-settings-dark.webp";
+import heardlineSettingsLight from "@/assets/templates/heardline/page-settings-light.webp";
+import heardlineTherapistsDark from "@/assets/templates/heardline/page-therapists-dark.webp";
+import heardlineTherapistsLight from "@/assets/templates/heardline/page-therapists-light.webp";
 import miradorCardDark from "@/assets/templates/mirador/card-dark.webp";
 import miradorCardLight from "@/assets/templates/mirador/card-light.webp";
 import miradorDesktopDark from "@/assets/templates/mirador/desktop-dark.webp";
@@ -275,6 +291,74 @@ export interface SiteTemplate {
 }
 
 const ALL_TEMPLATES: SiteTemplate[] = [
+  {
+    slug: "heardline",
+    name: "Care Quality Dashboard Kit",
+    kind: "dashboard",
+    summary:
+      "Heardline, a care-quality dashboard for therapy practices: it asks every client after every session whether they felt heard, tracks the answers by therapist and week, and makes sure someone follows up when the answer is anything but yes, in a dark design of its own with a full light theme",
+    price: 199,
+    badge: "unique",
+    categories: ["dashboards", "saas"],
+    released: "2026-11-13",
+    updated: "2026-11-13",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS 4",
+      "Cortexcn",
+      "TypeScript",
+    ],
+    sections: [
+      "Dashboard",
+      "Check-ins",
+      "Follow-ups",
+      "Therapists",
+      "Analytics",
+      "Settings",
+    ],
+    features: [
+      "A dashboard with sessions this week, the felt-heard rate over 30 days, open follow-ups, and the share reached within a day, the felt-heard rate week by week against the same weeks last year, the latest check-ins, and this week's follow-ups as cards.",
+      "Check-ins with every answer from the last 60 days, filtered by answer, program, and therapist, with search and CSV export, in a table that scrolls inside its panel with its column names pinned. Each check-in opens in a popup with the client's comment, their last sessions, and the follow-up.",
+      "Follow-ups as a board of to reach, in touch, and resolved this week, with the median time to reach a client, Reached on the cards still to reach, and Resolve, with a note on what happened, on the ones in touch.",
+      "Therapists with each one's felt-heard rate, change, 12-week trend, and open follow-ups, and a popup with their weekly chart and what their clients wrote. Analytics shows felt heard by session number, by mode, and by language, and the answers short of yes week by week.",
+      "Settings for the question, the channel (WhatsApp, SMS, or email), when it is sent, and the follow-up rules, with a live preview of the message the client gets. Clients appear by initials and a code, never by name.",
+      "Built from Cortexcn components and Pro charts with Lucide icons and Inter, with two years of sample sessions for a made-up practice of eight therapists and Vitest checks on the figures. Dark first with a full light mode, a sidebar that closes with Ctrl+B, search on the / key, and layouts for phones and tablets.",
+    ],
+    customize:
+      "Rename the practice, the person signed in, the question, and the answer choices in the client's message in config/site.ts, change the colors in app/globals.css, swap the sample data in lib/data.ts and set NOW in lib/dates.ts to the real clock, and turn the actions in components/care/care-provider.tsx into API calls.",
+    screenshots: {
+      card: { light: heardlineCardLight, dark: heardlineCardDark },
+      desktop: { light: heardlineDesktopLight, dark: heardlineDesktopDark },
+      mobile: { light: heardlineMobileLight, dark: heardlineMobileDark },
+    },
+    pageShots: [
+      {
+        name: "Check-ins",
+        image: { light: heardlineCheckInsLight, dark: heardlineCheckInsDark },
+      },
+      {
+        name: "Follow-ups",
+        image: { light: heardlineFollowUpsLight, dark: heardlineFollowUpsDark },
+      },
+      {
+        name: "Therapists",
+        image: {
+          light: heardlineTherapistsLight,
+          dark: heardlineTherapistsDark,
+        },
+      },
+      {
+        name: "Analytics",
+        image: { light: heardlineAnalyticsLight, dark: heardlineAnalyticsDark },
+      },
+      {
+        name: "Settings",
+        image: { light: heardlineSettingsLight, dark: heardlineSettingsDark },
+      },
+    ],
+    previewUrl: "/previews/heardline",
+  },
   {
     slug: "tansy",
     name: "Personal Finance Dashboard Kit",

@@ -9,8 +9,8 @@ import { StackTicker } from "./stack-ticker";
 
 const ANNOUNCEMENT = {
   tag: "New",
-  text: "The Personal Finance Dashboard Kit, with budgets, goals, and cash flow",
-  href: "/templates/tansy",
+  text: "The Care Quality Dashboard Kit, with check-ins, follow-ups, and trends",
+  href: "/templates/heardline",
 };
 
 const HEADLINE = [

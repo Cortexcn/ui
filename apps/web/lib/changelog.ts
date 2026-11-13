@@ -46,6 +46,17 @@ export const CHANGELOG: ChangelogRelease[] = [
   {
     date: "2026-11-13",
     kind: "site",
+    title: "Heardline, the Care Quality Dashboard Kit",
+    summary:
+      "A paid six-page care-quality dashboard for therapy practices with the purple Unique badge and a dark design of its own. It asks every client after every session whether they felt heard, then shows the answers by therapist and week, puts every answer short of yes on a follow-up board, and lets you set the question, the channel, and the follow-up rules. It works in dark and light mode, on phones and tablets, and ships with a live preview.",
+    items: [
+      { label: "Care Quality Dashboard Kit", href: "/templates/heardline" },
+      { label: "Dashboard Kits", href: "/dashboard-kits" },
+    ],
+  },
+  {
+    date: "2026-11-13",
+    kind: "site",
     title: "Tansy, the Personal Finance Dashboard Kit",
     summary:
       "A paid eleven-page personal finance and budgeting dashboard with the purple Unique badge and a light design of its own: income, spending, and cash flow on one dashboard, transactions with filters and Undo, budgets by category, savings goals, analytics, accounts, recurring bills, and an assistant that answers questions from the numbers. It works in light and dark mode, on phones and tablets, and ships with a live preview.",
