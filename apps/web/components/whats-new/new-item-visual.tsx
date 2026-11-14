@@ -4,6 +4,8 @@ import {
   ComponentThumbnail,
   hasComponentThumbnail,
 } from "@/components/docs/component-thumbnails";
+import { CortexThumbnail } from "@/components/docs/cortex-thumbnails";
+import { CORTEX_THUMBNAILS } from "@/lib/cortex-thumbnails";
 import { cn } from "@/lib/utils";
 import type { NewItemVisual as Visual } from "@/lib/whats-new";
 import { LazyBlockPreview } from "./lazy-block-preview";
@@ -22,6 +24,9 @@ export function NewItemVisual({ visual }: { visual: Visual }) {
   if (visual.kind === "art") {
     if (visual.family === "components" && hasComponentThumbnail(visual.slug)) {
       return <ComponentThumbnail slug={visual.slug} />;
+    }
+    if (visual.family === "cortex" && CORTEX_THUMBNAILS.has(visual.slug)) {
+      return <CortexThumbnail slug={visual.slug} />;
     }
     return (
       <ComponentArt

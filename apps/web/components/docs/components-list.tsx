@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { AccessTag } from "@/components/blocks/access-tag";
-import { COMPONENT_GROUPS } from "@/lib/component-families";
+import {
+  COMPONENT_GROUPS,
+  type ComponentGroup,
+} from "@/lib/component-families";
 import { componentGroupPages } from "@/lib/component-groups";
+import { CORTEX_THUMBNAILS } from "@/lib/cortex-thumbnails";
 import { isProItem } from "@/lib/pro";
 import { source } from "@/lib/source";
 import { ComponentArt } from "./component-art";
@@ -9,6 +13,7 @@ import {
   ComponentThumbnail,
   hasComponentThumbnail,
 } from "./component-thumbnails";
+import { CortexThumbnail } from "./cortex-thumbnails";
 
 const DOCS_PREFIX = /^\/docs\//;
 
@@ -50,11 +55,11 @@ export function ComponentsList({ category }: { category: string }) {
           key={page.url}
         >
           <div className="overflow-hidden rounded-shell-lg border border-border bg-card">
-            {livePreviews && hasComponentThumbnail(page.slug) ? (
-              <ComponentThumbnail slug={page.slug} />
-            ) : (
-              <ComponentArt family={family?.category} name={page.slug} />
-            )}
+            <CardPicture
+              family={family?.category}
+              livePreviews={livePreviews}
+              slug={page.slug}
+            />
           </div>
           <div className="flex flex-col gap-1.5 px-2.5 pt-3.5 pb-2.5">
             <div className="flex items-center justify-between gap-3">
@@ -76,4 +81,26 @@ export function ComponentsList({ category }: { category: string }) {
       ))}
     </ul>
   );
+}
+
+/**
+ * A card's picture: a shadcn/ui component's live thumbnail, a Cortex
+ * component's live preview where it has one, or else its line drawing.
+ */
+function CardPicture({
+  family,
+  slug,
+  livePreviews,
+}: {
+  family?: ComponentGroup["category"];
+  slug: string;
+  livePreviews: boolean;
+}) {
+  if (livePreviews && hasComponentThumbnail(slug)) {
+    return <ComponentThumbnail slug={slug} />;
+  }
+  if (family === "cortex" && CORTEX_THUMBNAILS.has(slug)) {
+    return <CortexThumbnail slug={slug} />;
+  }
+  return <ComponentArt family={family} name={slug} />;
 }
