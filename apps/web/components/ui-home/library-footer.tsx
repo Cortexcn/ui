@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { CortexcnLogo } from "@/components/icons/cortexcn";
 import { ProductCredit } from "@/components/product-credit";
-import { ProductHuntBadge } from "@/components/product-hunt-badge";
 import { VersionTag } from "@/components/version-tag";
 import { COMPONENT_GROUPS } from "@/lib/component-families";
 import { CONTACT_EMAIL } from "@/lib/contact-details";
@@ -109,7 +108,6 @@ export function LibraryFooter() {
           >
             {CONTACT_EMAIL}
           </a>
-          <ProductHuntBadge className="mt-2" />
         </div>
 
         <nav

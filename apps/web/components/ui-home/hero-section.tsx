@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ProductHuntBadge } from "@/components/product-hunt-badge";
 import { cn } from "@/lib/utils";
 
 import { HeroCanvasLoader } from "./hero-canvas-loader";
@@ -34,8 +33,6 @@ export function HeroSection() {
       <div className="lg:grid lg:min-h-[min(880px,100svh)] lg:grid-cols-[min(44rem,50%)_minmax(0,1fr)]">
         <div className="relative z-10 flex items-center px-4 pt-28 pb-10 sm:px-6 md:pt-36 lg:pt-24 lg:pr-4 lg:pb-16 lg:pl-8">
           <div className="flex w-full min-w-0 max-w-[38rem] flex-col items-start">
-            <ProductHuntBadge className={cn("mb-6", enterClassName)} />
-
             <Link
               className={cn(
                 "group mb-7 inline-flex max-w-full items-center gap-2.5 text-body text-sm sm:text-base",
