@@ -4,6 +4,7 @@
     "---Cortex---",
     "ascii-reveal",
     "command-search",
+    "context-window",
     "fan-out-diagram",
     "faq-tabs-card",
     "gooey-nav",
@@ -12,11 +13,19 @@
     "line-nav",
     "logos-carousel",
     "marquee",
+    "matrix-trail",
+    "model-router",
     "number-ticker",
+    "payout-split",
     "perspective-marquee",
+    "pixel-prompt-button",
+    "release-line",
     "service-map",
+    "spend-flow",
     "sphere-menu",
     "theme-toggle-effect",
+    "threat-shield",
+    "usage-receipt",
     "work-experience"
   ]
 }

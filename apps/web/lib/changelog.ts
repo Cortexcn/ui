@@ -44,6 +44,27 @@ const ASCII_REVEAL_URL = componentDocsUrl("ascii-reveal");
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
+    date: "2026-11-15",
+    kind: "components",
+    title:
+      "Spend Flow, Usage Receipt, Pixel Prompt Button, and six more components",
+    summary:
+      "Nine animated Cortex components. Spend Flow, Model Router, Payout Split, and Threat Shield send pulses of traffic through a node into a live card whose numbers count up as each pulse lands. Usage Receipt prints a receipt line by line, Release Line rides a release down a transit map, Context Window fills and compacts an LLM's context, Pixel Prompt Button copies a prompt from a pill of pixels that light up under the pointer, and Matrix Trail lights a field of glyphs behind the cursor.",
+    items: [
+      ...componentLinks([
+        ["Spend Flow", "spend-flow"],
+        ["Model Router", "model-router"],
+        ["Payout Split", "payout-split"],
+        ["Threat Shield", "threat-shield"],
+        ["Usage Receipt", "usage-receipt"],
+        ["Release Line", "release-line"],
+        ["Context Window", "context-window"],
+        ["Pixel Prompt Button", "pixel-prompt-button"],
+        ["Matrix Trail", "matrix-trail"],
+      ]),
+    ],
+  },
+  {
     date: "2026-11-13",
     kind: "site",
     title: "Heardline, the Care Quality Dashboard Kit",

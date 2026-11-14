@@ -105,6 +105,7 @@ const baseComponents = [
 const cortexComponents = [
   { text: "ASCII Reveal", url: "/docs/cortex/ascii-reveal" },
   { text: "Command Search", url: "/docs/cortex/command-search" },
+  { text: "Context Window", url: "/docs/cortex/context-window" },
   { text: "Fan-Out Diagram", url: "/docs/cortex/fan-out-diagram" },
   { text: "FAQ Tabs Card", url: "/docs/cortex/faq-tabs-card" },
   { text: "Gooey Nav", url: "/docs/cortex/gooey-nav" },
@@ -113,14 +114,25 @@ const cortexComponents = [
   { text: "Line Nav", url: "/docs/cortex/line-nav" },
   { text: "Logos Carousel", url: "/docs/cortex/logos-carousel" },
   { text: "Marquee", url: "/docs/cortex/marquee" },
+  { text: "Matrix Trail", url: "/docs/cortex/matrix-trail" },
+  { text: "Model Router", url: "/docs/cortex/model-router" },
   { text: "Number Ticker", url: "/docs/cortex/number-ticker" },
+  { text: "Payout Split", url: "/docs/cortex/payout-split" },
   {
     text: "Perspective Marquee",
     url: "/docs/cortex/perspective-marquee",
   },
+  {
+    text: "Pixel Prompt Button",
+    url: "/docs/cortex/pixel-prompt-button",
+  },
+  { text: "Release Line", url: "/docs/cortex/release-line" },
   { text: "Service Map", url: "/docs/cortex/service-map" },
+  { text: "Spend Flow", url: "/docs/cortex/spend-flow" },
   { text: "Sphere Menu", url: "/docs/cortex/sphere-menu" },
   { text: "Theme Toggle Effect", url: "/docs/cortex/theme-toggle-effect" },
+  { text: "Threat Shield", url: "/docs/cortex/threat-shield" },
+  { text: "Usage Receipt", url: "/docs/cortex/usage-receipt" },
   { text: "Work Experience", url: "/docs/cortex/work-experience" },
 ];
 
